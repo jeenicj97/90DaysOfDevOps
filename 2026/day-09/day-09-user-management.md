@@ -7,11 +7,13 @@
 - berlin
 - professor
 - nairobi
-
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/9a72b04ca0dc2e18d0c7459f8e7a924dd880f693/2026/day-09/add-3users.png)
 ### Groups
 - developers
 - admins
 - project-team
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/9a72b04ca0dc2e18d0c7459f8e7a924dd880f693/2026/day-09/add-groups.png)
+
 
 ---
 
@@ -24,6 +26,7 @@
 | professor | admins |
 | nairobi | project-team |
 
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/9a72b04ca0dc2e18d0c7459f8e7a924dd880f693/2026/day-09/groups.png)
 ---
 
 # Directories Created
@@ -33,6 +36,9 @@
 | /opt/dev-project | developers | 775 |
 | /opt/team-workspace | project-team | 775 |
 
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/9a72b04ca0dc2e18d0c7459f8e7a924dd880f693/2026/day-09/permissions.png)
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/9a72b04ca0dc2e18d0c7459f8e7a924dd880f693/2026/day-09/test-files.png)
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/9a72b04ca0dc2e18d0c7459f8e7a924dd880f693/2026/day-09/workspace.png)
 ---
 
 # Commands Used
