@@ -12,12 +12,23 @@ Level up your scripting — use loops, handle arguments, and deal with errors.
 1. Create `for_loop.sh` that:
    - Loops through a list of 5 fruits and prints each one
 ```bash
+#!/bin/bash
+
+Fruits=('Apple' 'Orange' 'Banana' 'Kiwi' 'Guava')
+for f in ${Fruits[@]}; do
+        echo "$f"
+done
 ```
 ![Image Alt]()
 
 2. Create `count.sh` that:
    - Prints numbers 1 to 10 using a for loop
 ```bash
+#!/bin/bash
+
+for i in {1..10}; do
+        echo "$i"
+done
 ```
 ![Image Alt]()
 
@@ -29,6 +40,15 @@ Level up your scripting — use loops, handle arguments, and deal with errors.
    - Counts down to 0 using a while loop
    - Prints "Done!" at the end
 ```bash
+#!/bin/bash
+
+read -p "Enter a number: " num
+while [[ $num -ge 0 ]]; do
+        echo "$num"
+        num=$((num-1))
+
+done
+echo "Done!"
 ```
 ![Image Alt]()
 
@@ -40,6 +60,14 @@ Level up your scripting — use loops, handle arguments, and deal with errors.
    - Prints `Hello, <name>!`
    - If no argument is passed, prints "Usage: ./greet.sh <name>"
 ```bash
+#!/bin/bash
+
+if [ $# -eq 0 ];then
+        echo "Usage: ./greet.sh"
+        exit 1
+fi
+
+echo "Hello, $1"
 ```
 ![Image Alt]()
 
@@ -48,6 +76,11 @@ Level up your scripting — use loops, handle arguments, and deal with errors.
    - Prints all arguments (`$@`)
    - Prints the script name (`$0`)
 ```bash
+#!/bin/bash
+
+echo "Total number of arguments is $#"
+echo "All arguments are $@"
+echo "Script name is $0"
 ```
 ![Image Alt]()
 
