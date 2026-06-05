@@ -23,6 +23,15 @@ git version 2.49.0.windows.1
 3. Check the status — read and understand what Git is telling you
 4. Explore the hidden `.git/` directory — look at what's inside
 
+```
+Jeeni@DESKTOP-BG3MAVI MINGW64 ~ (master)
+$ cd devops-git-practice/
+
+Jeeni@DESKTOP-BG3MAVI MINGW64 ~/devops-git-practice (master)
+$ git init
+Initialized empty Git repository in C:/Users/Jeeni/devops-git-practice/.git/
+
+```
 ---
 
 ### Task 3: Create Your Git Commands Reference
