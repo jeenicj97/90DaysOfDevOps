@@ -30,7 +30,6 @@ $ cd devops-git-practice/
 Jeeni@DESKTOP-BG3MAVI MINGW64 ~/devops-git-practice (master)
 $ git init
 Initialized empty Git repository in C:/Users/Jeeni/devops-git-practice/.git/
-
 ```
 ---
 
@@ -44,6 +43,9 @@ Initialized empty Git repository in C:/Users/Jeeni/devops-git-practice/.git/
    - What it does (1 line)
    - An example of how to use it
 
+```
+git-commands.md
+```
 ---
 
 ### Task 4: Stage and Commit
@@ -52,6 +54,46 @@ Initialized empty Git repository in C:/Users/Jeeni/devops-git-practice/.git/
 3. Commit with a meaningful message
 4. View your commit history
 
+```
+Jeeni@DESKTOP-BG3MAVI MINGW64 ~/devops-git-practice (master)
+$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        git-commands.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Jeeni@DESKTOP-BG3MAVI MINGW64 ~/devops-git-practice (master)
+$ git add git-commands.md
+warning: in the working copy of 'git-commands.md', LF will be replaced by CRLF the next time Git touches it
+
+Jeeni@DESKTOP-BG3MAVI MINGW64 ~/devops-git-practice (master)
+$ git commit -m "Adding file"
+[master b1fad35] Adding file
+ 1 file changed, 26 insertions(+)
+ create mode 100644 git-commands.md
+
+Jeeni@DESKTOP-BG3MAVI MINGW64 ~/devops-git-practice (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+Jeeni@DESKTOP-BG3MAVI MINGW64 ~/devops-git-practice (master)
+$ git log
+commit b1fad3555289a1f4eae46351443da074091a5604 (HEAD -> master)
+Author: jeenicj97 <jeenicj97@gmail.com>
+Date:   Fri Jun 5 22:04:48 2026 +0530
+
+    Adding file
+
+commit 2d2c1ea1ec0f707113bfe97517a24c9e9699c2e3
+Author: jeenicj97 <jeenicj97@gmail.com>
+Date:   Fri Jun 5 21:51:57 2026 +0530
+
+    Initial Commit
+
+```
 ---
 
 ### Task 5: Make More Changes and Build History
@@ -61,14 +103,29 @@ Initialized empty Git repository in C:/Users/Jeeni/devops-git-practice/.git/
 4. Repeat this process at least **3 times** so you have multiple commits in your history
 5. View the full history in a compact format
 
+```
+Jeeni@DESKTOP-BG3MAVI MINGW64 ~/devops-git-practice (master)
+$ git log --oneline
+6231c1d (HEAD -> master) Adding file again1
+d1eaacb Adding file again
+b1fad35 Adding file
+2d2c1ea Inital Commit
+```
 ---
 
 ### Task 6: Understand the Git Workflow
-Answer these questions in your own words (add them to a `day-22-notes.md` file):
+Answer these questions in your own words:
 1. What is the difference between `git add` and `git commit`?
-2. What does the **staging area** do? Why doesn't Git just commit directly?
-3. What information does `git log` show you?
-4. What is the `.git/` folder and what happens if you delete it?
-5. What is the difference between a **working directory**, **staging area**, and **repository**?
+- `git add : moves file from local to staging area and git commit saves them permanently in the repo`
+3. What does the **staging area** do? Why doesn't Git just commit directly?
+- `It lets you review changes before committing`
+4. What information does `git log` show you?
+- `Shows commit history with IDs and commit message`
+5. What is the `.git/` folder and what happens if you delete it?
+- `Contains all metadata & history. If deleted, git will have no memory of your project` 
+6. What is the difference between a **working directory**, **staging area**, and **repository**?
+- `Working directory: actual local files`
+- `staging area: move file from local to staging area`
+- `repository: like a folder which has files and history of commits` 
 
 ---
