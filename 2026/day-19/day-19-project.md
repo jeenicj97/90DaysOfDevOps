@@ -12,6 +12,37 @@ Create `log_rotate.sh` that:
 4. Prints how many files were compressed and deleted
 5. Exits with an error if the directory doesn't exist
 
+```
+!/bin/bash
+
+set -euo pipefail
+
+if [ $# -eq 0 ]; then
+        echo "Usage: ./log_rotate.sh <log directory path>"
+        exit 1
+fi
+
+log_dir=$1
+
+if [ ! -d "$log_dir" ]; then
+        echo "Error! Directory not found."
+        exit 1
+fi
+
+compressed_count=$(find "$log_dir" -type f -name "*.log" -mtime +7 | wc -l)
+find "$log_dir" -type f -name "*.log" -mtime +7 -exec gzip {} \;
+
+deleted_count=$(find "$log_dir" -type f -name "*.gz" -mtime +30 | wc -l)
+find "$log_dir" -type f -name "*.gz" -mtime +30 -delete
+
+echo "==============="
+echo "Log Rotation Complete"
+echo "Compressed: $compressed_count"
+echo "Deleted: $deleted_count"
+echo "================"
+```
+![Image Alt]()
+
 ---
 
 ### Task 2: Server Backup Script
