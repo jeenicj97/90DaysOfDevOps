@@ -41,7 +41,7 @@ echo "Compressed: $compressed_count"
 echo "Deleted: $deleted_count"
 echo "================"
 ```
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/5933b166fb652552f9aca9d4f91ad06d74a100f0/2026/day-19/task1.png)
 
 ---
 
@@ -101,7 +101,7 @@ else
 fi
 ```
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/5933b166fb652552f9aca9d4f91ad06d74a100f0/2026/day-19/task2.png)
 
 ---
 
@@ -140,9 +140,34 @@ Create `maintenance.sh` that:
 3. Logs all output to `/var/log/maintenance.log` with timestamps
 4. Write the cron entry to run it daily at 1 AM
 
+```
+#!/bin/bash
+
+LOGFILE="/var/log/maintenance.log"
+TIMESTAMP=$(date "+%Y-%m-%d %H:%M:%S")
+
+echo ["$TIMESTAMP"] Starting maintenance.. | sudo tee -a "$LOGFILE"
+
+echo "[$TIMESTAMP] Running Log Rotation..." | sudo tee -a "$LOGFILE"
+/home/jeenicj/log_rotate.sh >> "$LOGFILE" 2>&1
+
+echo "[$TIMESTAMP] Running backup..." | sudo tee -a "$LOGFILE"
+/home/jeenicj/backup.sh ~/demo-source ~/demo-backup >> "$LOGFILE" 2>&1
+
+echo "[$TIMESTAMP] Maintenance Complete..." | sudo tee -a "$LOGFILE"
+```
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/5933b166fb652552f9aca9d4f91ad06d74a100f0/2026/day-19/task4.png)
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/5933b166fb652552f9aca9d4f91ad06d74a100f0/2026/day-19/task4a.png)
+
+
 ---
 
 ## What you learned (3 key points)
 
+- Automated log rotation and backup tasks using shell scripts to reduce manual effort and improve consistency.
+- Managed files efficiently using find, gzip, tar, and du for compression, archiving, and cleanup.
+- Used cron scheduling to automate maintenance tasks and ensure regular system operations.
 
 ---
