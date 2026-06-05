@@ -54,6 +54,55 @@ Create `backup.sh` that:
 5. Deletes backups older than 14 days from the destination
 6. Handles errors — exit if source doesn't exist
 
+```
+#!/bin/bash
+
+set -euo pipefail
+
+if [ $# -ne 2 ]; then
+        echo "Usage: ./sh log_rotate.sh <src_dir> <backup_dir>"
+        exit 1
+fi
+
+SOURCE_DIR=$1
+BACKUP_DIR=$2
+
+if [ ! -d "$SOURCE_DIR" ]; then
+        echo "Error! Source directory doesn't exist"
+        exit 1
+fi
+
+mkdir -p "$BACKUP_DIR"
+
+TIMESTAMP=$(date +%Y-%m-%d_%H-%M-%S)
+ARCHIVE="$BACKUP_DIR/backup-${TIMESTAMP}.tar.gz"
+
+tar -czf "$ARCHIVE" "$SOURCE_DIR"
+
+if [ -f "$ARCHIVE" ]; then
+        SIZE=$(du -sh "$ARCHIVE" | awk '{print $1}')
+        echo "=====backup successfull======="
+        echo "Archive: $ARCHIVE"
+        echo "Size: $SIZE"
+        echo "============================="
+else
+        echo "Error! Backup failed - archive not found"
+        exit 1
+fi
+
+
+OLD_COUNT=$(find "$BACKUP_DIR" -type f -name "*.tar.gz" -mtime +14 | wc -l)
+
+if [ "$OLD_COUNT" -gt 0 ]; then
+        find "$BACKUP_DIR" -type f -name "*.tar.gz" -mtime +14 -delete
+        echo "Cleaned up $OLD_COUNT old backups older than 14"
+else
+        echo "No Old backups to clean up"
+fi
+```
+
+![Image Alt]()
+
 ---
 
 ### Task 3: Crontab
