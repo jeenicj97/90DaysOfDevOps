@@ -8,12 +8,34 @@ Your script should:
 2. Exit with a clear error message if no argument is provided
 3. Exit with a clear error message if the file doesn't exist
 
+```
+#!/bin/bash
+
+LOG_FILE=$1
+
+if [ $# -eq 0 ]; then
+        echo "<Usage> ./log-analyzer.sh <log directory>"
+        exit 1
+fi
+
+if [ ! -d $LOG_FILE ]; then
+        echo "Error! Directory doen't exist"
+        exit 1
+fi
+```
+
+![Image Alt]()
+
 ---
 
 ### Task 2: Error Count
 1. Count the total number of lines containing the keyword `ERROR` or `Failed`
 2. Print the total error count to the console
 
+```
+ERROR_COUNT=$(grep -cE "ERROR|Failed" "$LOG_FILE")
+echo "Total Errors: $ERROR_COUNT"
+```
 ---
 
 ### Task 3: Critical Events
