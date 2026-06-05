@@ -121,7 +121,16 @@ fi
    - Run `log_rotate.sh` every day at 2 AM
    - Run `backup.sh` every Sunday at 3 AM
    - Run a health check script every 5 minutes
+     
+```
+# Cron Jobs Reference
 
+| Schedule      | Expression   | Command                          |
+|---------------|--------------|----------------------------------|
+| Daily 2 AM    | 0 2 * * *    | /home/jeenicj/scripts/log_rotate.sh |
+| Sunday 3 AM   | 0 3 * * 0    | /home/jeenicj/backup.sh          |
+| Every 5 mins  | */5 * * * *  | /home/jeenicj/scripts/health_check.sh |
+```
 ---
 
 ### Task 4: Combine — Scheduled Maintenance Script
