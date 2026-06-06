@@ -34,8 +34,11 @@ Date:   Sat Jun 6 22:55:06 2026 +0530
 ```
 7. Answer in your notes:
    - What is a fast-forward merge?
+     * Happens when your main branch has no new commits since you branched off; Git simply moves the pointer forward to your latest commit without creating a new merge      commit. 
    - When does Git create a merge commit instead?
+     * Created when branches have diverged (both have new, different commits); Git must generate a new commit to tie the two histories back together.[Merge Commit ID is created]
    - What is a merge conflict? (try creating one intentionally by editing the same line in both branches)
+     * Happens when the same line of code is changed differently on both branches, forcing Git to stop and ask you to manually choose which version to keep.
 
 ---
 
