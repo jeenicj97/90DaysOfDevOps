@@ -1,15 +1,5 @@
 # Day 24 – Advanced Git: Merge, Rebase, Stash & Cherry Pick
 
-## Task
-
-You know how to branch and push to GitHub. Now it's time to learn how branches come back together — and what to do when you're in the middle of something and need to context-switch. These are the Git skills that separate beginners from confident practitioners.
-
----
-
-## Expected Output
-- A markdown file: `day-24-notes.md` with your observations and answers
-- Continue updating `git-commands.md` in your `devops-git-practice` repo
-
 ---
 
 ## Challenge Tasks
@@ -86,19 +76,3 @@ You know how to branch and push to GitHub. Now it's time to learn how branches c
 - Cherry-pick needs a commit hash — find it with `git log --oneline`
 
 ---
-
-## Submission
-1. Add your `day-24-notes.md` to `2026/day-24/`
-2. Update `git-commands.md` with all new commands and commit
-3. Push to your fork
-
----
-
-## Learn in Public
-
-Share your merge vs rebase comparison on LinkedIn — a diagram or screenshot of `git log --graph` goes a long way!
-
-`#90DaysOfDevOps` `#DevOpsKaJosh` `#TrainWithShubham`
-
-Happy Learning!
-**TrainWithShubham**
