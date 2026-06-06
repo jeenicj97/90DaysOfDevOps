@@ -39,7 +39,7 @@ Date:   Sat Jun 6 22:55:06 2026 +0530
      * Created when branches have diverged (both have new, different commits); Git must generate a new commit to tie the two histories back together.[Merge Commit ID is created]
    - What is a merge conflict? (try creating one intentionally by editing the same line in both branches)
      * Happens when the same line of code is changed differently on both branches, forcing Git to stop and ask you to manually choose which version to keep.
-
+       
 ---
 
 ### Task 2: Git Rebase — Hands-On
