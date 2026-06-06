@@ -8,9 +8,31 @@
 1. Create a new branch `feature-login` from `main`, add a couple of commits to it
 2. Switch back to `main` and merge `feature-login` into `main`
 3. Observe the merge — did Git do a **fast-forward** merge or a **merge commit**?
-4. Now create another branch `feature-signup`, add commits to it — but also add a commit to `main` before merging
-5. Merge `feature-signup` into `main` — what happens this time?
-6. Answer in your notes:
+```
+Jeeni@DESKTOP-BG3MAVI MINGW64 ~/practice-repo (master)
+$ git merge feature-login
+Updating e1615d7..782242f
+Fast-forward
+ app.log  | 1 +
+ hello.py | 1 +
+ 2 files changed, 2 insertions(+)
+ create mode 100644 app.log
+ create mode 100644 hello.py
+```
+5. Now create another branch `feature-signup`, add commits to it — but also add a commit to `main` before merging
+6. Merge `feature-signup` into `main` — what happens this time?
+```
+Jeeni@DESKTOP-BG3MAVI MINGW64 ~/practice-repo (master)
+$ git log
+commit 132caf4f4c6568273a54a69be9d4ae4383b077fc (HEAD -> master)
+Merge: 137bccb ebc90b9
+Author: jeenicj97 <jeenicj97@gmail.com>
+Date:   Sat Jun 6 22:55:06 2026 +0530
+
+    Merge branch 'feature-signup'
+     for demo
+```
+7. Answer in your notes:
    - What is a fast-forward merge?
    - When does Git create a merge commit instead?
    - What is a merge conflict? (try creating one intentionally by editing the same line in both branches)
