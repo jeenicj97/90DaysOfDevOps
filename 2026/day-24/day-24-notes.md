@@ -134,6 +134,8 @@ eecb26c added js file
 8. Answer in your notes:
    - What does squash merging do?
      * `Squash merge combines all commits from a branch into one single commit on master - so instead of 5 messy commits, master sees only 1 clean commit.`
+   - What is the trade-off of squashing?
+      * `You get a cleaner master history, but you lose the individual commit details - if something breaks later, you can't pinpoint which small change caused it.`
    - When would you use squash merge vs regular merge?
      | Situation | Use |
      |---|---|
@@ -151,8 +153,6 @@ eecb26c added js file
       | Individual commits visible in log? | ❌ No | ✅ Yes |
      
     
-      - What is the trade-off of squashing?
-       * `You get a cleaner master history, but you lose the individual commit details - if something breaks later, you can't pinpoint which small change caused it.`
 
 ---
 
