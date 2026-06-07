@@ -83,6 +83,8 @@ $ git log --oneline --graph --all
      | Working on a shared/public branch | Merge |
      
      > **Simple rule: rebase to tidy, merge to combine.**
+     > * Once a commit is on GitHub and someone else has pulled it - that commit ID is shared property
+     > * Rebase changes the ID - now you and your teammate have different versions of the same commit
 ---
 
 ### Task 3: Squash Commit vs Merge Commit
