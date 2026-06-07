@@ -108,6 +108,7 @@ Squash commit -- not updating HEAD
 
 Jeeni@DESKTOP-BG3MAVI MINGW64 ~/practice-repo (master)
 $ git log --oneline
+dba39ef Squash merge feature-profile ------------> NEED TO MANUALLY COMMIT to get COMMIT ID of SQUASH(else won't be visible)
 081a520 (HEAD -> master, feature-dashboard) 3rd commit
 0ac0453 added 2nd filr
 eecb26c added js file
@@ -116,10 +117,42 @@ eecb26c added js file
 ```
 5. Now create another branch `feature-settings`, add a few commits
 6. Merge it into `main` **without** `--squash` (regular merge) — compare the history
-7. Answer in your notes:
+* `I can see my commits now`
+```
+Jeeni@DESKTOP-BG3MAVI MINGW64 ~/practice-repo (master)
+$ git log --oneline
+5dafd22 (HEAD -> master, feature-settings) Amended A
+44db47f Added B
+672c24f Added A
+dba39ef Squash merge feature-profile ------------> NEED TO MANUALLY COMMIT to get COMMIT ID of SQUASH
+081a520 (feature-dashboard) 3rd commit
+0ac0453 added 2nd filr
+eecb26c added js file
+3a870e3 amended master file
+
+```
+8. Answer in your notes:
    - What does squash merging do?
+     * `Squash merge combines all commits from a branch into one single commit on master - so instead of 5 messy commits, master sees only 1 clean commit.`
    - When would you use squash merge vs regular merge?
-   - What is the trade-off of squashing?
+     | Situation | Use |
+     |---|---|
+     | Branch has messy/WIP commits (typo fix, oops, formatting) | Squash merge |
+     | Branch has clean, meaningful commits worth keeping | Regular merge |
+     | Want clean master history | Squash merge |
+     | Want full commit history preserved | Regular merge |
+
+     > **Simple rule: squash to clean, regular merge to preserve.**
+     
+      | | Squash Merge | Regular Merge |
+      |---|---|---|
+      | Manual commit needed? | ✅ Yes | ❌ No |
+      | Commit ID generated automatically? | ❌ No | ✅ Yes |
+      | Individual commits visible in log? | ❌ No | ✅ Yes |
+     
+    
+      - What is the trade-off of squashing?
+       * `You get a cleaner master history, but you lose the individual commit details - if something breaks later, you can't pinpoint which small change caused it.`
 
 ---
 
