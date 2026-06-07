@@ -91,9 +91,32 @@ $ git log --oneline --graph --all
 1. Create a branch `feature-profile`, add 4-5 small commits (typo fix, formatting, etc.)
 2. Merge it into `main` using `--squash` — what happens?
 3. Check `git log` — how many commits were added to `main`?
-4. Now create another branch `feature-settings`, add a few commits
-5. Merge it into `main` **without** `--squash` (regular merge) — compare the history
-6. Answer in your notes:
+* `Not seeing any commits`
+```
+Jeeni@DESKTOP-BG3MAVI MINGW64 ~/practice-repo (master)
+$ git merge --squash feature-profile
+Updating 081a520..1a6e033
+Fast-forward
+Squash commit -- not updating HEAD
+ backend.py  | 1 +
+ data.py     | 1 +
+ frontend.py | 1 +
+ 3 files changed, 3 insertions(+)
+ create mode 100644 backend.py
+ create mode 100644 data.py
+ create mode 100644 frontend.py
+
+Jeeni@DESKTOP-BG3MAVI MINGW64 ~/practice-repo (master)
+$ git log --oneline
+081a520 (HEAD -> master, feature-dashboard) 3rd commit
+0ac0453 added 2nd filr
+eecb26c added js file
+3a870e3 amended master file
+
+```
+5. Now create another branch `feature-settings`, add a few commits
+6. Merge it into `main` **without** `--squash` (regular merge) — compare the history
+7. Answer in your notes:
    - What does squash merging do?
    - When would you use squash merge vs regular merge?
    - What is the trade-off of squashing?
