@@ -199,17 +199,30 @@ Changes not staged for commit:
 2. Switch to `main`
 3. Cherry-pick **only the second commit** from `feature-hotfix` onto `main`
 4. Verify with `git log` that only that one commit was applied
-5. Answer in your notes:
+```
+Jeeni@DESKTOP-BG3MAVI MINGW64 ~/practice-repo (master)
+$ git cherry-pick a6528b9
+[master 016ba68] added bye.yaml
+ Date: Sun Jun 7 18:16:08 2026 +0530
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 Bye.yaml
+
+Jeeni@DESKTOP-BG3MAVI MINGW64 ~/practice-repo (master)
+$ git log --oneline
+016ba68 (HEAD -> master) added bye.yaml
+5dafd22 (feature-settings) Amended A
+44db47f Added B
+672c24f Added A
+```
+6. Answer in your notes:
    - What does cherry-pick do?
+     * It picks one specific commit from any branch and applies it to your current branch, without merging the entire branch.
    - When would you use cherry-pick in a real project?
+     * When a bug fix was committed on a feature branch but you need that fix on main/production urgently without merging all the unfinished feature code          along with it.
+     * Also useful when a commit was accidentally made on the wrong branch - you cherry-pick it to the right branch
    - What can go wrong with cherry-picking?
+     * If the commit you're picking depends on code from a previous commit that doesn't exist on your target branch, you'll get a conflict.
+     * Also, cherry-picking creates a duplicate commit with a new hash - so if you later merge the original branch, Git sees two separate commits with the         same changes, which can cause confusion in history.
 
----
-
-## Hints
-- Visualize history: `git log --oneline --graph --all`
-- To intentionally create a merge conflict: edit the **same line** of the **same file** on two branches
-- Stash with a message: `git stash push -m "description"`
-- Cherry-pick needs a commit hash — find it with `git log --oneline`
 
 ---
