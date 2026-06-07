@@ -47,12 +47,42 @@ Date:   Sat Jun 6 22:55:06 2026 +0530
 2. While on `main`, add a new commit (so `main` moves ahead)
 3. Switch to `feature-dashboard` and rebase it onto `main`
 4. Observe your `git log --oneline --graph --all` — how does the history look compared to a merge?
-5. Answer in your notes:
+* `all my commits are in one line - with master not like below how it is with merge`
+```
+Jeeni@DESKTOP-BG3MAVI MINGW64 ~/practice-repo (master)
+$ git log --oneline --graph --all
+* 081a520 (HEAD -> master, feature-dashboard) 3rd commit
+* 0ac0453 added 2nd filr
+* eecb26c added js file
+* 3a870e3 amended master file
+*   aed3d70 (origin/master, origin/HEAD) fixed conflict
+|\
+| * c6142b1 (origin/feature-signup, feature-signup) Amending file
+* | f6b9e0b amnded file from master
+* | 132caf4 Merge branch 'feature-signup'  for demo
+|\|
+| * ebc90b9 added file2
+| * 84d4f47 added txt file
+* | 137bccb amended log file
+|/
+```
+6. Answer in your notes:
    - What does rebase actually do to your commits?
+     * `Rebase lifts your branch commits and replants them on top of another branch's latest commit - giving them a new base point`
    - How is the history different from a merge?
+     * `Rebase gives a clean straight line in git log.`
+     * `Merge shows branching lines with a merge commit where two branches joined`
    - Why should you **never rebase commits that have been pushed and shared** with others?
+     * `Rebase rewrites commit IDs. If others have pulled your commits and you rebase, their history and yours conflit - causing chaos for the whole team`
    - When would you use rebase vs merge?
-
+     | Situation | Use |
+     |---|---|
+     | Cleaning up before a Pull Request | Rebase |
+     | Bringing teammate's work into your branch | Rebase |
+     | Combining completed feature into main | Merge |
+     | Working on a shared/public branch | Merge |
+     
+     > **Simple rule: rebase to tidy, merge to combine.**
 ---
 
 ### Task 3: Squash Commit vs Merge Commit
