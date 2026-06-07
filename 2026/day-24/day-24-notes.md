@@ -164,9 +164,33 @@ eecb26c added js file
 5. Apply your stashed changes using `git stash pop`
 6. Try stashing multiple times and list all stashes
 7. Try applying a specific stash from the list
-8. Answer in your notes:
+```
+Jeeni@DESKTOP-BG3MAVI MINGW64 ~/practice-repo (feature-login)
+$ git stash list
+stash@{0}: WIP on feature-login: 782242f added log file
+stash@{1}: WIP on feature-login: 782242f added log file
+stash@{2}: WIP on feature-login: 782242f added log file
+stash@{3}: WIP on feature-login: 782242f added log file
+
+Jeeni@DESKTOP-BG3MAVI MINGW64 ~/practice-repo (feature-login)
+$ git stash apply stash@{2}
+On branch feature-login
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   app.log
+        modified:   hello.py
+```
+9. Answer in your notes:
    - What is the difference between `git stash pop` and `git stash apply`?
+     * Both `git stash pop` and `git stash apply` restore your stashed changes back to the working directory.
+     * The difference is what happens after -  `git stash pop` automatically removes the stash from the list once applied, while `git stash apply` keeps it        in the stash list even after applying
+     * Use `git stash pop` when you're done with the stash and don't need it anymore
+     * Use `git stash pop` when you want to apply the same stash to multiple branches without losing it from the list
    - When would you use stash in a real-world workflow?
+     * You're mid-feature and an urgent bug comes in on another branch
+     * You want to test something quickly in a clean state
+     * You accidentally started work on the wrong branch - stash it, switch, pop
 
 ---
 
