@@ -38,8 +38,30 @@ Changes to be committed:
         new file:   C.py
 ```
 4. Re-commit, then use `git reset --mixed` to go back one commit — what happens now?
-5. Re-commit, then use `git reset --hard` to go back one commit — what happens this time?
-6. Answer in your notes:
+
+`C.py file moves to untracked stage & HEAD moved to one commit before`
+
+```
+Jeeni@DESKTOP-BG3MAVI MINGW64 ~/practice-repo (master)
+$ git log --oneline -5
+6c4d86e (HEAD -> master) Added B
+9c9e565 Added A
+016ba68 added bye.yaml
+```
+
+```
+Jeeni@DESKTOP-BG3MAVI MINGW64 ~/practice-repo (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 11 commits.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        C.py
+```
+6. Re-commit, then use `git reset --hard` to go back one commit — what happens this time?
+7. Answer in your notes:
    - What is the difference between `--soft`, `--mixed`, and `--hard`?
    - Which one is destructive and why?
    - When would you use each one?
