@@ -174,11 +174,6 @@ Research the following branching strategies and document each in your notes with
         * Pros: Encourages small, frequent commits, reduces merge conflicts, very fast delivery.
         * Cons: Requires strong automated testing and discipline, otherwise main can break easily.
 
-  
-- A simple diagram or flow (text-based is fine)
-- When/where it's used
-- Pros and cons
-
 1. **GitFlow** — develop, feature, release, hotfix branches
 2. **GitHub Flow** — simple, single main branch + feature branches
 3. **Trunk-Based Development** — everyone commits to main, short-lived branches
