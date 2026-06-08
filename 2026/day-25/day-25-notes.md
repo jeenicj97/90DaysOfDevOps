@@ -61,7 +61,20 @@ Untracked files:
         C.py
 ```
 6. Re-commit, then use `git reset --hard` to go back one commit — what happens this time?
-7. Answer in your notes:
+`HEAD moves to previous commit & C.py is completely deleted`
+```
+Jeeni@DESKTOP-BG3MAVI MINGW64 ~/practice-repo (master)
+$ git add C.py
+fatal: pathspec 'C.py' did not match any files
+```
+
+```
+Jeeni@DESKTOP-BG3MAVI MINGW64 ~/practice-repo (master)
+$ git reset --hard HEAD~1
+HEAD is now at 9c9e565 Added A
+```
+
+8. Answer in your notes:
    - What is the difference between `--soft`, `--mixed`, and `--hard`?
    - Which one is destructive and why?
    - When would you use each one?
