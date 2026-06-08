@@ -156,6 +156,25 @@ Create a comparison in your notes:
 ### Task 4: Branching Strategies
 Research the following branching strategies and document each in your notes with:
 - How it works (short description)
+   - **GitFlow**
+        * How it works: You have two main branches — master (production) and develop (integration). Developers create feature branches from develop. When features are done,           they merge back into develop. Before a release, a release branch is created, tested, and then merged into both master and develop. If urgent bugs appear in                  production, a hotfix branch is created from master and merged back.
+        * When used: Big teams, scheduled releases, projects where stability is critical.
+        * Pros: Very organized, clear separation of work, good for release planning.
+        * Cons: Heavy process, slower for fast-moving projects.
+  
+
+   - **GitHub Flow**
+        * How it works: There’s only one long-lived branch — main. Developers create short-lived feature branches for new work. They open a pull request to merge into main.           Once reviewed and tested, it’s merged and deployed.
+        * When used: Startups, SaaS products, teams shipping continuously.
+        * Pros: Simple, lightweight, fast delivery.
+        * Cons: Less structure, not ideal for big release cycles.
+   - **Trunk-Based Development**
+        * How it works: Everyone commits directly to main (the “trunk”), or uses very short-lived branches that are merged quickly (often within a day). Continuous                    integration ensures the trunk is always stable.
+        * When used: Teams practicing CI/CD, projects needing rapid iteration.
+        * Pros: Encourages small, frequent commits, reduces merge conflicts, very fast delivery.
+        * Cons: Requires strong automated testing and discipline, otherwise main can break easily.
+
+  
 - A simple diagram or flow (text-based is fine)
 - When/where it's used
 - Pros and cons
@@ -165,8 +184,11 @@ Research the following branching strategies and document each in your notes with
 3. **Trunk-Based Development** — everyone commits to main, short-lived branches
 4. Answer:
    - Which strategy would you use for a startup shipping fast?
+      *  GitHub Flow or Trunk-Based Development. They’re lightweight and let you move quickly.
    - Which strategy would you use for a large team with scheduled releases?
+      *  GitFlow. It gives structure and control
    - Which one does your favorite open-source project use? (check any repo on GitHub)
+      * Many use GitHub Flow (like React). The Linux kernel uses a GitFlow-like model with multiple maintainers managing branches.
 
 ---
 
