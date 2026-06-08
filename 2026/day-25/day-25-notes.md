@@ -1,15 +1,5 @@
 # Day 25 – Git Reset vs Revert & Branching Strategies
 
-## Task
-
-You'll learn how to **undo mistakes** safely — one of the most important skills in Git. You'll also explore **branching strategies** used by real engineering teams to manage code at scale.
-
----
-
-## Expected Output
-- A markdown file: `day-25-notes.md` with your observations and answers
-- Continue updating `git-commands.md` in your `devops-git-practice` repo
-
 ---
 
 ## Challenge Tasks
@@ -17,7 +7,7 @@ You'll learn how to **undo mistakes** safely — one of the most important skill
 ### Task 1: Git Reset — Hands-On
 1. Make 3 commits in your practice repo (commit A, B, C)
 2. Use `git reset --soft` to go back one commit — what happens to the changes?
-- `C.py file moves to stagged stagged area & HEAD moved to one commit before`
+- `C.py file moves to the staged area & HEAD moved to one commit before`
 ```
 Jeeni@DESKTOP-BG3MAVI MINGW64 ~/practice-repo (master)
 $ git log --oneline -5
@@ -198,18 +188,3 @@ Update your `git-commands.md` to cover everything from Days 22–25:
 
 ---
 
-## Submission
-1. Add your `day-25-notes.md` to `2026/day-25/`
-2. Update `git-commands.md` — commit and push
-3. Push to your fork
-
----
-
-## Learn in Public
-
-Share your Reset vs Revert comparison or your branching strategy notes on LinkedIn.
-
-`#90DaysOfDevOps` `#DevOpsKaJosh` `#TrainWithShubham`
-
-Happy Learning!
-**TrainWithShubham**
