@@ -111,10 +111,43 @@ HEAD is now at 9c9e565 Added A
 1. Make 3 commits (commit X, Y, Z)
 2. Revert commit Y (the middle one) — what happens?
 3. Check `git log` — is commit Y still in the history?
-4. Answer in your notes:
+- `Commit Y is still visible in history`
+```
+Jeeni@DESKTOP-BG3MAVI MINGW64 ~/practice-repo (master)
+$ git log --oneline -5
+5e01af7 (HEAD -> master) Revert "Y file"
+a5f058c Z file
+5281168 Y file
+659e830 X file
+```
+5. Answer in your notes:
    - How is `git revert` different from `git reset`?
+      | | `git revert` | `git reset` |
+      |---|---|---|
+      | What it does | Creates a new commit that undoes changes | Moves HEAD back, rewrites history |
+      | Old commit | Still in history | Removed from history |
+      | Safe for pushed commits | ✅ Yes | ❌ No |
+      | Destructive | Never | `--hard` is destructive |
+      | Team impact | No impact on others | Causes conflicts for teammates |
+   
    - Why is revert considered **safer** than reset for shared branches?
+      - `git reset` **rewrites history** - it removes commits from the log
+      - If teammates already pulled those commits, their history no longer matches yours
+      - This causes conflicts and confusion for the whole team
+      - `git revert` **adds to history** — it never removes anything
+      - Everyone's history stays consistent — they just pull the new revert commit
+
    - When would you use revert vs reset?
+      - **Use `git revert` when:**
+      - Commit is already pushed to a shared branch
+      - Working in a team — others may have pulled your commits
+      - You want a clear audit trail of what was undone and why
+      - Production hotfix — need to undo something safely
+    
+    - **Use `git reset` when:**
+      - Commit is only local, not pushed yet
+      - You want to clean up messy commits before pushing
+      - Working alone on a feature branch nobody else has
 
 ---
 
@@ -123,10 +156,10 @@ Create a comparison in your notes:
 
 | | `git reset` | `git revert` |
 |---|---|---|
-| What it does | ? | ? |
-| Removes commit from history? | ? | ? |
-| Safe for shared/pushed branches? | ? | ? |
-| When to use | ? | ? |
+| **What it does** | Moves HEAD backwards to an earlier commit, optionally changing staging/working directory | Creates a new commit that undoes the changes of a previous commit |
+| **Removes commit from history?** | Yes (hard), partially (soft/mixed) | No, original commit remains in history |
+| **Safe for shared/pushed branches?** | ❌ Not safe — rewrites history | ✅ Safe — preserves history and adds a new commit |
+| **When to use** | Local cleanup before pushing, fixing mistakes in private work | Undoing changes in shared/public history without breaking collaboration |
 
 ---
 
