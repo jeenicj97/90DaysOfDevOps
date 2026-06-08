@@ -17,7 +17,7 @@ You'll learn how to **undo mistakes** safely — one of the most important skill
 ### Task 1: Git Reset — Hands-On
 1. Make 3 commits in your practice repo (commit A, B, C)
 2. Use `git reset --soft` to go back one commit — what happens to the changes?
-`C.py file moves to stagged stagged area & HEAD moved to one commit before`
+- `C.py file moves to stagged stagged area & HEAD moved to one commit before`
 ```
 Jeeni@DESKTOP-BG3MAVI MINGW64 ~/practice-repo (master)
 $ git log --oneline -5
@@ -61,7 +61,7 @@ Untracked files:
         C.py
 ```
 6. Re-commit, then use `git reset --hard` to go back one commit — what happens this time?
-`HEAD moves to previous commit & C.py is completely deleted`
+- `HEAD moves to previous commit & C.py is completely deleted`
 ```
 Jeeni@DESKTOP-BG3MAVI MINGW64 ~/practice-repo (master)
 $ git add C.py
@@ -76,9 +76,34 @@ HEAD is now at 9c9e565 Added A
 
 8. Answer in your notes:
    - What is the difference between `--soft`, `--mixed`, and `--hard`?
+       - **`--soft`** — moves HEAD back but keeps your changes staged and ready to commit again
+         - Use when: you committed too early and want to redo the commit message or add more files
+      
+      - **`--mixed`** (default) — moves HEAD back and unstages changes but keeps files on disk
+        - Use when: you want to recommit with different files or split one commit into multiple
+    
+      - **`--hard`** — moves HEAD back and completely deletes all changes — files go back to that commit state
+        - Use when: you want to completely throw away recent work and start fresh
+         
+   
    - Which one is destructive and why?
+      - `--hard` is destructive — it permanently deletes uncommitted changes from your working directory
+      - There is no undo — once you run it, those changes are gone forever
+      - `--soft` and `--mixed` are safe — your actual file changes are never deleted
    - When would you use each one?
-   - Should you ever use `git reset` on commits that are already pushed?
+      - `--soft` → "I committed too soon, let me fix the commit"
+      - `--mixed` → "I staged the wrong files, let me redo it"
+      - `--hard` → "I made a mess, throw everything away and start clean"
+         - Should you ever use `git reset` on commits that are already pushed?
+    - Should you ever use git reset on commits that are already pushed?
+        - **No** — never reset commits that are already pushed to a shared branch
+        - Other team members have already pulled those commits — resetting rewrites history
+          and causes conflicts for everyone
+        - Instead use `git revert` — it creates a new commit that undoes the change
+          without rewriting history, which is safe for shared branches
+        
+        > Rule of thumb: `git reset` is for local unpushed commits only.
+        > `git revert` is for anything already pushed.
 
 ---
 
