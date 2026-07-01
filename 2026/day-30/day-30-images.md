@@ -6,10 +6,24 @@
 
 ### Task 1: Docker Images
 1. Pull the `nginx`, `ubuntu`, and `alpine` images from Docker Hub
-2. List all images on your machine — note the sizes
-3. Compare `ubuntu` vs `alpine` — why is one much smaller?
-4. Inspect an image — what information can you see?
-5. Remove an image you no longer need
+   
+   > `docker pull nginx`
+   
+3. List all images on your machine — note the sizes
+   
+   > `docker images`
+   
+5. Compare `ubuntu` vs `alpine` — why is one much smaller?
+   
+   > Alpine is smaller around 9MB and ubuntu:latest is aroung 100MB
+   
+7. Inspect an image — what information can you see?
+   
+   > `docker image inspect ubuntu:latest`
+   
+9. Remove an image you no longer need
+    
+    > `docker rmi alpine`
 
 ---
 
