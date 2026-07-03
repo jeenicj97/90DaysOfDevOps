@@ -128,18 +128,18 @@ Check `docker ps -a` after each step — observe the state changes.
 
 ### Task 5: Cleanup
 1. Stop all running containers in one command
-2. Remove all stopped containers in one command
-3. Remove unused images
-4. Check how much disk space Docker is using
+   > `docker stop $(docker ps -q)`
+   
+3. Remove all stopped containers in one command
+   > `docker container prune`
+   
+5. Remove unused images
+   > `docker image prune` (you will still see results with docker images)
 
----
-
-## Hints
-- Image history: `docker image history`
-- Create without starting: `docker create`
-- Follow logs: `docker logs -f`
-- Inspect: `docker inspect`
-- Cleanup: `docker system df`, `docker system prune`
+   > `docker image prune -a` (to remove all unused images - not just dangling ones)
+   
+7. Check how much disk space Docker is using
+   > `docker system df`
 
 ---
 
