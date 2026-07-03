@@ -29,9 +29,29 @@
 
 ### Task 2: Image Layers
 1. Run `docker image history nginx` — what do you see?
-2. Each line is a **layer**. Note how some layers show sizes and some show 0B
-3. Write in your notes: What are layers and why does Docker use them?
-
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~$ docker image history gcr.io/k8s-minikube/kicbase:v0.0.49
+   IMAGE          CREATED        CREATED BY                                      SIZE      COMMENT
+   df72754dcb7f   5 months ago   ENTRYPOINT ["/usr/local/bin/entrypoint" "/sb…   0B        buildkit.dockerfile.v0
+   <missing>      5 months ago   STOPSIGNAL SIGRTMIN+3                           0B        buildkit.dockerfile.v0
+   <missing>      5 months ago   ENV container=docker                            0B        buildkit.dockerfile.v0
+   <missing>      5 months ago   EXPOSE [22/tcp]                                 0B        buildkit.dockerfile.v0
+   <missing>      5 months ago   COPY / / # buildkit                             1.35GB    buildkit.dockerfile.v0
+   ```
+3. Each line is a **layer**. Note how some layers show sizes and some show 0B
+   
+   > `Some instructions don't add files. Like CMD, ENTRYPOINT, EXPOSE, WORKDIR. These only change metadata. Since they don't create new filesystem data, Docker reports their size as 0B`
+   
+5. Write in your notes: What are layers and why does Docker use them?
+   > `Docker images are built using multiple read-only layers. Each Dockerfile instruction creates a new layer. Docker stores layers separately and reuses unchanged layers when building or downloading images.`
+      ```
+      Benefits:
+      > Faster image builds
+      > Smaller downloads
+      > Efficient storage
+      > Layer caching
+      > Easier image sharing
+      ```
 ---
 
 ### Task 3: Container Lifecycle
