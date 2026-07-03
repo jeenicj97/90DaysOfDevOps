@@ -57,15 +57,49 @@
 ### Task 3: Container Lifecycle
 Practice the full lifecycle on one container:
 1. **Create** a container (without starting it)
-2. **Start** the container
-3. **Pause** it and check status
-4. **Unpause** it
-5. **Stop** it
-6. **Restart** it
-7. **Kill** it
-8. **Remove** it
+   > `docker create --name myubuntu ubuntu:24.04` (to create container)
+   > `docker ps` (to check if created)
+   
+3. **Start** the container
+   > `docker start myubuntu` (to start)
+   > `docker ps -a` (normally exits immediately as it has no long-running process)
+   
+   > Alternative -> `docker run -dit --name myubuntu1 ubuntu` (if exits quickly)
+5. **Pause** it and check status
+   > `docker pause myubuntu1` (to pause) `docker ps -a` (to check)
+   
+   > O/P-> `aa65e1932650   ubuntu   "/bin/bash"   About a minute ago   Up About a minute (Paused)`
+
+7. **Unpause** it
+   > `docker unpause myubuntu`
+   
+9. **Stop** it
+    > `docker stop myubuntu1` (to stop)
+    
+11. **Restart** it
+    > `docker restart myubuntu1`
+    
+13. **Kill** it
+    > `docker kill myubuntu1`
+    
+15. **Remove** it
+    > `docker remove myubuntu1` (container disappears if you check with docker ps -a)
 
 Check `docker ps -a` after each step — observe the state changes.
+
+```
+| Command | State   |
+| ------- | ------- |
+| create  | Created |
+| start   | Running |
+| pause   | Paused  |
+| unpause | Running |
+| stop    | Exited  |
+| restart | Running |
+| kill    | Exited  |
+| rm      | Removed |
+
+```
 
 ---
 
