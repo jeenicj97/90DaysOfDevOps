@@ -105,11 +105,24 @@ Check `docker ps -a` after each step — observe the state changes.
 
 ### Task 4: Working with Running Containers
 1. Run an Nginx container in detached mode
-2. View its **logs**
-3. View **real-time logs** (follow mode)
-4. **Exec** into the container and look around the filesystem
-5. Run a single command inside the container without entering it
-6. **Inspect** the container — find its IP address, port mappings, and mounts
+   > `docker run -d --name webserver -p 8080:80 nginx` (-d -> detached mode)
+   
+3. View its **logs**
+   > `docker logs webserver` (you will see logs)
+        
+5. View **real-time logs** (follow mode)
+   > `docker logs -f webserver`
+   
+7. **Exec** into the container and look around the filesystem
+   > `docker exec -it webserver` (you can use sh or bash)
+   
+9. Run a single command inside the container without entering it
+    > `docker exec webserver ls /` (will list all files in the webserver's root folder)
+    
+11. **Inspect** the container — find its IP address, port mappings, and mount
+    > `docker inspect webserver`
+
+    > `docker inspect webserver | grep Mounts` (this gives you results of Mount)
 
 ---
 
