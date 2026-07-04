@@ -124,6 +124,12 @@ CMD ["cat","hello.txt"]
 1. Create a `.dockerignore` file in one of your project folders
 2. Add entries for: `node_modules`, `.git`, `*.md`, `.env`
 3. Build the image — verify that ignored files are not included
+   ```
+   docker build -t ignore-demo .
+   ```
+   > Observe the build output. The build context size should be smaller than it would be if those files were included. You can also inspect the image or run a container to confirm ignored files are absent.
+   
+ ![Image Alt]()
 
 ---
 
