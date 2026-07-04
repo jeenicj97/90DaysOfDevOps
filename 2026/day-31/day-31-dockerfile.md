@@ -12,8 +12,19 @@
    - Sets a default command to print `"Hello from my custom image!"`
 3. Build the image and tag it `my-ubuntu:v1`
 4. Run a container from your image
+> Dockerfile:
+```
+FROM ubuntu:latest
 
-**Verify:** The message prints on `docker run`
+RUN apt-get update && apt-get install -y curl
+
+CMD ["echo","Hello from my custom image!"]
+```
+> Outpuy
+```
+jeenicj@DESKTOP-BG3MAVI:~/my-first-image$ docker run my-ubuntu:v1
+Hello from my custom image!
+```
 
 ---
 
