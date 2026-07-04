@@ -87,13 +87,13 @@ CMD ["cat","hello.txt"]
      
      > Ex: `ENTRYPOINT ["python3"]` so the running container feels like running Python, and arguments are passed directly.
 
-   * Example: Often you’ll see both-Combined Usage
+   * Example: Often you’ll see both- Combined Usage
       ```
       ENTRYPOINT ["python3"]
       CMD ["app.py"]
       ```
    
-       > `Default runs `python3 app.py`, but you can override CMD to run another script while keeping Python as the entrypoint.`
+       > Default runs `python3 app.py`, but you can override CMD to run another script while keeping Python as the entrypoint.
 ---
 
 ### Task 4: Build a Simple Web App Image
