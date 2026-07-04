@@ -103,6 +103,20 @@ CMD ["cat","hello.txt"]
    - Copies your `index.html` to the Nginx web directory
 3. Build and tag it `my-website:v1`
 4. Run it with port mapping and access it in your browser
+   
+   ```
+   FROM nginx:alpine
+   
+   COPY index.html /usr/share/nginx/html/
+   
+   EXPOSE 5566
+   ```
+   
+   ```
+   docker build -t my-website:v1 .
+   docker run -d -p 5566:5566 my-website:v1
+   http://localhost:5566
+   ```
 
 ---
 
