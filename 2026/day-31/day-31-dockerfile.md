@@ -129,7 +129,7 @@ CMD ["cat","hello.txt"]
    ```
    > Observe the build output. The build context size should be smaller than it would be if those files were included. You can also inspect the image or run a container to confirm ignored files are absent.
    
- ![Image Alt]()
+ ![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/bdb57eb5bb3c192bafa6302c5d3423156d6375cc/2026/day-31/day31.jpg)
 
 ---
 
