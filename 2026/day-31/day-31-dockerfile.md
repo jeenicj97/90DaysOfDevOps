@@ -75,7 +75,25 @@ CMD ["cat","hello.txt"]
    > Note: `ENTRYPOINT` is always executed, and arguments you pass are appended to it.
    
 5. Write in your notes: When would you use CMD vs ENTRYPOINT?
+   * CMD
+   
+      > Use when you want a default command that users can override
+      
+      > Ex: CMD `["npm", "start"]` but allow users to run something else if they choose
 
+   * ENTRYPOINT
+     
+     > Use when you want the container to behave like a specific executable
+     
+     > Ex: `ENTRYPOINT ["python3"]` so the running container feels like running Python, and arguments are passed directly.
+
+   * Example: Often you’ll see both-Combined Usage
+      ```
+      ENTRYPOINT ["python3"]
+      CMD ["app.py"]
+      ```
+   
+       > `Default runs `python3 app.py`, but you can override CMD to run another script while keeping Python as the entrypoint.`
 ---
 
 ### Task 4: Build a Simple Web App Image
