@@ -63,8 +63,18 @@ CMD ["cat","hello.txt"]
 
 ### Task 3: CMD vs ENTRYPOINT
 1. Create an image with `CMD ["echo", "hello"]` — run it, then run it with a custom command. What happens?
-2. Create an image with `ENTRYPOINT ["echo"]` — run it, then run it with additional arguments. What happens?
-3. Write in your notes: When would you use CMD vs ENTRYPOINT?
+   > `docker run myimage echo bye`
+   > The custom command overrides CMD, so it prints bye instead
+
+   > Note: `CMD` is a default that can be replaced at runtime
+   
+3. Create an image with `ENTRYPOINT ["echo"]` — run it, then run it with additional arguments. What happens?
+   > `docker run myimage hello`
+   > Executes echo hello -> prints hello
+
+   > Note: `ENTRYPOINT` is always executed, and arguments you pass are appended to it.
+   
+5. Write in your notes: When would you use CMD vs ENTRYPOINT?
 
 ---
 
