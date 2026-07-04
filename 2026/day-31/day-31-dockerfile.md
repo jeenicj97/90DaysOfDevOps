@@ -137,10 +137,7 @@ CMD ["cat","hello.txt"]
 1. Build an image, then change one line and rebuild — notice how Docker uses **cache**
 2. Reorder your Dockerfile so that frequently changing lines come **last**
 3. Write in your notes: Why does layer order matter for build speed?
+  > `Docker caches each instruction as a separate layer. If a layer changes, Docker must rebuild that layer and every layer after it. Placing stable, rarely changing instructions (such as installing packages) before frequently changing instructions (such as copying application code) allows Docker to reuse cached layers, resulting in much faster builds.`
 
 ---
 
-
-
-Happy Learning!
-**TrainWithShubham**
