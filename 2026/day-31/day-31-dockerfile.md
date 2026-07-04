@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y curl
 
 CMD ["echo","Hello from my custom image!"]
 ```
-> Outpuy
+> Output
 ```
 jeenicj@DESKTOP-BG3MAVI:~/my-first-image$ docker run my-ubuntu:v1
 Hello from my custom image!
@@ -37,7 +37,27 @@ Create a new Dockerfile that uses **all** of these instructions:
 - `EXPOSE` — document the port
 - `CMD` — default command
 
-Build and run it. Understand what each line does.
+
+> Dockerfile
+```
+#Choose the base image
+FROM ubuntu:latest
+
+#Executes commands during image build. Not when the container starts
+RUN apt-get update
+
+#Creates /app if it doesn't exist. All commands execute from here
+WORKDIR /app
+
+#Copies from host to image
+COPY hello.txt .
+
+#Does not actually publish the port. It only documents that the application intends to use port 8080. Publishing is done with docker run -p
+EXPOSE 8080
+
+#Run below command when the container starts
+CMD ["cat","hello.txt"]
+```
 
 ---
 
