@@ -7,7 +7,10 @@
 ### Task 1: Install & Verify
 1. Check if Docker Compose is available on your machine
 2. Verify the version
-
+```
+jeenicj@DESKTOP-BG3MAVI:~$ docker compose version
+Docker Compose version v2.40.3-desktop.1
+```
 ---
 
 ### Task 2: Your First Compose File
