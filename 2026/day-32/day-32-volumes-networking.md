@@ -230,10 +230,54 @@ Write in your notes: What is the difference between a named volume and a bind mo
 
 ### Task 5: Custom Networks
 1. Create a custom bridge network called `my-app-net`
-2. Run two containers on `my-app-net`
-3. Can they ping each other by **name** now?
-4. Write in your notes: Why does custom networking allow name-based communication but the default bridge doesn't?
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day32/website$ docker network create my-app-net
+   db445e05759a5797bdc2a287d824dd077bcf95ddb06716cf26b56492eeb90ecc
+   
+   jeenicj@DESKTOP-BG3MAVI:~/day32/website$ docker network ls
+   NETWORK ID     NAME         DRIVER    SCOPE
+   967aae37c7ec   bridge       bridge    local
+   8af9aae108c0   host         host      local
+   3ba3465ccedd   kind         bridge    local
+   75a722e60e3e   minikube     bridge    local
+   db445e05759a   my-app-net   bridge    local
+   1081f413e461   none         null      local
+   ```
+3. Run two containers on `my-app-net`
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day32/website$ docker run -dit --name app1 --network my-app-net ubuntu
+   0d3e7e378ba017fe19eb688c6e8d1cff9023fe1f711b54b5fe9a0ff08ea45733
+   
+   jeenicj@DESKTOP-BG3MAVI:~/day32/website$ docker run -dit --name app2 --network my-app-net ubuntu
+   9981778cd0f04209e6fbec3532c2384a2fffc53280b28f4f56e056fbdb09624f
+   ```
+5. Can they ping each other by **name** now?
+   ```
+   > Yes, able to ping using name
 
+   root@0d3e7e378ba0:/# ping app2
+   PING app2 (172.19.0.3) 56(84) bytes of data.
+   64 bytes from app2.my-app-net (172.19.0.3): icmp_seq=1 ttl=64 time=4.95 ms
+   64 bytes from app2.my-app-net (172.19.0.3): icmp_seq=2 ttl=64 time=0.133 ms
+   64 bytes from app2.my-app-net (172.19.0.3): icmp_seq=3 ttl=64 time=0.142 ms
+   64 bytes from app2.my-app-net (172.19.0.3): icmp_seq=4 ttl=64 time=0.117 ms
+   
+   --- app2 ping statistics ---
+   4 packets transmitted, 4 received, 0% packet loss, time 3056ms
+   rtt min/avg/max/mdev = 0.117/1.335/4.948/2.085 ms
+
+   ```
+7. Write in your notes: Why does custom networking allow name-based communication but the default bridge doesn't?
+```
+> User-defined bridge network includes Docker's embedded DNS service.
+> When a container joins the network, Docker automatically registers app1 & app2 as DNS names(automatically resolves container names to IP addresses)
+
+> The default bridge doesn't provide this automatic name resolution for standalone containers, so communication by container name does not work there.
+
+KEY POINT:
+> Default bridge → containers can talk by IP, but not by name.
+> User-defined bridge → containers can talk by both IP and name (Docker provides built-in DNS).
+```
 ---
 
 ### Task 6: Put It Together
