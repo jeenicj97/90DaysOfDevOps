@@ -170,9 +170,60 @@ Write in your notes: What is the difference between a named volume and a bind mo
 
 ### Task 4: Docker Networking Basics
 1. List all Docker networks on your machine
-2. Inspect the default `bridge` network
-3. Run two containers on the default bridge — can they ping each other by **name**?
-4. Run two containers on the default bridge — can they ping each other by **IP**?
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day32/website$ docker network ls
+   NETWORK ID     NAME       DRIVER    SCOPE
+   967aae37c7ec   bridge     bridge    local
+   8af9aae108c0   host       host      local
+   3ba3465ccedd   kind       bridge    local
+   75a722e60e3e   minikube   bridge    local
+   1081f413e461   none       null      local
+   ```
+   
+3. Inspect the default `bridge` network
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day32/website$ docker network inspect bridge
+   ```
+5. Run two containers on the default bridge — can they ping each other by **name**?
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day32/website$ docker run -dit --name container1 ubuntu
+   a6bf17ed156cd62d1cd00c5b0ce94614ca82a2cbf0b21fc0ac757609c131bc6e
+   
+   jeenicj@DESKTOP-BG3MAVI:~/day32/website$ docker run -dit --name container2 ubuntu
+   0e1c9df5ef6774f5bc9c1b344f766d279e2c4e3354c56e7c4f0b20f0ba1af255
+
+   jeenicj@DESKTOP-BG3MAVI:~/day32/website$ docker exec -it container1 bash
+   
+   root@a6bf17ed156c:/# ping container2
+   bash: ping: command not found
+   
+   root@a6bf17ed156c:/# apt update && apt install -y iputils-ping
+
+   root@a6bf17ed156c:/# ping container2
+   ping: container2: Temporary failure in name resolution
+
+   > Not able to ping using name
+   ```
+7. Run two containers on the default bridge — can they ping each other by **IP**?
+
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day32/website$ docker exec -it container1 bash
+   root@a6bf17ed156c:/# ping 172.17.0.7
+   PING 172.17.0.7 (172.17.0.7) 56(84) bytes of data.
+   64 bytes from 172.17.0.7: icmp_seq=1 ttl=64 time=7.67 ms
+   64 bytes from 172.17.0.7: icmp_seq=2 ttl=64 time=0.837 ms
+   64 bytes from 172.17.0.7: icmp_seq=3 ttl=64 time=0.124 ms
+   64 bytes from 172.17.0.7: icmp_seq=4 ttl=64 time=0.200 ms
+   64 bytes from 172.17.0.7: icmp_seq=5 ttl=64 time=0.124 ms
+   64 bytes from 172.17.0.7: icmp_seq=6 ttl=64 time=0.200 ms
+   64 bytes from 172.17.0.7: icmp_seq=7 ttl=64 time=0.081 ms
+   ^C
+   --- 172.17.0.7 ping statistics ---
+   7 packets transmitted, 7 received, 0% packet loss, time 6232ms
+   rtt min/avg/max/mdev = 0.081/1.318/7.665/2.602 ms
+   
+   > Able to ping using IP Address (Used docker inspect to get IP Address of containers)
+   ```
 
 ---
 
