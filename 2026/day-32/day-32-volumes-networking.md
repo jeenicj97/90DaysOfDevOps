@@ -75,6 +75,9 @@ Write what happened and why.
 5. Add some data, stop and remove the container
 6. Run a brand new container with the **same volume**
 7. Is the data still there?
+   > `Yes, data persists. As data lives in the Docker-managed volume and not in the container.`
+
+   > `Even if the container is deleted, the volume remains and so does data attached to it.`
    ```
    jeenicj@DESKTOP-BG3MAVI:~/day32$ docker stop postgres2
    postgres2
