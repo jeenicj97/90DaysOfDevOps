@@ -7,6 +7,7 @@
 ### Task 1: Install & Verify
 1. Check if Docker Compose is available on your machine
 2. Verify the version
+   
 ```
 jeenicj@DESKTOP-BG3MAVI:~$ docker compose version
 Docker Compose version v2.40.3-desktop.1
@@ -16,9 +17,34 @@ Docker Compose version v2.40.3-desktop.1
 ### Task 2: Your First Compose File
 1. Create a folder `compose-basics`
 2. Write a `docker-compose.yml` that runs a single **Nginx** container with port mapping
-3. Start it with `docker compose up`
-4. Access it in your browser
-5. Stop it with `docker compose down`
+   
+   ```
+   services:
+    nginx:
+      image: nginx
+      container_name: my-nginx
+      ports:
+        - "8080:80"
+   ```
+4. Start it with `docker compose up`
+   
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day33/compose-basics$ docker compose up -d
+    [+] Running 2/2
+     ✔ Network compose-basics_default  Created                      0.5s
+     ✔ Container my-nginx              Star...                      5.0s
+   ```
+6. Access it in your browser
+   
+   ![Image Alt]()
+8. Stop it with `docker compose down`
+   
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day33/compose-basics$ docker compose down
+    [+] Running 2/2
+     ✔ Container my-nginx              Remo...                      0.1s
+     ✔ Network compose-basics_default  Removed                      0.4s
+   ```
 
 ---
 
