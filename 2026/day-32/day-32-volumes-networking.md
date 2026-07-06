@@ -9,8 +9,20 @@
 2. Create some data inside it (a table, a few rows — anything)
 3. Stop and remove the container
 4. Run a new one — is your data still there?
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day32$ docker exec -it postgres1 psql -U postgres
+    psql (18.4 (Debian 18.4-1.pgdg13+1))
+    Type "help" for help.
+    
+    postgres=# SELECT * from test;
+    ERROR:  relation "test" does not exist
+    LINE 1: SELECT * from test;
+   ```
 
 Write what happened and why.
+> `As Table was stored inside container, it was deleted when the container was removed.`
+
+> `Any stored data inside the container is lost unless it is stored in a Docker volume or bind mount`
 
 ---
 
