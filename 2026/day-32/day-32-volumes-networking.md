@@ -125,12 +125,47 @@ jeenicj@DESKTOP-BG3MAVI:~/day32$ docker volume inspect postgres-data
 
 ### Task 3: Bind Mounts
 1. Create a folder on your host machine with an `index.html` file
-2. Run an Nginx container and **bind mount** your folder to the Nginx web directory
-3. Access the page in your browser
-4. Edit the `index.html` on your host — refresh the browser
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day32$ mkdir website
+   jeenicj@DESKTOP-BG3MAVI:~/day32$ cd website
+   jeenicj@DESKTOP-BG3MAVI:~/day32/website$ vim index.html
+   jeenicj@DESKTOP-BG3MAVI:~/day32/website$ ls
+   index.html
+   ```
+3. Run an Nginx container and **bind mount** your folder to the Nginx web directory
+```
+jeenicj@DESKTOP-BG3MAVI:~/day32/website$ docker run --name mynginx3 -p 8044:80 -v /home/jeenicj/day32/website:/usr/share/nginx/html:r
+o -d nginx
+30c0450ea57efdbf386def687b5134cc84f52016b767a506897484b40c70005c
+
+jeenicj@DESKTOP-BG3MAVI:~/day32/website$ docker exec -it mynginx3 ls -l /usr/share/nginx/html
+total 4
+-rw-r--r-- 1 1000 1000 37 Jul  6 04:21 index.html
+```
+4. Access the page in your browser
+   > `Page accessible at http://localhost:8044`
+   
+6. Edit the `index.html` on your host — refresh the browser
+   > `After editing & refreshing, I see the changes are immediately updated. No rebuild required.`
+   
+![Image Alt]()
 
 Write in your notes: What is the difference between a named volume and a bind mount?
 
+| **[Named Volume](ca://s?q=Named_volume_in_Docker)** | **[Bind Mount](ca://s?q=Bind_mount_in_Docker)** |
+| --- | --- |
+| Managed by Docker | Directly maps a host folder/file |
+| Stored in Docker’s internal location (``/var/lib/docker/volumes/...``) | Stored wherever you specify on your host |
+| Good for **persistent app data** (databases, configs) | Good for **development** (live editing, syncing files) |
+| Docker controls lifecycle | You control lifecycle manually |
+| More portable across environments | Tied to exact host path |
+
+
+```
+> A named volume is managed by Docker and is primarily used for persistent application data, such as databases.
+
+> A bind mount maps a specific directory from the host machine into the container, making it ideal for development because changes inside the host are immediately reflected inside the container.
+```
 ---
 
 ### Task 4: Docker Networking Basics
