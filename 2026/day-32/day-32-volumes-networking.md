@@ -148,7 +148,7 @@ total 4
 6. Edit the `index.html` on your host — refresh the browser
    > `After editing & refreshing, I see the changes are immediately updated. No rebuild required.`
    
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/01a8e1459e33dfc80423990f0b5ab371853f1a7c/2026/day-32/day32-html.jpg)
 
 Write in your notes: What is the difference between a named volume and a bind mount?
 
@@ -208,7 +208,9 @@ Write in your notes: What is the difference between a named volume and a bind mo
 
    ```
    jeenicj@DESKTOP-BG3MAVI:~/day32/website$ docker exec -it container1 bash
+   
    root@a6bf17ed156c:/# ping 172.17.0.7
+   
    PING 172.17.0.7 (172.17.0.7) 56(84) bytes of data.
    64 bytes from 172.17.0.7: icmp_seq=1 ttl=64 time=7.67 ms
    64 bytes from 172.17.0.7: icmp_seq=2 ttl=64 time=0.837 ms
@@ -217,7 +219,6 @@ Write in your notes: What is the difference between a named volume and a bind mo
    64 bytes from 172.17.0.7: icmp_seq=5 ttl=64 time=0.124 ms
    64 bytes from 172.17.0.7: icmp_seq=6 ttl=64 time=0.200 ms
    64 bytes from 172.17.0.7: icmp_seq=7 ttl=64 time=0.081 ms
-   ^C
    --- 172.17.0.7 ping statistics ---
    7 packets transmitted, 7 received, 0% packet loss, time 6232ms
    rtt min/avg/max/mdev = 0.081/1.318/7.665/2.602 ms
