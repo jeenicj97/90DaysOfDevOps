@@ -6,9 +6,30 @@
 
 ### Task 1: The Problem
 1. Run a Postgres or MySQL container
-2. Create some data inside it (a table, a few rows — anything)
-3. Stop and remove the container
-4. Run a new one — is your data still there?
+   ```
+   docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+   ```
+3. Create some data inside it (a table, a few rows — anything)
+   ```
+   docker exec -it 8de38d9c5adc psql -U postgres
+
+   postgres=# CREATE TABLE test (id SERIAL PRIMARY KEY, name TEXT);
+   INSERT INTO test (name) VALUES ('Jeeni'), ('Docker');
+   CREATE TABLE
+   INSERT 0 2
+
+   postgres=# SELECT * from test;
+    id |  name
+   ----+--------
+     1 | Jeeni
+     2 | Docker
+   (2 rows)
+   
+   
+   postgres=# \q
+   ```
+5. Stop and remove the container
+6. Run a new one — is your data still there?
    ```
    jeenicj@DESKTOP-BG3MAVI:~/day32$ docker exec -it postgres1 psql -U postgres
     psql (18.4 (Debian 18.4-1.pgdg13+1))
