@@ -29,7 +29,13 @@
    postgres=# \q
    ```
 5. Stop and remove the container
-6. Run a new one — is your data still there?
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day32$ docker stop 8de38d9c5adc
+   8de38d9c5adc
+   jeenicj@DESKTOP-BG3MAVI:~/day32$ docker rm 8de38d9c5adc
+   8de38d9c5adc
+   ```
+7. Run a new one — is your data still there?
    ```
    jeenicj@DESKTOP-BG3MAVI:~/day32$ docker exec -it postgres1 psql -U postgres
     psql (18.4 (Debian 18.4-1.pgdg13+1))
