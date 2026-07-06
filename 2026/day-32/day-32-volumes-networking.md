@@ -224,6 +224,7 @@ Write in your notes: What is the difference between a named volume and a bind mo
    rtt min/avg/max/mdev = 0.081/1.318/7.665/2.602 ms
    
    > Able to ping using IP Address (Used docker inspect to get IP Address of containers)
+   
    ```
 
 ---
@@ -282,9 +283,46 @@ KEY POINT:
 
 ### Task 6: Put It Together
 1. Create a custom network
-2. Run a **database container** (MySQL/Postgres) on that network with a volume for data
-3. Run an **app container** (use any image) on the same network
-4. Verify the app container can reach the database by container name
+   ```
+   > Create custom network
+   
+   jeenicj@DESKTOP-BG3MAVI:~/day32/website$ docker network create my-app-net2
+   9c677cc20d83a2062658fb8684c367bfbaebc95babf7787c49e8f5f74f4e8f96
+
+   > Create a Docker volume
+   
+   jeenicj@DESKTOP-BG3MAVI:~/day32/website$ docker volume create postgres-data2
+   postgres-data2
+   ```
+3. Run a **database container** (MySQL/Postgres) on that network with a volume for data
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day32/website$ docker run -d --name postgres11 --network my-app-net2 -v postgres-data2:/var/lib/postgresql
+   -e POSTGRES_PASSWORD=password postgres
+   7b75157cb17d1073877d547fcb4a7428a88e9034758b74f79e15329d5d801731
+   ```
+5. Run an **app container** (use any image) on the same network
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day32/website$ docker run -dit --name app3 --network my-app-net2 ubuntu
+   299ece18ca21af656b162e3dcb82fba8704296901e1945f4947fd1cbb82edd06
+   ```
+7. Verify the app container can reach the database by container name
+   ```
+   > Yes, able to ping postgres11 using name from app3
+
+   jeenicj@DESKTOP-BG3MAVI:~/day32/website$ docker exec -it app3 bash
+   
+   root@299ece18ca21:/# ping postgres11
+   
+   PING postgres11 (172.20.0.3) 56(84) bytes of data.
+   64 bytes from postgres11.my-app-net2 (172.20.0.3): icmp_seq=1 ttl=64 time=29.5 ms
+   64 bytes from postgres11.my-app-net2 (172.20.0.3): icmp_seq=2 ttl=64 time=0.163 ms
+   64 bytes from postgres11.my-app-net2 (172.20.0.3): icmp_seq=3 ttl=64 time=0.212 ms
+   64 bytes from postgres11.my-app-net2 (172.20.0.3): icmp_seq=4 ttl=64 time=0.141 ms
+   64 bytes from postgres11.my-app-net2 (172.20.0.3): icmp_seq=5 ttl=64 time=0.166 ms
+   --- postgres11 ping statistics ---
+   5 packets transmitted, 5 received, 0% packet loss, time 4160ms
+   rtt min/avg/max/mdev = 0.141/6.046/29.549/11.751 ms
+   ```
 
 ---
 
