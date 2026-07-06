@@ -55,12 +55,68 @@ Write what happened and why.
 
 ### Task 2: Named Volumes
 1. Create a named volume
-2. Run the same database container, but this time **attach the volume** to it
-3. Add some data, stop and remove the container
-4. Run a brand new container with the **same volume**
-5. Is the data still there?
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day32$ docker volume create postgres-data
+   postgres-data
+
+   jeenicj@DESKTOP-BG3MAVI:~/day32$ docker volume ls
+   DRIVER    VOLUME NAME
+   local     postgres-data
+
+   ```
+3. Run the same database container, but this time **attach the volume** to it
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day32$ docker run --name postgres2 -e POSTGRES_PASSWORD=mysecretpassword -d -v postgres-data:/var/lib/postg
+   resql postgres
+   01d756a7c9ace75a8e87fa2ccec89542f82b68b1fb84e2ce1e8fa85542980747
+   
+   jeenicj@DESKTOP-BG3MAVI:~/day32$ docker exec -it postgres2 psql -U postgres
+   ```
+5. Add some data, stop and remove the container
+6. Run a brand new container with the **same volume**
+7. Is the data still there?
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day32$ docker stop postgres2
+   postgres2
+   
+   jeenicj@DESKTOP-BG3MAVI:~/day32$ docker rm postgres2
+   postgres2
+   
+   jeenicj@DESKTOP-BG3MAVI:~/day32$ docker run --name postgres2 -e POSTGRES_PASSWORD=mysecretpassword -d -v postgres-data:/var/lib/postgresql postgres
+   0bdb66a985fd64a54c87fb78526fff288957e3b7f9abac7a461b5f264cae0ec6
+   
+   jeenicj@DESKTOP-BG3MAVI:~/day32$ docker exec -it postgres2 psql -U postgres
+   psql (18.4 (Debian 18.4-1.pgdg13+1))
+   Type "help" for help.
+   
+   postgres=# select * from test;
+    id |  name
+   ----+--------
+     1 | Jeeni
+     2 | Docker
+   (2 rows)
+   ```
 
 **Verify:** `docker volume ls`, `docker volume inspect`
+
+```
+jeenicj@DESKTOP-BG3MAVI:~/day32$ docker volume ls
+DRIVER    VOLUME NAME
+local     postgres-data
+
+jeenicj@DESKTOP-BG3MAVI:~/day32$ docker volume inspect postgres-data
+[
+    {
+        "CreatedAt": "2026-07-06T03:32:01Z",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/postgres-data/_data",
+        "Name": "postgres-data",
+        "Options": null,
+        "Scope": "local"
+    }
+]
+```
 
 ---
 
