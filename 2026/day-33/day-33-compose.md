@@ -113,12 +113,58 @@ NOT UNDERSTOOD, NEED TO CHECK
 ### Task 4: Compose Commands
 Practice and document these:
 1. Start services in **detached mode**
-2. View running services
-3. View **logs** of all services
-4. View logs of a **specific** service
-5. **Stop** services without removing
-6. **Remove** everything (containers, networks)
-7. **Rebuild** images if you make a change
+   
+   ```
+   docker compose up -d
+   ```
+3. View running services
+   
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day33/compose-basics$ docker compose ps
+
+      NAME            IMAGE              COMMAND                  SERVICE     CREATED         STATUS                   PORTS
+      wordpress-app   wordpress:latest   "docker-entrypoint.s…"   wordpress   9 minutes ago   Up 8 minutes             0.0.0.0:8099->80/tcp, [::]:8099->80/tcp
+      wordpress-db    mysql:8.0          "docker-entrypoint.s…"   db          9 minutes ago   Up 8 minutes (healthy)   3306/tcp, 33060/tcp
+   ```
+
+5. View **logs** of all services
+   
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day33/compose-basics$ docker compose logs
+   
+   wordpress-app  | WordPress not found in /var/www/html - copying now...
+   wordpress-app  | Complete! WordPress has been successfully copied to /var/www/html
+   ```
+
+6. View logs of a **specific** service
+   
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day33/compose-basics$ docker compose logs db
+   ```
+
+7. **Stop** services without removing
+   
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day33/compose-basics$ docker compose stop
+   
+   jeenicj@DESKTOP-BG3MAVI:~/day33/compose-basics$ docker compose start
+   ```
+   
+8. **Remove** everything (containers, networks)
+
+   ```
+   $docker compose down
+   
+   The named volume remains unless you run:
+   $docker compose down -v
+   
+   ```
+
+9. **Rebuild** images if you make a change
+
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day33/compose-basics$ docker compose up --build -d
+   ```
 
 ---
 
