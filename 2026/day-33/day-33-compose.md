@@ -170,8 +170,77 @@ Practice and document these:
 
 ### Task 5: Environment Variables
 1. Add environment variables directly in your `docker-compose.yml`
-2. Create a `.env` file and reference variables from it in your compose file
-3. Verify the variables are being picked up
+
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day33/compose-basics$ cat docker-compose.yml
+   services:
+     db:
+       image: mysql:8.0
+       container_name: wordpress-db
+       restart: always
+   
+       environment:
+         MYSQL_DATABASE: ${MYSQ_DATABASE}
+         MYSQL_USER: ${MYSQL_USER}
+         MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+         MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+   
+       volumes:
+         - mysql_data:/var/lib/mysql
+   
+       healthcheck:
+         test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+         interval: 10s
+         retries: 5
+   
+     wordpress:
+       image: wordpress:latest
+       container_name: wordpress-app
+       restart: always
+   
+       ports:
+         - "8099:80"
+   
+       environment:
+         WORDPRESS_DB_HOST: db
+         WORDPRESS_DB_USER: wpuser
+         WORDPRESS_DB_PASSWORD: password
+         WORDPRESS_DB_NAME: wordpress
+   
+       depends_on:
+         - db
+   
+   volumes:
+     mysql_data:
+   ```
+   
+3. Create a `.env` file and reference variables from it in your compose file
+   
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day33/compose-basics$ cat .env
+   MYSQL_ROOT_PASSWORD=root123
+   MYSQL_DATABASE=wordpress
+   MYSQL_USER=jeeni
+   MYSQL_PASSWORD=secret123
+   ```
+4. Verify the variables are being picked up
+   
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day33/compose-basics$ docker exec -it wordpress-db env
+   
+   PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+   HOSTNAME=3ac84da989b4
+   TERM=xterm
+   MYSQL_PASSWORD=secret123
+   MYSQL_ROOT_PASSWORD=root123
+   MYSQL_DATABASE=
+   MYSQL_USER=jeeni
+   GOSU_VERSION=1.19
+   MYSQL_MAJOR=8.0
+   MYSQL_VERSION=8.0.46-1.el9
+   MYSQL_SHELL_VERSION=8.0.46-1.el9
+   HOME=/root
+   ```
 
 ---
 
