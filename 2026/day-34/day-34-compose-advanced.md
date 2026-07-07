@@ -197,5 +197,50 @@ Write a simple Dockerfile for the web app. The app doesn't need to be complex â€
 2. Define **named volumes** for database data
 3. Add **labels** to your services for better organization
 
+  ```
+jeenicj@DESKTOP-BG3MAVI:~/docker-practice$ cat docker-compose.yml
+services:
+  web:
+    build: ./app
+    ports:
+      - "5000:5000"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - backend
+    labels:
+      project: training
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: mydb
+    volumes:
+      - postgres-data:/var/lib/postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - backend
+
+  redis:
+    image: redis
+
+    networks:
+      - backend
+
+networks:
+  backend:
+
+volumes:
+   postgres-data:
+  ```
+
 ---
 
