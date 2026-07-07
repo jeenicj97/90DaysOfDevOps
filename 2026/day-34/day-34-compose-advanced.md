@@ -92,7 +92,42 @@ Write a simple Dockerfile for the web app. The app doesn't need to be complex �
 2. Add a **healthcheck** on the database service
 3. Use `depends_on` with `condition: service_healthy` so the app waits for the database to be truly ready, not just started
 
+  ```
+  jeenicj@DESKTOP-BG3MAVI:~/docker-practice$ cat docker-compose.yml
+  services:
+    web:
+      build: ./app
+      ports:
+        - "5000:5000"
+      depends_on:
+        db:
+          condition: service_healthy
+  
+    db:
+      image: postgres
+      environment:
+        POSTGRES_PASSWORD: password
+        POSTGRES_USER: postgres
+        POSTGRES_DB: mydb
+      healthcheck:
+        test: ["CMD-SHELL", "pg_isready -U postgres"]
+        interval: 10s
+        timeout: 5s
+        retries: 5
+  
+    redis:
+      image: redis
+  ```
+
 **Test:** Bring everything down and up — does the app wait for the DB?
+
+  ```
+  jeenicj@DESKTOP-BG3MAVI:~/docker-practice$ docker compose up -d
+  [+] Running 3/3
+   ✔ Container docker-practice-db-1     Healthy               49.0s
+   ✔ Container docker-practice-redis-1  Started               11.4s
+   ✔ Container docker-practice-web-1    Started                2.6s
+  ```
 
 ---
 
