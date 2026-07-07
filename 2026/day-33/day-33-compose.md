@@ -36,7 +36,8 @@ Docker Compose version v2.40.3-desktop.1
    ```
 6. Access it in your browser
    
-   ![Image Alt]()
+   ![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/3c4b6864ca54dc258bb89d33a21bc31c7fdb6d91/2026/day-33/day33-2%20-%20Copy.jpg)
+   
 8. Stop it with `docker compose down`
    
    ```
@@ -59,6 +60,8 @@ They should:
 - WordPress should connect to MySQL using the service name
 
 Start it, access WordPress in your browser, and set it up.
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/3c4b6864ca54dc258bb89d33a21bc31c7fdb6d91/2026/day-33/day33-3%20-%20Copy.jpg)
 
 ```
 jeenicj@DESKTOP-BG3MAVI:~/day33/compose-basics$ cat docker-compose.yml
