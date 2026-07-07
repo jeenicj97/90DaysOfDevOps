@@ -83,7 +83,7 @@ Create a `docker-compose.yml` for a 3-service stack:
 
 Write a simple Dockerfile for the web app. The app doesn't need to be complex — even a "Hello World" that connects to the database is enough.
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/73b1c493d45672e3e120b300e45f1f258c1d6d9e/2026/day-34/day34.jpg)
 
 ---
 
