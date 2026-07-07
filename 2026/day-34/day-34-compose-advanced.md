@@ -242,5 +242,32 @@ volumes:
    postgres-data:
   ```
 
+### Task 6: Scaling (Bonus)
+1. Try scaling your web app to 3 replicas using `docker compose up --scale`
+2. What happens? What breaks?
+3. Write in your notes: Why doesn't simple scaling work with port mapping?
+
+```
+jeenicj@DESKTOP-BG3MAVI:~/docker-practice$ docker compose up --scale web=3
+[+] Running 5/5
+ ✔ Container docker-practice-redis-1  Running                     0.0s
+ ✔ Container docker-practice-db-1     Running                     0.0s
+ ✔ Container docker-practice-web-1    Running                     0.0s
+ ✔ Container docker-practice-web-3    Created                     0.3s
+ ✔ Container docker-practice-web-2    Created                     0.3s
+Attaching to db-1, redis-1, web-1, web-2, web-3
+Error response from daemon: failed to set up container networking: driver failed programming external connectivity on endpoint docker-practice-web-3 (94bab28d56a3b6c05ad118ba1d432daf2011aa2a7c4c18f245cc0963b1724b92): Bind for 0.0.0.0:5000 failed: port is already allocated
+```
+
+- Ran `docker compose up --scale web=3 -d`.
+- Observed that only one replica could bind to port 5000; others failed due to port conflict.
+- Simple scaling doesn’t work with direct port mapping because:
+  - A host port can only be bound by one container.
+  - Compose doesn’t provide built‑in load balancing.
+- To scale properly:
+  - Use an internal network and expose containers without host port mapping.
+  - Add a reverse proxy/load balancer (e.g., Nginx, Traefik).
+  - Or use orchestration tools like Docker Swarm or Kubernetes.
+
 ---
 
