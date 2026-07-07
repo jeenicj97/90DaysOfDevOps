@@ -170,8 +170,27 @@ Write a simple Dockerfile for the web app. The app doesn't need to be complex â€
 
 ### Task 4: Custom Dockerfiles in Compose
 1. Instead of using a pre-built image for your app, use `build:` in your compose file to build from a Dockerfile
-2. Make a code change in your app
-3. Rebuild and restart with one command
+
+   ```
+     jeenicj@DESKTOP-BG3MAVI:~/docker-practice$ cat docker-compose.yml
+  services:
+    web:
+      build: ./app
+      ports:
+        - "5000:5000"
+      depends_on:
+        db:
+          condition: service_healthy
+
+   ```
+3. Make a code change in your app
+
+4. Rebuild and restart with one command
+
+```
+jeenicj@DESKTOP-BG3MAVI:~/docker-practice/app$ docker compose up --build
+```
+
 
 ---
 
