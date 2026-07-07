@@ -10,7 +10,80 @@ Create a `docker-compose.yml` for a 3-service stack:
 - A **database** (Postgres or MySQL)
 - A **cache** (Redis)
 
+  ```
+
+  project/
+  │
+  ├── docker-compose.yml
+  │
+  └── app/
+      ├── Dockerfile
+      ├── requirements.txt
+      └── app.py
+
+  
+
+   jeenicj@DESKTOP-BG3MAVI:~/docker-practice/app$ cat requirements.txt
+    Flask
+    psycopg2-binary
+    redis
+  
+
+  jeenicj@DESKTOP-BG3MAVI:~/docker-practice/app$ cat app.py
+  from flask import Flask
+  
+  app = Flask(__name__)
+  
+  @app.route("/")
+  def home():
+      return "Hello from Flask Docker App!"
+  
+  app.run(host="0.0.0.0", port=5000)
+
+  
+
+  jeenicj@DESKTOP-BG3MAVI:~/docker-practice/app$ cat Dockerfile
+  
+  FROM python:3.12-slim
+  
+  WORKDIR /app
+  
+  COPY requirements.txt .
+  
+  RUN pip install -r requirements.txt
+  
+  COPY . .
+  
+  CMD ["python","app.py"]
+
+  
+      
+  jeenicj@DESKTOP-BG3MAVI:~/docker-practice$ cat docker-compose.yml
+
+  services:
+    web:
+      build: ./app
+      ports:
+        - "5000:5000"
+      depends_on:
+        - db
+   
+    db:
+      image: postgres
+      environment:
+        POSTGRES_PASSWORD: password
+        POSTGRES_USER: postgres
+        POSTGRES_DB: mydb
+  
+    redis:
+      image: redis
+
+ 
+  ```
+
 Write a simple Dockerfile for the web app. The app doesn't need to be complex — even a "Hello World" that connects to the database is enough.
+
+![Image Alt]()
 
 ---
 
