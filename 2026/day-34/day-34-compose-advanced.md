@@ -1,16 +1,5 @@
 # Day 34 – Docker Compose: Real-World Multi-Container Apps
 
-## Task
-Today's goal is to **build more complex, production-like setups with Docker Compose**.
-
-Yesterday was basics. Today you handle real scenarios — app + database + cache, healthchecks, restart policies, and service dependencies.
-
----
-
-## Expected Output
-- A markdown file: `day-34-compose-advanced.md`
-- All compose files and Dockerfiles you create
-
 ---
 
 ## Challenge Tasks
@@ -53,27 +42,6 @@ Write a simple Dockerfile for the web app. The app doesn't need to be complex �
 1. Define **explicit networks** in your compose file instead of relying on the default
 2. Define **named volumes** for database data
 3. Add **labels** to your services for better organization
-
----
-
-### Task 6: Scaling (Bonus)
-1. Try scaling your web app to 3 replicas using `docker compose up --scale`
-2. What happens? What breaks?
-3. Write in your notes: Why doesn't simple scaling work with port mapping?
-
----
-
-## Hints
-- Build from Dockerfile: `build: ./app`
-- Healthcheck: `healthcheck:` with `test`, `interval`, `timeout`
-- Rebuild: `docker compose up --build`
-- Scale: `docker compose up --scale web=3`
-
----
-
-## Submission
-1. Add your compose files, Dockerfiles, and `day-34-compose-advanced.md` to `2026/day-34/`
-2. Commit and push to your fork
 
 ---
 
