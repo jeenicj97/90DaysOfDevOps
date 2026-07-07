@@ -60,7 +60,53 @@ They should:
 
 Start it, access WordPress in your browser, and set it up.
 
+```
+jeenicj@DESKTOP-BG3MAVI:~/day33/compose-basics$ cat docker-compose.yml
+services:
+  db:
+    image: mysql:8.0
+    container_name: wordpress-db
+    restart: always
+
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wpuser
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: rootpassword
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      retries: 5
+
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress-app
+    restart: always
+
+    ports:
+      - "8099:80"
+
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wpuser
+      WORDPRESS_DB_PASSWORD: password
+      WORDPRESS_DB_NAME: wordpress
+
+    depends_on:
+      - db
+
+volumes:
+  mysql_data:
+```
+
 **Verify:** Stop and restart with `docker compose down` and `docker compose up` — is your WordPress data still there?
+```
+NOT UNDERSTOOD, NEED TO CHECK
+```
 
 ---
 
