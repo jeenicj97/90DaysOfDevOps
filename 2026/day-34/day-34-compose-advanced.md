@@ -133,9 +133,38 @@ Write a simple Dockerfile for the web app. The app doesn't need to be complex �
 
 ### Task 3: Restart Policies
 1. Add `restart: always` to your database service
-2. Manually kill the database container — does it come back?
-3. Try `restart: on-failure` — how is it different?
-4. Write in your notes: When would you use each restart policy?
+
+```
+> added below in the docker-compose.yml
+
+ db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: mydb
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+```
+3. Manually kill the database container — does it come back?
+4. Try `restart: on-failure` — how is it different?
+5. Write in your notes: When would you use each restart policy?
+   
+```
+   > restart: always
+  - Restarts the container no matter why it stopped (manual kill, crash, etc.).
+  - Use case: Production services that must always be available (e.g., databases, web servers).
+  
+   > restart: on-failure
+  - Restarts the container only if it exits with an error (non‑zero exit code).
+  - Use case: Batch jobs or scripts where retries make sense only on errors, not when stopped intentionally.
+
+```
 
 ---
 
