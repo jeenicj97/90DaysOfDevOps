@@ -149,8 +149,23 @@ Write in your notes: Why is the multi-stage image so much smaller?
 ### Task 4: Docker Hub Repository
 1. Go to Docker Hub and check your pushed image
 2. Add a **description** to the repository
-3. Explore the **tags** tab — understand how versioning works
-4. Pull a specific tag vs `latest` — what happens?
+   ![Image Alt]()
+4. Explore the **tags** tab — understand how versioning works
+5. Pull a specific tag vs `latest` — what happens?
+   
+   ```
+   > It doesn't pull in latest/v1 version unless that version is pushed to registry.
+   
+   jeenicj@DESKTOP-BG3MAVI:~/day35/hello-node$ docker pull jeenicj97/hello-node:latest
+   Error response from daemon: manifest for jeenicj97/hello-node:latest not found: manifest unknown: manifest unknown
+
+
+  > latest does not mean newest.
+      
+      It simply means:
+      
+      The image that currently has the tag named latest.
+   ```
 
 ---
 
@@ -160,6 +175,8 @@ Apply these to one of your images and rebuild:
 2. **Don't run as root** — add a non-root USER in your Dockerfile
 3. Combine `RUN` commands to **reduce layers**
 4. Use **specific tags** for base images (not `latest`)
+   
+   
 
 Check the size before and after.
 
