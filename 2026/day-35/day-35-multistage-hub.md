@@ -98,9 +98,51 @@ Write in your notes: Why is the multi-stage image so much smaller?
 ### Task 3: Push to Docker Hub
 1. Create a free account on [Docker Hub](https://hub.docker.com) (if you don't have one)
 2. Log in from your terminal
-3. Tag your image properly: `yourusername/image-name:tag`
-4. Push it to Docker Hub
-5. Pull it on a different machine (or after removing locally) to verify
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day35/hello-node$  docker login
+   
+   Authenticating with existing credentials... [Username: jeenicj97]
+   
+   i Info → To login with a different account, run 'docker logout' followed by 'docker login'
+   
+   Login Succeeded
+   ```
+   
+4. Tag your image properly: `yourusername/image-name:tag`
+   
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day35/hello-node$ docker tag hello-node:v2 jeenicj97/hello-node:v2
+   ```
+   
+6. Push it to Docker Hub
+   
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day35/hello-node$ docker push jeenicj97/hello-node:v2
+
+   The push refers to repository [docker.io/jeenicj97/hello-node]
+   b9fabb373d98: Pushed
+   5b0ee24e9337: Pushed
+   f2417344d475: Pushed
+   6f09edfb3f6d: Pushed
+   v2: digest: sha256:4bdc7da2c31de2988ff635626949cec8de19e02b59966df19fdd2a53109d28af size: 1153
+   ```
+8. Pull it on a different machine (or after removing locally) to verify
+
+   ```
+   #Removing image
+   jeenicj@DESKTOP-BG3MAVI:~/day35/hello-node$ docker rmi jeenicj97/hello-node:v2
+   Untagged: jeenicj97/hello-node:v2
+   Untagged: jeenicj97/hello-node@sha256:4bdc7da2c31de2988ff635626949cec8de19e02b59966df19fdd2a53109d28af
+
+   #Pulling image from registry
+   jeenicj@DESKTOP-BG3MAVI:~/day35/hello-node$ docker pull jeenicj97/hello-node:v2
+   v2: Pulling from jeenicj97/hello-node
+   Digest: sha256:4bdc7da2c31de2988ff635626949cec8de19e02b59966df19fdd2a53109d28af
+   Status: Downloaded newer image for jeenicj97/hello-node:v2
+   docker.io/jeenicj97/hello-node:v2
+   ```
+
+![Image Alt]()
 
 ---
 
