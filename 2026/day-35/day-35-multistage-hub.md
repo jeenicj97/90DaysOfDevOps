@@ -142,7 +142,7 @@ Write in your notes: Why is the multi-stage image so much smaller?
    docker.io/jeenicj97/hello-node:v2
    ```
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/219d76c6da4ad00769e89652292be55714c13176/2026/day-35/day35.jpg)
 
 ---
 
@@ -176,7 +176,7 @@ Apply these to one of your images and rebuild:
 3. Combine `RUN` commands to **reduce layers**
 4. Use **specific tags** for base images (not `latest`)
 
-   ```
+      ```
       jeenicj@DESKTOP-BG3MAVI:~/day35/hello-node$ cat Dockerfile
       FROM node:22-alpine
       
@@ -194,7 +194,7 @@ Apply these to one of your images and rebuild:
 
       jeenicj@DESKTOP-BG3MAVI:~/day35/hello-node$ docker build -t hello-nolo-node:v3 .
 
-   ```
+      ```
 
 ---
 
