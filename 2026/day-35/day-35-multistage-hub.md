@@ -175,10 +175,27 @@ Apply these to one of your images and rebuild:
 2. **Don't run as root** — add a non-root USER in your Dockerfile
 3. Combine `RUN` commands to **reduce layers**
 4. Use **specific tags** for base images (not `latest`)
-   
-   
 
-Check the size before and after.
+   ```
+      jeenicj@DESKTOP-BG3MAVI:~/day35/hello-node$ cat Dockerfile
+      FROM node:22-alpine
+      
+      RUN addgroup appgroup && \
+          adduser -D -G appgroup appuser
+      
+      WORKDIR /app
+      
+      COPY . .
+      
+      USER appuser
+      
+      CMD ["node", "app,js"]
+
+
+      jeenicj@DESKTOP-BG3MAVI:~/day35/hello-node$ docker build -t hello-nolo-node:v3 .
+
+```
+
 
 ---
 
