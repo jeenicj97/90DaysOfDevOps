@@ -6,10 +6,33 @@
 
 ### Task 1: The Problem with Large Images
 1. Write a simple Go, Java, or Node.js app (even a "Hello World" is fine)
-2. Create a Dockerfile that builds and runs it in a **single stage**
-3. Build the image and check its **size**
+   
+   ```
+   hello-node/
+   │
+   ├── app.js
+   ├── package.json
+   └── Dockerfile
+   ```
+3. Create a Dockerfile that builds and runs it in a **single stage**
+   
+  ```
+FROM node:22
+
+WORKDIR /app
+
+COPY . .
+
+CMD ["node", "app.js"]
+   ```
+4. Build the image and check its **size**
 
 Note down the size — you'll compare it later.
+
+   ```
+   REPOSITORY      TAG      SIZE
+   hello-node      v1       1.1GB
+   ```
 
 ---
 
