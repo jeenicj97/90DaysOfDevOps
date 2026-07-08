@@ -40,10 +40,58 @@ Note down the size — you'll compare it later.
 1. Rewrite the Dockerfile using **multi-stage build**:
    - Stage 1: Build the app (install dependencies, compile)
    - Stage 2: Copy only the built artifact into a minimal base image (`alpine`, `distroless`, or `scratch`)
+     
+     ```
+     jeenicj@DESKTOP-BG3MAVI:~/day35/hello-node$ cat Dockerfile
+      # Stage 1
+      FROM node:22 AS builder
+      
+      WORKDIR /app
+      
+      COPY . .
+      
+      # Stage 2
+      FROM alpine:3.22
+      
+      RUN apk add --no-cache nodejs
+      
+      WORKDIR /app
+      
+      COPY --from=builder /app .
+      
+      CMD ["node", "app.js"]
+     ```
 2. Build the image and check its size again
 3. Compare the two sizes
 
+   ```
+   jeenicj@DESKTOP-BG3MAVI:~/day35/hello-node$ docker images
+                                               
+   IMAGE                ID             DISK USAGE   CONTENT SIZE   EXTRA
+   hello-node:v2        aeb9518846d4       80.2MB             0B
+   node:22              177e8051ee1a       1.13GB             0B
+   ```
+
 Write in your notes: Why is the multi-stage image so much smaller?
+
+   ```
+
+   Because the final image contains only:
+
+   Application files
+   Node runtime
+   Minimal operating system
+   
+   It does not include:
+   
+   Build tools
+   Package managers
+   Compilers
+   Development dependencies
+   Temporary files
+
+  > Multi-stage build creates separate build and runtime stages. Only the required artifacts are copied into the final image, which significantly reduces image size, improves security and decreases the ttack surface
+   ```
 
 ---
 
