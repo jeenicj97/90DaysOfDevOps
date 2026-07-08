@@ -149,7 +149,6 @@ Write in your notes: Why is the multi-stage image so much smaller?
 ### Task 4: Docker Hub Repository
 1. Go to Docker Hub and check your pushed image
 2. Add a **description** to the repository
-   ![Image Alt]()
 4. Explore the **tags** tab — understand how versioning works
 5. Pull a specific tag vs `latest` — what happens?
    
