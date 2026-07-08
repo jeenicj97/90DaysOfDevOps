@@ -194,8 +194,7 @@ Apply these to one of your images and rebuild:
 
       jeenicj@DESKTOP-BG3MAVI:~/day35/hello-node$ docker build -t hello-nolo-node:v3 .
 
-```
-
+   ```
 
 ---
 
