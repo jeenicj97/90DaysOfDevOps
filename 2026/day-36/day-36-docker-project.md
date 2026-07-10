@@ -87,3 +87,13 @@ Run `docker compose up` and verify everything works together.
 
 ---
 
+
+
+Docker Hub Link:
+https://hub.docker.com/repository/docker/jeenicj97/flask-app
+
+Final Image Size:
+
+IMAGE           ID             DISK USAGE   CONTENT SIZE   EXTRA
+jeenicj97/flask-app:v1
+                7a67a6fffe3f        132MB             0B
