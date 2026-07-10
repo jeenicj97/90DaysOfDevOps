@@ -49,11 +49,139 @@ From memory, draw or describe the Kubernetes architecture. Your diagram should i
 - kube-proxy — handles networking rules so pods can communicate
 - Container Runtime — the engine that actually runs containers (containerd, CRI-O)
 
+```
+                     +----------------------+
+                     |      kubectl         |
+                     +----------+-----------+
+                                |
+                                v
+                     +----------------------+
+                     |      API Server      |
+                     +----------+-----------+
+                                |
+            +-------------------+-------------------+
+            |                   |                   |
+            v                   v                   v
+      +-----------+      +-----------+      +--------------+
+      | Scheduler |      | Controller|      |    etcd      |
+      |           |      | Manager   |      | Cluster DB   |
+      +-----------+      +-----------+      +--------------+
+
+                       Control Plane
+                               |
+        -------------------------------------------------
+        |                                               |
+        v                                               v
+
++--------------------+                     +--------------------+
+|     Worker Node 1  |                     |     Worker Node 2  |
+|--------------------|                     |--------------------|
+| kubelet            |                     | kubelet            |
+| kube-proxy         |                     | kube-proxy         |
+| containerd         |                     | containerd         |
+| Pods               |                     | Pods               |
++--------------------+                     +--------------------+
+```
+  
+
 After drawing, verify your understanding:
 - What happens when you run `kubectl apply -f pod.yaml`? Trace the request through each component.
 - What happens if the API server goes down?
 - What happens if a worker node goes down?
 
+```
+Step 1
+
+User executes:
+
+kubectl apply -f pod.yaml
+
+↓
+
+Step 2
+
+kubectl
+
+↓
+
+Sends request to
+
+↓
+
+API Server
+
+↓
+
+Step 3
+
+API Server validates YAML.
+
+↓
+
+Stores desired state inside
+
+↓
+
+etcd
+
+↓
+
+Step 4
+
+Controller Manager notices:
+
+Desired pod exists
+Actual pod does not exist
+
+↓
+
+Step 5
+
+Scheduler selects the best worker node.
+
+↓
+
+Step 6
+
+Selected node's kubelet receives instructions.
+
+↓
+
+Step 7
+
+kubelet asks container runtime:
+
+Pull image
+Create container
+Start container
+
+↓
+
+Step 8
+
+Pod becomes:
+
+Running
+```
+
+```
+> What Happens if API Server Goes Down?
+ * kubectl commands fail
+ * New pods cannot be created
+ * Scaling operations stop
+ * Controllers cannot make updates
+ * Existing running pods continue to run
+ * The cluster becomes difficult to manage until the API Server is restored.
+
+> What Happens if a Worker Node Goes Down?
+ * kubelet stops sending heartbeats
+ * Node becomes NotReady
+ * Controller Manager detects failure
+ * Pods on that node become unavailable
+ * Scheduler recreates pods on healthy nodes
+ * This is Kubernetes self-healing.
+
+```
 ---
 
 ### Task 3: Install kubectl
