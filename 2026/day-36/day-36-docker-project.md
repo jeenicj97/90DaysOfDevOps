@@ -51,9 +51,166 @@ If you don't have an app, clone a simple open-source one and Dockerize it.
       ├── .env
       ├── .dockerignore
       └── README.md
-      
-      ```
 
+```
+> Folder Structure:
+
+jeenicj@DESKTOP-BG3MAVI:~/day36$ ls
+app  docker-compose.yml
+
+jeenicj@DESKTOP-BG3MAVI:~/day36/app$ ls
+Dockerfile  app.py  requirements.txt
+
+--------------------------------------------------
+
+> requirements.txt
+
+Flask==3.1.1
+psycopg2-binary==2.9.10
+
+--------------------------------------------------
+
+> app.py
+
+from flask import Flask
+import psycopg2
+import os
+
+app = Flask(__name__)
+
+DB_HOST = os.getenv("DB_HOST")
+DB_NAME = os.getenv("DB_NAME")
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+
+
+@app.route("/")
+def home():
+    return "Hello from Flask + PostgreSQL Docker Project!"
+
+
+@app.route("/health")
+def health():
+    return "Application is running"
+
+
+app.run(host="0.0.0.0", port=5000)
+
+
+FROM python:3.12-slim AS builder
+
+WORKDIR /app
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir \
+    --prefix=/install \
+    -r requirements.txt
+
+--------------------------------------------------
+
+> Dockerfile
+
+FROM python:3.12-slim
+
+RUN useradd -m appuser
+
+WORKDIR /app
+
+COPY --from=builder /install /usr/local
+
+COPY . .
+
+USER appuser
+
+EXPOSE 5000
+
+CMD ["python", "app.py"]
+
+--------------------------------------------------
+
+> .dockerignore
+
+__pycache__
+*.pyc
+.git
+.env
+README.md
+
+--------------------------------------------------
+
+> .env
+
+POSTGRES_DB=employee_db
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=password
+DB_HOST=db
+DB_NAME=employee_db
+DB_USER=postgres
+DB_PASSWORD=password
+
+--------------------------------------------------
+
+> docker-compose.yml
+
+services:
+
+  app:
+    build: ./app
+
+    container_name: flask-app
+
+    ports:
+      - "5000:5000"
+
+    env_file:
+      - .env
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+    networks:
+      - app-network
+
+  db:
+    image: postgres:17-alpine
+
+    container_name: postgres-ab
+
+    restart: always
+
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+    volumes:
+      - postgres-data:/var/lib/postgres
+
+    healthcheck:
+      test:
+        ["CMD-SHELL", "pg_isready -U postgres"]
+
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+    networks:
+      - app-network
+
+volumes:
+  postgres-data:
+
+networks:
+  app-network:
+
+
+```
+
+
+
+```
 ---
 
 ### Task 3: Add Docker Compose
