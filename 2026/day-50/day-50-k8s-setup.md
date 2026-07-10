@@ -8,11 +8,31 @@
 Before touching a terminal, write down from memory:
 
 1. Why was Kubernetes created? What problem does it solve that Docker alone cannot?
-2. Who created Kubernetes and what was it inspired by?
-3. What does the name "Kubernetes" mean?
+   
+      ```
+      Docker can run containers on a single machine, but it cannot efficiently manage hundreds or thousands of containers running across multiple servers.
+      Kubernetes was created to solve container orchestration challenges such as:
+      * Automatic container deployment
+      * Scaling applications
+      * Service discovery and load balancing
+      * Self-healing of failed containers
+      * Rolling updates and rollbacks
+      * Managing applications across multiple servers
+      
+      In short, Docker manages containers, while Kubernetes manages containers at scale.
+      ```
 
-Do not look anything up yet. Write what you remember from the session, then verify against the official docs.
+3. Who created Kubernetes and what was it inspired by?
+   
+   ```
+   Kubernetes was originally created by Google. Released as an open-source project in 2014. Inspired by Google's internal cluster management system called Borg.
+   ```
+5. What does the name "Kubernetes" mean?
 
+   ```
+   The word Kubernetes comes from Greek and means "Pilot". This is why Kubernetes log is a shop wheel.
+   ```
+ 
 ---
 
 ### Task 2: Draw the Kubernetes Architecture
