@@ -2,6 +2,8 @@
 
 ---
 
+# Refer Flask-Postgres-App repo for more details
+
 ## Challenge Tasks
 
 ### Task 1: Pick Your App
@@ -218,5 +220,9 @@ Final Image Size:
 IMAGE           ID             DISK USAGE   CONTENT SIZE   EXTRA
 jeenicj97/flask-app:v1
                 7a67a6fffe3f        132MB             0B
+
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/b88487abbd4d8cc2525beec569689f506a677950/2026/day-36/day36-page.jpg)
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/b88487abbd4d8cc2525beec569689f506a677950/2026/day-36/day36-repo.jpg)
 
 ---
