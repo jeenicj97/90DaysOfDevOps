@@ -21,8 +21,38 @@ If you don't have an app, clone a simple open-source one and Dockerize it.
 3. Use a **non-root user**
 4. Keep the image **small** — use alpine or slim base images
 5. Add a `.dockerignore` file
+      
+      ```
+      > Architecture:
+      
+      Browser
+         |
+         v
+      Flask App (Port 5000)
+         |
+         v
+      PostgreSQL Database (Port 5432)
+      
+      Custom Network: app-network
+      Named Volume: postgres-data
 
-Build and test it locally.
+      ____________________________________________
+
+      > Project Structure:
+      
+      flask-postgres-app/
+      │
+      ├── app/
+      │   ├── app.py
+      │   ├── requirements.txt
+      │   └── Dockerfile
+      │
+      ├── docker-compose.yml
+      ├── .env
+      ├── .dockerignore
+      └── README.md
+      
+      ```
 
 ---
 
