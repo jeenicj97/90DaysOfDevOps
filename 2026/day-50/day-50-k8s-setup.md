@@ -247,7 +247,7 @@ Annotations:        node.alpha.kubernetes.io/ttl: 0
                     volumes.kubernetes.io/controller-managed-attach-detach: true
 ```
 
-# List all namespaces
+### List all namespaces
 kubectl get namespaces
 
 ```
@@ -260,7 +260,7 @@ kube-system          Active   24m
 local-path-storage   Active   24m
 ```
 
-# See ALL pods running in the cluster (across all namespaces)
+### See ALL pods running in the cluster (across all namespaces)
 kubectl get pods -A
 
 
@@ -314,17 +314,25 @@ You should see pods like `etcd`, `kube-apiserver`, `kube-scheduler`, `kube-contr
 ### Task 6: Practice Cluster Lifecycle
 Build muscle memory with cluster operations:
 
-```bash
-# Delete your cluster
+### Delete your cluster
 kind delete cluster --name devops-cluster
-# (or: minikube delete)
+```
+jeenicj@DESKTOP-BG3MAVI:~$ kind delete cluster --name devops-cluster
+Deleting cluster "devops-cluster" ...
+Deleted nodes: ["devops-cluster-control-plane"]
+```
 
-# Recreate it
+### Recreate it
 kind create cluster --name devops-cluster
-# (or: minikube start)
 
-# Verify it is back
+### Verify it is back
 kubectl get nodes
+```
+jeenicj@DESKTOP-BG3MAVI:~$ kubectl get nodes
+NAME                           STATUS   ROLES           AGE     VERSION
+devops-cluster-control-plane   Ready    control-plane   4m59s   v1.36.1
+```
+
 ```
 
 Try these useful commands:
@@ -337,6 +345,44 @@ kubectl config get-contexts
 
 # See the full kubeconfig
 kubectl config view
+```
+
+```
+jeenicj@DESKTOP-BG3MAVI:~$ kind create cluster --name devops-cluster
+Creating cluster "devops-cluster" ...
+ ✓ Ensuring node image (kindest/node:v1.36.1) 🖼
+ ✓ Preparing nodes 📦
+ ✓ Writing configuration 📜
+ ✓ Starting control-plane 🕹️
+ ✓ Installing CNI 🔌
+ ✓ Installing StorageClass 💾
+Set kubectl context to "kind-devops-cluster"
+You can now use your cluster with:
+kubectl cluster-info --context kind-devops-cluster
+Have a nice day! 👋
+
+jeenicj@DESKTOP-BG3MAVI:~$ kubectl config current-context
+kind-devops-cluster
+
+jeenicj@DESKTOP-BG3MAVI:~$ kubectl config get-contexts
+CURRENT   NAME                  CLUSTER               AUTHINFO              NAMESPACE
+          docker-desktop        docker-desktop        docker-desktop
+*         kind-devops-cluster   kind-devops-cluster   kind-devops-cluster
+          kind-tws-cluster      kind-tws-cluster      kind-tws-cluster
+          minikube              minikube              minikube              default
+
+jeenicj@DESKTOP-BG3MAVI:~$ kubectl config view
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: DATA+OMITTED
+    server: https://kubernetes.docker.internal:6443
+  name: docker-desktop
+- cluster:
+    certificate-authority-data: DATA+OMITTED
+    server: https://127.0.0.1:37395
+  name: kind-devops-cluster
+- cluster:
 ```
 
 Write down: What is a kubeconfig? Where is it stored on your machine?
