@@ -341,25 +341,21 @@ kubectl config view
 
 Write down: What is a kubeconfig? Where is it stored on your machine?
 
----
+```
+> kubeconfig is a configuration file used by kubectl to know:
 
-## Hints
-- kind requires Docker to be running (it creates clusters using containers)
-- minikube can use Docker, VirtualBox, or other drivers
-- The default kubeconfig file is at `~/.kube/config`
-- `kubectl get pods -A` is short for `kubectl get pods --all-namespaces`
-- If `kubectl` cannot connect, check if your cluster is running: `kind get clusters` or `minikube status`
-- `-o wide` flag gives extra details: `kubectl get nodes -o wide`
+   * Which cluster to connect to
+   * API Server endpoint
+   * Authentication information
+   * Certificates
+   * Available contexts
+   * Current context
+> Default location:
+  Linux/macOS:
+  * ~/.kube/config
+  
+```
 
----
-
-## Documentation
-Create `day-50-k8s-setup.md` with:
-- Kubernetes history in your own words (3-4 sentences)
-- Your architecture diagram (text-based or image)
-- Which tool you chose (kind/minikube) and why
-- Screenshot of `kubectl get nodes` and `kubectl get pods -n kube-system`
-- What each kube-system pod does
 
 ---
 
