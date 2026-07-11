@@ -188,22 +188,11 @@ Running
 `kubectl` is the CLI tool you will use to talk to your Kubernetes cluster.
 
 Install it:
-```bash
-# macOS
-brew install kubectl
 
-# Linux (amd64)
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-chmod +x kubectl
-sudo mv kubectl /usr/local/bin/
-
-# Windows (with chocolatey)
-choco install kubernetes-cli
 ```
-
-Verify:
-```bash
-kubectl version --client
+jeenicj@DESKTOP-BG3MAVI:~$ kubectl version --client
+Client Version: v1.36.0
+Kustomize Version: v5.8.1
 ```
 
 ---
