@@ -198,7 +198,6 @@ Kustomize Version: v5.8.1
 ---
 
 ### Task 4: Set Up Your Local Cluster
-Choose **one** of the following. Both give you a fully functional Kubernetes cluster on your machine.
 
 **Option A: kind (Kubernetes in Docker)**
 
@@ -228,8 +227,6 @@ jeenicj@DESKTOP-BG3MAVI:~$ kubectl get nodes
 NAME                           STATUS   ROLES           AGE   VERSION
 devops-cluster-control-plane   Ready    control-plane   74s   v1.36.1
 ```
-Write down: Which one did you choose and why?
-
 
 ---
 
@@ -246,16 +243,68 @@ kubectl get nodes
 # Get detailed info about your node
 kubectl describe node <node-name>
 
+```
+jeenicj@DESKTOP-BG3MAVI:~$ kubectl describe node devops-cluster-control-plane
+Name:               devops-cluster-control-plane
+Roles:              control-plane
+Labels:             beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/os=linux
+                    kubernetes.io/arch=amd64
+                    kubernetes.io/hostname=devops-cluster-control-plane
+                    kubernetes.io/os=linux
+                    node-role.kubernetes.io/control-plane=
+Annotations:        node.alpha.kubernetes.io/ttl: 0
+                    volumes.kubernetes.io/controller-managed-attach-detach: true
+```
+
 # List all namespaces
 kubectl get namespaces
 
+```
+jeenicj@DESKTOP-BG3MAVI:~$ kubectl get namespaces
+NAME                 STATUS   AGE
+default              Active   24m
+kube-node-lease      Active   24m
+kube-public          Active   24m
+kube-system          Active   24m
+local-path-storage   Active   24m
+```
+
 # See ALL pods running in the cluster (across all namespaces)
 kubectl get pods -A
+
+
+```
+jeenicj@DESKTOP-BG3MAVI:~$ kubectl get pods -A
+NAMESPACE            NAME                                                   READY   STATUS    RESTARTS      AGE
+kube-system          coredns-589f44dc88-fwghd                               1/1     Running   0             25m
+kube-system          coredns-589f44dc88-m4l5d                               1/1     Running   0             25m
+kube-system          etcd-devops-cluster-control-plane                      1/1     Running   0             25m
+kube-system          kindnet-t6n98                                          1/1     Running   0             25m
+kube-system          kube-apiserver-devops-cluster-control-plane            1/1     Running   1 (10m ago)   25m
+kube-system          kube-controller-manager-devops-cluster-control-plane   1/1     Running   4 (13m ago)   25m
+kube-system          kube-proxy-8f6bq                                       1/1     Running   0             25m
+kube-system          kube-scheduler-devops-cluster-control-plane            1/1     Running   3 (12m ago)   25m
+local-path-storage   local-path-provisioner-855c7b7774-mrdx4                1/1     Running   0             25m
+```
 ```
 
 Look at the pods running in the `kube-system` namespace:
 ```bash
 kubectl get pods -n kube-system
+```
+
+```
+jeenicj@DESKTOP-BG3MAVI:~$ kubectl get pods -n kube-system
+NAME                                                   READY   STATUS    RESTARTS      AGE
+coredns-589f44dc88-fwghd                               1/1     Running   0             26m
+coredns-589f44dc88-m4l5d                               1/1     Running   0             26m
+etcd-devops-cluster-control-plane                      1/1     Running   0             26m
+kindnet-t6n98                                          1/1     Running   0             26m
+kube-apiserver-devops-cluster-control-plane            1/1     Running   1 (11m ago)   26m
+kube-controller-manager-devops-cluster-control-plane   1/1     Running   4 (14m ago)   26m
+kube-proxy-8f6bq                                       1/1     Running   0             26m
+kube-scheduler-devops-cluster-control-plane            1/1     Running   3 (13m ago)   26m
 ```
 
 You should see pods like `etcd`, `kube-apiserver`, `kube-scheduler`, `kube-controller-manager`, `coredns`, and `kube-proxy`. These are the architecture components you drew in Task 2 — running as pods inside the cluster.
