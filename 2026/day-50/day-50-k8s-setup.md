@@ -201,43 +201,35 @@ Kustomize Version: v5.8.1
 Choose **one** of the following. Both give you a fully functional Kubernetes cluster on your machine.
 
 **Option A: kind (Kubernetes in Docker)**
-```bash
-# Install kind
-# macOS
-brew install kind
 
-# Linux
-curl -Lo ./kind https://kind.sigs.k8s.io/dl/latest/kind-linux-amd64
-chmod +x ./kind
-sudo mv ./kind /usr/local/bin/kind
-
+```
 # Create a cluster
-kind create cluster --name devops-cluster
+jeenicj@DESKTOP-BG3MAVI:~$ kind create cluster --name devops-cluster
+Creating cluster "devops-cluster" ...
+ ✓ Ensuring node image (kindest/node:v1.36.1) 🖼
+ ✓ Preparing nodes 📦
+ ✓ Writing configuration 📜
+ ✓ Starting control-plane 🕹️
+ ✓ Installing CNI 🔌
+ ✓ Installing StorageClass 💾
+Set kubectl context to "kind-devops-cluster"
+You can now use your cluster with:
+kubectl cluster-info --context kind-devops-cluster
+Thanks for using kind! 😊
 
 # Verify
-kubectl cluster-info
-kubectl get nodes
-```
-
-**Option B: minikube**
-```bash
-# Install minikube
-# macOS
-brew install minikube
-
-# Linux
-curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-sudo install minikube-linux-amd64 /usr/local/bin/minikube
-
-# Start a cluster
-minikube start
+jeenicj@DESKTOP-BG3MAVI:~$ kubectl cluster-info
+Kubernetes control plane is running at https://127.0.0.1:38731
+CoreDNS is running at https://127.0.0.1:38731/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 
 # Verify
-kubectl cluster-info
-kubectl get nodes
+jeenicj@DESKTOP-BG3MAVI:~$ kubectl get nodes
+NAME                           STATUS   ROLES           AGE   VERSION
+devops-cluster-control-plane   Ready    control-plane   74s   v1.36.1
 ```
-
 Write down: Which one did you choose and why?
+
 
 ---
 
