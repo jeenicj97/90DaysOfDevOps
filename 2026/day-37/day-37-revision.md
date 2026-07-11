@@ -32,13 +32,27 @@ Mark yourself honestly — **can do**, **shaky**, or **haven't done**:
 ## Quick-Fire Questions
 Answer from memory, then verify:
 1. What is the difference between an image and a container?
+   * An image is a static, read-only blueprint (instructions + filesystem snapshot).
+   * A container is a running instance of that image, with its own writable layer and runtime state
 3. What happens to data inside a container when you remove it?
-4. How do two containers on the same custom network communicate?
-5. What does `docker compose down -v` do differently from `docker compose down`?
-6. Why are multi-stage builds useful?
-7. What is the difference between `COPY` and `ADD`?
-8. What does `-p 8080:80` mean?
-9. How do you check how much disk space Docker is using?
+   * When you remove a container, its writable layer is deleted. Any data not stored in a volume or bind mount is lost.
+5. How do two containers on the same custom network communicate?
+   * Docker's embedded DNS lets containers resolve each other by container name (or service name in Compose) automatically — no need for IPs or --link. They just need to be on the same user-defined bridge network.
+7. What does `docker compose down -v` do differently from `docker compose down`?
+   * `docker compose down` stops and removes containers, networks, but keeps volumes.
+   * `docker compose down -v` lso removes volumes, wiping persistent data.
+9. Why are multi-stage builds useful?
+    * They let you build in one stage (with compilers, dependencies) and copy only the final artifacts into a slim runtime image.
+    * Benefits: smaller images, faster deploys, reduced attack surface.
+11. What is the difference between `COPY` and `ADD`?
+    * `COPY` strictly copies files/directories
+    * `ADD` does the same but also supports remote URLs and auto-extracting tar archives. Best practice: use `COPY` unless you need those extras.
+13. What does `-p 8080:80` mean?
+    * Maps host port 8080 → container port 80.
+    * So accessing `http://localhost:8080` hits the container’s web server on port 80.
+15. How do you check how much disk space Docker is using?
+    * `docker system df`
+    * Shows space used by images, containers, volumes, and build cache.
 
 ---
 
