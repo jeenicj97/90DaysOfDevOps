@@ -52,33 +52,123 @@ Create `docker-cheatsheet.md` organized by category:
 - **Cleanup commands** — prune, system df
 - **Dockerfile instructions** — FROM, RUN, COPY, WORKDIR, EXPOSE, CMD, ENTRYPOINT
 
-Keep it short — one line per command, something you'd actually reference on the job.
+
+
+# Docker Cheat Sheet
+
+## Container Commands
+
+| Command                               | Description                             |
+| ------------------------------------- | --------------------------------------- |
+| `docker run nginx`                    | Run a container from an image           |
+| `docker run -it ubuntu bash`          | Run an interactive container            |
+| `docker run -d nginx`                 | Run a container in detached mode        |
+| `docker ps`                           | List running containers                 |
+| `docker ps -a`                        | List all containers                     |
+| `docker stop <container-id>`          | Stop a container                        |
+| `docker start <container-id>`         | Start a stopped container               |
+| `docker restart <container-id>`       | Restart a container                     |
+| `docker rm <container-id>`            | Remove a container                      |
+| `docker exec -it <container-id> bash` | Open a shell inside a running container |
+| `docker logs <container-id>`          | View container logs                     |
+| `docker inspect <container-id>`       | View detailed container information     |
 
 ---
 
-## Revisit Weak Spots
-Pick **2 topics** you marked as shaky and redo the hands-on tasks from that day.
+## Image Commands
+
+| Command                                 | Description                       |
+| --------------------------------------- | --------------------------------- |
+| `docker images`                         | List local images                 |
+| `docker pull nginx`                     | Download an image from Docker Hub |
+| `docker build -t myapp:v1 .`            | Build an image from Dockerfile    |
+| `docker tag myapp:v1 username/myapp:v1` | Tag an image                      |
+| `docker push username/myapp:v1`         | Push image to Docker Hub          |
+| `docker rmi <image-id>`                 | Remove an image                   |
+| `docker history <image>`                | View image layers                 |
 
 ---
 
-## Suggested Flow (45–60 minutes)
-- 10 min: go through the checklist honestly
-- 10 min: answer quick-fire questions
-- 20 min: build your cheat sheet
-- 10 min: redo one weak area
+## Volume Commands
+
+| Command                                  | Description           |
+| ---------------------------------------- | --------------------- |
+| `docker volume create myvolume`          | Create a named volume |
+| `docker volume ls`                       | List volumes          |
+| `docker volume inspect myvolume`         | View volume details   |
+| `docker volume rm myvolume`              | Remove a volume       |
+| `docker run -v myvolume:/app/data nginx` | Mount a named volume  |
+| `docker run -v $(pwd):/app nginx`        | Use a bind mount      |
 
 ---
 
-## Submission
-1. Add `docker-cheatsheet.md` and `day-37-revision.md` to `2026/day-37/`
-2. Commit and push to your fork
+## Network Commands
+
+| Command                                          | Description                      |
+| ------------------------------------------------ | -------------------------------- |
+| `docker network create mynetwork`                | Create a custom network          |
+| `docker network ls`                              | List networks                    |
+| `docker network inspect mynetwork`               | View network details             |
+| `docker network connect mynetwork container1`    | Connect a container to a network |
+| `docker network disconnect mynetwork container1` | Disconnect a container           |
 
 ---
 
-## Learn in Public
-Share your Docker cheat sheet on LinkedIn — help others revise too.
+## Docker Compose Commands
 
-`#90DaysOfDevOps` `#DevOpsKaJosh` `#TrainWithShubham`
+| Command                  | Description                     |
+| ------------------------ | ------------------------------- |
+| `docker compose up`      | Create and start services       |
+| `docker compose up -d`   | Start services in detached mode |
+| `docker compose down`    | Stop and remove services        |
+| `docker compose ps`      | List running services           |
+| `docker compose logs`    | View service logs               |
+| `docker compose build`   | Build service images            |
+| `docker compose restart` | Restart services                |
 
-Happy Learning!
-**TrainWithShubham**
+---
+
+## Cleanup Commands
+
+| Command                  | Description                 |
+| ------------------------ | --------------------------- |
+| `docker container prune` | Remove stopped containers   |
+| `docker image prune`     | Remove unused images        |
+| `docker volume prune`    | Remove unused volumes       |
+| `docker network prune`   | Remove unused networks      |
+| `docker system prune -a` | Remove all unused resources |
+| `docker system df`       | Display Docker disk usage   |
+
+---
+
+## Common Dockerfile Instructions
+
+| Instruction   | Purpose                                    |
+| ------------- | ------------------------------------------ |
+| `FROM`        | Specify the base image                     |
+| `RUN`         | Execute commands during image build        |
+| `COPY`        | Copy files from host to image              |
+| `ADD`         | Copy files and support URLs/tar extraction |
+| `WORKDIR`     | Set the working directory                  |
+| `EXPOSE`      | Document the application's listening port  |
+| `ENV`         | Define environment variables               |
+| `ARG`         | Define build-time variables                |
+| `CMD`         | Set the default command                    |
+| `ENTRYPOINT`  | Configure the container's executable       |
+| `USER`        | Specify the user to run the container      |
+| `HEALTHCHECK` | Check container health                     |
+| `VOLUME`      | Create a mount point for persistent data   |
+
+---
+
+## Useful Port Mapping
+
+`docker run -p 8080:80 nginx`
+
+* Host Port: `8080`
+* Container Port: `80`
+* Access application at: `http://localhost:8080`
+
+
+
+---
