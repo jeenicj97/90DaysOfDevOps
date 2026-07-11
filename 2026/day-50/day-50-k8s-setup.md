@@ -233,16 +233,6 @@ devops-cluster-control-plane   Ready    control-plane   74s   v1.36.1
 ### Task 5: Explore Your Cluster
 Now that your cluster is running, explore it:
 
-```bash
-# See cluster info
-kubectl cluster-info
-
-# List all nodes
-kubectl get nodes
-
-# Get detailed info about your node
-kubectl describe node <node-name>
-
 ```
 jeenicj@DESKTOP-BG3MAVI:~$ kubectl describe node devops-cluster-control-plane
 Name:               devops-cluster-control-plane
@@ -287,12 +277,8 @@ kube-system          kube-proxy-8f6bq                                       1/1 
 kube-system          kube-scheduler-devops-cluster-control-plane            1/1     Running   3 (12m ago)   25m
 local-path-storage   local-path-provisioner-855c7b7774-mrdx4                1/1     Running   0             25m
 ```
-```
 
 Look at the pods running in the `kube-system` namespace:
-```bash
-kubectl get pods -n kube-system
-```
 
 ```
 jeenicj@DESKTOP-BG3MAVI:~$ kubectl get pods -n kube-system
@@ -310,6 +296,18 @@ kube-scheduler-devops-cluster-control-plane            1/1     Running   3 (13m 
 You should see pods like `etcd`, `kube-apiserver`, `kube-scheduler`, `kube-controller-manager`, `coredns`, and `kube-proxy`. These are the architecture components you drew in Task 2 — running as pods inside the cluster.
 
 **Verify:** Can you match each running pod in `kube-system` to a component in your architecture diagram?
+
+```
+| Pod                     | Component             |
+| ----------------------- | --------------------- |
+| kube-apiserver          | API Server            |
+| etcd                    | Cluster Database      |
+| kube-scheduler          | Scheduler             |
+| kube-controller-manager | Controller Manager    |
+| kube-proxy              | Networking            |
+| coredns                 | DNS Service Discovery |
+
+```
 
 ---
 
