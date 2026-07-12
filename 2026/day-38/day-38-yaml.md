@@ -206,4 +206,9 @@ tools:
 
 
 ### What you learnt (3 points)
+
+* Silent validation: When yamllint shows no output, it means your YAML file is valid — errors and warnings are the only things it prints by default.
+* Indentation rules: YAML relies strictly on spaces (not tabs), and consistent indentation (commonly 2 spaces). Even a single misplaced space can break validation.
+* Multi-line styles: The | style preserves line breaks (great for scripts/configs), while the > style folds newlines into spaces (ideal for messages or paragraphs).
+  
 ---
