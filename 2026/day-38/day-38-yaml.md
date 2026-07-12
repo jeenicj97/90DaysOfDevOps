@@ -48,7 +48,23 @@ Create `server.yaml` that describes a server:
 - `server` with nested keys: `name`, `ip`, `port`
 - `database` with nested keys: `host`, `name`, `credentials` (nested further: `user`, `password`)
 
-### server.yaml
+#### Structure
+
+```
+server
+ ├── name
+ ├── ip
+ └── port
+
+database
+ ├── host
+ ├── name
+ └── credentials
+      ├── user
+      └── password
+```
+
+#### server.yaml
 
 ```yaml
 server:
@@ -60,10 +76,10 @@ database:
   host: postgres-db
   name: employee_db
 
-credentials:
-  user: postgres-user
-  password: password
-    
+  credentials:
+    user: postgres-user
+    password: password
+      
 ```
 
 ---
@@ -73,7 +89,9 @@ In `server.yaml`, add a `startup_script` field using:
 1. The `|` block style (preserves newlines)
 2. The `>` fold style (folds into one line)
 
+
 Write in your notes: When would you use `|` vs `>`?
+
 
 ---
 
