@@ -200,5 +200,10 @@ tools:
   - kubernetes
 ```
 
+* The indentation is inconsistent
+* The second list item is indented differently
+* YAML expects all items in the same list to align
+
+
 ### What you learnt (3 points)
 ---
