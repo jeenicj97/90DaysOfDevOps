@@ -48,7 +48,23 @@ Create `server.yaml` that describes a server:
 - `server` with nested keys: `name`, `ip`, `port`
 - `database` with nested keys: `host`, `name`, `credentials` (nested further: `user`, `password`)
 
-**Verify:** Try adding a tab instead of spaces — what happens when you validate it?
+### server.yaml
+
+```yaml
+server:
+  name: app-server
+  ip: 10.25.270.0
+  port: 8080
+
+database:
+  host: postgres-db
+  name: employee_db
+
+credentials:
+  user: postgres-user
+  password: password
+    
+```
 
 ---
 
