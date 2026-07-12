@@ -125,7 +125,33 @@ Application Started Successfully
 
 Newlines become spaces.
 
+#### server.yaml
+```yaml
 
+server:
+  name: app-server
+  ip: 192.168.1.10
+  port: 8080
+
+database:
+  host: postgres-db
+  name: employee_db
+
+  credentials:
+    user: postgres
+    password: password
+
+startup_script: |
+  echo "Starting Application"
+  mkdir logs
+  python app.py
+
+startup_message: >
+  Application
+  Started
+  Successfully
+
+```
 ---
 
 ### Task 5: Validate Your YAML
