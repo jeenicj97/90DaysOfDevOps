@@ -11,7 +11,13 @@ Create `person.yaml` that describes yourself with:
 - `experience_years`
 - `learning` (a boolean)
 
-**Verify:** Run `cat person.yaml` — does it look clean? No tabs?
+#### person.yaml
+```yaml
+name: Jeeni
+role: DevOps Engineer
+experience_years: 8
+learning: true
+```
 
 ---
 
@@ -21,6 +27,19 @@ Add to `person.yaml`:
 - `hobbies` — a list using the inline format `[item1, item2]`
 
 Write in your notes: What are the two ways to write a list in YAML?
+
+```yaml
+#Way1
+tools:
+  - Jenkins
+  - GitHub Actions
+  - Terraform
+  - Kubernetes
+  - Shell Scripting
+
+#Way2
+hobbies: [reading, cooking, listening to music]
+```
 
 ---
 
