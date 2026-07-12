@@ -156,9 +156,28 @@ startup_message: >
 
 ### Task 5: Validate Your YAML
 1. Install `yamllint` or use an online validator
-2. Validate both your YAML files
-3. Intentionally break the indentation — what error do you get?
-4. Fix it and validate again
+   
+   * sudo apt install yamllint
+     
+3. Validate both your YAML files
+
+   ```yaml
+   jeenicj@DESKTOP-BG3MAVI:~/yaml-prac$ yamllint person.yml
+   jeenicj@DESKTOP-BG3MAVI:~/yaml-prac$ yamllint server.yml
+   ```
+4. Intentionally break the indentation — what error do you get?
+
+   ```yaml
+   jeenicj@DESKTOP-BG3MAVI:~/yaml-prac$ yamllint server.yml
+    server.yml
+    2:3       error    wrong indentation: expected 0 but found 2  (indentation)
+    7:1       error    syntax error: expected '<document start>', but found '<block mapping start>' (syntax)
+   ```
+6. Fix it and validate again
+   ```yaml
+   jeenicj@DESKTOP-BG3MAVI:~/yaml-prac$ yamllint server.yml
+   jeenicj@DESKTOP-BG3MAVI:~/yaml-prac$
+   ```
 
 ---
 
