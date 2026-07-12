@@ -69,4 +69,5 @@ tools:
   - kubernetes
 ```
 
+### What you learnt (3 points)
 ---
