@@ -89,9 +89,42 @@ In `server.yaml`, add a `startup_script` field using:
 1. The `|` block style (preserves newlines)
 2. The `>` fold style (folds into one line)
 
+#### Pipe Style ( | )
+```
+Preserves line breaks.
+
+startup_script: |
+  echo "Starting Application"
+  mkdir logs
+  python app.py
+
+Equivalent to:
+
+echo "Starting Application"
+mkdir logs
+python app.py
+
+Each line remains separate.
+```
+#### Folded Style ( > )
+
+```
+startup_message: >
+  Application
+  Started
+  Successfully
+
+Equivalent to:
+
+Application Started Successfully
+
+Newlines become spaces.
+```
+
 
 Write in your notes: When would you use `|` vs `>`?
-
+ * Use | when you want to preserve formatting (scripts, configs).
+ * Use > when you want to fold text into one line (messages, paragraphs).
 
 ---
 
