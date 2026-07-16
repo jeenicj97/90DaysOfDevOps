@@ -46,11 +46,17 @@ Research and write short definitions (2-3 lines each):
 ### Task 3: Pipeline Anatomy
 A pipeline has these parts — write what each one does:
 - **Trigger** — what starts the pipeline
+  * The event or condition that initiates the pipeline execution. Common triggers include pushing code to a specific branch, creating a Pull Request, a scheduled time, or a manual button press.
 - **Stage** — a logical phase (build, test, deploy)
+  * A logical grouping of tasks that represent a major phase in the software development lifecycle (e.g., Build, Test, or Deploy). Stages usually run in a specific sequence, and a pipeline typically waits for all jobs in one stage to complete successfully before moving to the next.
 - **Job** — a unit of work inside a stage
+  * A specific unit of work within a stage that is executed by a single runner. A single stage can contain multiple parallel jobs (e.g., running unit tests for different operating systems simultaneously).
 - **Step** — a single command or action inside a job
+  * The smallest unit of execution within a job. These are individual commands, script executions, or pre-defined actions (e.g., npm install, docker build, or running a shell script).
 - **Runner** — the machine that executes the job
+  * The physical or virtual machine (often a container or a dedicated server) that carries out the instructions defined in the jobs. It pulls the code and executes the steps sequentially.
 - **Artifact** — output produced by a job
+  * The persistent file or data produced by a job that needs to be saved after the job finishes. Examples include compiled binaries, build logs, test reports, or container images that can be passed to subsequent stages or downloaded by users.
 
 ---
 
@@ -59,6 +65,44 @@ Draw a CI/CD pipeline for this scenario:
 > A developer pushes code to GitHub. The app is tested, built into a Docker image, and deployed to a staging server.
 
 Include at least 3 stages. Hand-drawn and photographed is perfectly fine.
+
+```
+                Developer
+                    │
+                    │ Push Code
+                    ▼
+               GitHub Repository
+                    │
+                    ▼
+          Trigger GitHub Actions
+                    │
+                    ▼
+        ┌─────────────────────┐
+        │ Stage 1: Build      │
+        │ - Checkout Code     │
+        │ - Install Packages  │
+        │ - Build Application │
+        └─────────────────────┘
+                    │
+                    ▼
+        ┌─────────────────────┐
+        │ Stage 2: Test       │
+        │ - Unit Tests        │
+        │ - Lint Code         │
+        │ - Security Scan     │
+        └─────────────────────┘
+                    │
+                    ▼
+        ┌─────────────────────┐
+        │ Stage 3: Deploy     │
+        │ - Build Docker Image│
+        │ - Push Image        │
+        │ - Deploy to Staging │
+        └─────────────────────┘
+                    │
+                    ▼
+              Staging Server
+```
 
 ---
 
@@ -73,32 +117,3 @@ Include at least 3 stages. Hand-drawn and photographed is perfectly fine.
 
 ---
 
-## Hints
-- CI/CD is a practice, not just a tool
-- GitHub Actions, Jenkins, GitLab CI, CircleCI — all are tools that implement CI/CD
-- A pipeline failing is not a problem — it's CI/CD doing its job
-
----
-
-## Documentation
-Create `day-39-cicd-concepts.md` with:
-- Your CI vs CD vs CD definitions
-- Pipeline anatomy notes
-- Your pipeline diagram
-- What you found in the open-source repo
-
----
-
-## Submission
-1. Add your `day-39-cicd-concepts.md` to `2026/day-39/`
-2. Commit and push to your fork
-
----
-
-## Learn in Public
-Share your pipeline diagram on LinkedIn — even a rough hand-drawn one gets engagement.
-
-`#90DaysOfDevOps` `#DevOpsKaJosh` `#TrainWithShubham`
-
-Happy Learning!
-**TrainWithShubham**
