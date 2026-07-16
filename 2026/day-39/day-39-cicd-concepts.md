@@ -107,13 +107,21 @@ Include at least 3 stages. Hand-drawn and photographed is perfectly fine.
 ---
 
 ### Task 5: Explore in the Wild
-1. Open any popular open-source repo on GitHub (Kubernetes, React, FastAPI — pick one you know)
-2. Find their `.github/workflows/` folder
-3. Open one workflow YAML file
+1. Open any popular open-source repo on GitHub (Kubernetes, React, FastAPI — pick one you know). Find their `.github/workflows/` folder
+   * I’ve explored the ESLint GitHub repository and analyzed their primary workflow, typically found in .github/workflows/ci.yml.
 4. Write in your notes:
    - What triggers it?
+     * The workflow is configured to trigger on push events (for the main branch) and pull_request events
    - How many jobs does it have?
+     * It uses a sophisticated multi-job approach. Rather than just one job, it often breaks the process into several concurrent jobs to optimize speed:
+         * Linting/Formatting Job: Checks the code style to ensure consistency.
+         * Unit Tests Job: Runs the core logic tests across multiple versions of Node.js (a test matrix) to ensure compatibility.
+         * Integration Tests Job: Runs more complex tests that simulate how the tool behaves in a real-world project environment.
    - What does it do? (best guess)
+     * This pipeline acts as an automated quality gate. It ensures that any code submitted to the project:
+         * Is clean: It automatically checks for style and formatting errors.
+         * Is functional: It runs every test to prove the code works as expected.
+         * Is compatible: It tests the code across different environments (like different Node.js versions) to prevent crashes.
 
 ---
 
