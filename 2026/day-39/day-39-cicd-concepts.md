@@ -1,27 +1,29 @@
 # Day 39 – What is CI/CD?
 
-## Task
-Before writing a single pipeline, understand **why CI/CD exists** and what it actually does.
-
-Today is a research and diagram day — no pipelines yet. Get the concepts right first.
-
 ---
 
-## Expected Output
-- A markdown file: `day-39-cicd-concepts.md`
-- A pipeline diagram (hand-drawn or text-based)
+### CI/CD is a set of practices that automate the process of integrating code changes, testing them, building applications, and deploying them to different environments. It helps teams deliver software faster, more reliably, and with fewer manual errors.
 
----
 
 ## Challenge Tasks
 
 ### Task 1: The Problem
-Think about a team of 5 developers all pushing code to the same repo manually deploying to production.
+Think about a team of 5 developers all pushing code to the same repo, manually deploying to production.
 
 Write in your notes:
 1. What can go wrong?
-2. What does "it works on my machine" mean and why is it a real problem?
-3. How many times a day can a team safely deploy manually?
+   * Developers may overwrite each other's changes.
+   * Merge conflicts become more common.
+   * Bugs may reach production because testing is inconsistent.
+   * Different developers may use different software versions or environments.
+   * Teams may accidentally deploy incomplete or untested code.
+   
+3. What does "it works on my machine" mean and why is it a real problem?
+   * "It works on my machine" means that an application runs correctly on a developer's local computer but fails when run on another developer's machine, a testing environment, or a production server. This usually happens because of differences in operating systems, software versions, Config settings etc.
+     
+5. How many times a day can a team safely deploy manually?
+   * There is no fixed number, but manual deployments are usually limited because they are slow and prone to human error. Many teams may only deploy once a day or even less frequently
+   * With CI/CD automation, teams can safely deploy multiple times a day, or even hundreds of times a day, depending on their processes.
 
 ---
 
