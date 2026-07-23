@@ -13,6 +13,24 @@ Create `.github/workflows/hello.yml` with a workflow that:
    - Step 1: Check out the code using `actions/checkout`
    - Step 2: Print `Hello from GitHub Actions!`
 
+```yaml
+
+
+name: First workflow
+
+on: push
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Print Hello
+        run: echo "Hello from GHA"
+
+```
+
 ![Image Alt]()
 
 ---
@@ -36,7 +54,33 @@ Update `hello.yml` to also:
 3. List the files in the repo
 4. Print the runner's operating system
 
-Push again — watch the new run.
+```yaml
+
+
+name: First workflow
+
+on: push
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Print Hello
+        run: echo "Hello from GitHub Actions"
+      - name: Print current date & time
+        run: date
+      - name: Print branch name
+        run: echo "Branch is ${{ github.ref_name }}"
+      - name: List files in repo
+        run: ls -la
+      - name: Print runner OS
+        run: echo "Running on $RUNNER_OS"
+
+```
+
+![Image Alt]()
 
 ---
 
