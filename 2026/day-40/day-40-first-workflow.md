@@ -31,7 +31,7 @@ jobs:
 
 ```
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/264027e86112923d8e1fad8dd01a04129845567f/2026/day-40/day40-1.jpg)
 
 ---
 
@@ -80,7 +80,7 @@ jobs:
 
 ```
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/264027e86112923d8e1fad8dd01a04129845567f/2026/day-40/da-40.2.jpg)
 
 ---
 
