@@ -47,7 +47,7 @@ Look at your workflow file and write in your notes what each key does:
 
 ---
 
-### Task 4: Add More Steps
+### Task : Add More Steps
 Update `hello.yml` to also:
 1. Print the current date and time
 2. Print the name of the branch that triggered the run (hint: GitHub provides this as a variable)
@@ -89,15 +89,19 @@ jobs:
 2. Push and observe what happens in the Actions tab
 3. Fix it and push again
 
-Write in your notes: What does a failed pipeline look like? How do you read the error?
+```
+The workflow run is marked with a red X.
+The failed job is highlighted.
+The failed step shows an error message.
+Logs indicate which command failed and its exit code.
 
----
+To troubleshoot:
 
-## Hints
-- Workflow files live in `.github/workflows/` and must end in `.yml`
-- `uses: actions/checkout@v4` checks out your code onto the runner
-- `run:` executes shell commands
-- GitHub provides built-in variables like `${{ github.ref_name }}` for branch name
-- Every push triggers a new run — check the Actions tab
+Open the failed workflow run.
+Click the failed job.
+Expand the failed step.
+Read the command output and exit code.
+Correct the issue and push the changes
+```
 
 ---
