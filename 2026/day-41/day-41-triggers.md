@@ -26,10 +26,6 @@ Your pipeline runs on push. Today you learn **every way to trigger a workflow** 
 3. Write in your notes: What is the cron expression for every Monday at 9 AM?
 
 
-###Note:
-* Cron expression for every day at midnight UTC: 0 0 * * *
-* Cron expression for every Monday at 9 AM UTC: 0 9 * * 1
-* Used for nightly builds, security scans, automated reports, cleanup tasks, and backup jobs.
 ---
 
 ### Task 3: Manual Trigger
