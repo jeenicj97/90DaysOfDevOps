@@ -14,9 +14,9 @@ Your pipeline runs on push. Today you learn **every way to trigger a workflow** 
 4. Create a new branch, push a commit, and open a PR
 5. Watch the workflow run automatically
 
-![Image Alt]()
-![Image Alt]()
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/2ee5d759907973c46c4c76b729c0e4a34fa5c016/2026/day-41/day41.1.jpg)
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/2ee5d759907973c46c4c76b729c0e4a34fa5c016/2026/day-41/day41.1.1.jpg)
+
 
 ---
 
@@ -25,6 +25,7 @@ Your pipeline runs on push. Today you learn **every way to trigger a workflow** 
 2. Set it to run every day at midnight UTC
 3. Write in your notes: What is the cron expression for every Monday at 9 AM?
 
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/2ee5d759907973c46c4c76b729c0e4a34fa5c016/2026/day-41/day41-schedule.jpg)
 
 ---
 
@@ -35,6 +36,9 @@ Your pipeline runs on push. Today you learn **every way to trigger a workflow** 
 4. Go to the **Actions** tab → find the workflow → click **Run workflow**
 
 **Verify:** Can you trigger it manually and see your input printed?
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/2ee5d759907973c46c4c76b729c0e4a34fa5c016/2026/day-41/day41-manual.jpg)
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/2ee5d759907973c46c4c76b729c0e4a34fa5c016/2026/day-41/day41-manual2.jpg)
 
 ---
 
@@ -47,6 +51,7 @@ Create `.github/workflows/matrix.yml` that:
 
 Then extend the matrix to also include 2 operating systems — how many total jobs run now?
 
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/2ee5d759907973c46c4c76b729c0e4a34fa5c016/2026/day-41/day41-matrix.jpg)
 ---
 
 ### Task 5: Exclude & Fail-Fast
@@ -54,35 +59,10 @@ Then extend the matrix to also include 2 operating systems — how many total jo
 2. Set `fail-fast: false` — trigger a failure in one job and observe what happens to the rest
 3. Write in your notes: What does `fail-fast: true` (the default) do vs `false`?
 
----
-
-## Hints
-- PR trigger: `on: pull_request: branches: [main]`
-- Cron trigger: `on: schedule: - cron: '0 0 * * *'`
-- Manual trigger: `on: workflow_dispatch: inputs:`
-- Matrix: `strategy: matrix: python-version: [...]`
-- Exclude: `exclude: - os: windows-latest python-version: "3.10"`
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/2ee5d759907973c46c4c76b729c0e4a34fa5c016/2026/day-41/day41-exclude.jpg)
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/2ee5d759907973c46c4c76b729c0e4a34fa5c016/2026/day-41/day41-failFastT.jpg)
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/2ee5d759907973c46c4c76b729c0e4a34fa5c016/2026/day-41/day41-failfast.jpg)
 
 ---
 
-## Documentation
-Create `day-41-triggers.md` with:
-- Each workflow YAML
-- Screenshots of runs
-- The cron expression answer from Task 2
 
----
-
-## Submission
-1. Add `day-41-triggers.md` to `2026/day-41/`
-2. Commit and push to your fork
-
----
-
-## Learn in Public
-Share your matrix build screenshot — seeing multiple jobs run in parallel for the first time is a great moment.
-
-`#90DaysOfDevOps` `#DevOpsKaJosh` `#TrainWithShubham`
-
-Happy Learning!
-**TrainWithShubham**
