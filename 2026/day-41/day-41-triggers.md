@@ -14,6 +14,8 @@ Your pipeline runs on push. Today you learn **every way to trigger a workflow** 
 4. Create a new branch, push a commit, and open a PR
 5. Watch the workflow run automatically
 
+[Click here to view workflow file](https://github.com/jeenicj97/github-actions-day41/blob/dab7de359d7cf39c1daf9a9278ebfe6fe1e26808/.github/workflows/pr-check.yml)
+
 ![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/2ee5d759907973c46c4c76b729c0e4a34fa5c016/2026/day-41/day41.1.jpg)
 ![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/2ee5d759907973c46c4c76b729c0e4a34fa5c016/2026/day-41/day41.1.1.jpg)
 
@@ -24,6 +26,8 @@ Your pipeline runs on push. Today you learn **every way to trigger a workflow** 
 1. Add a `schedule:` trigger to any workflow using cron syntax
 2. Set it to run every day at midnight UTC
 3. Write in your notes: What is the cron expression for every Monday at 9 AM?
+   
+[Click here to view workflow file](https://github.com/jeenicj97/github-actions-day41/blob/dab7de359d7cf39c1daf9a9278ebfe6fe1e26808/.github/workflows/schedule.yml)
 
 ![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/2ee5d759907973c46c4c76b729c0e4a34fa5c016/2026/day-41/day41-schedule.jpg)
 
@@ -37,8 +41,11 @@ Your pipeline runs on push. Today you learn **every way to trigger a workflow** 
 
 **Verify:** Can you trigger it manually and see your input printed?
 
+[Click here to view workflow file](https://github.com/jeenicj97/github-actions-day41/blob/dab7de359d7cf39c1daf9a9278ebfe6fe1e26808/.github/workflows/manual.yml)
+
 ![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/2ee5d759907973c46c4c76b729c0e4a34fa5c016/2026/day-41/day41-manual.jpg)
 ![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/2ee5d759907973c46c4c76b729c0e4a34fa5c016/2026/day-41/day41-manual2.jpg)
+
 
 ---
 
@@ -51,6 +58,8 @@ Create `.github/workflows/matrix.yml` that:
 
 Then extend the matrix to also include 2 operating systems — how many total jobs run now?
 
+[Click here to view workflow file](https://github.com/jeenicj97/github-actions-day41/blob/dab7de359d7cf39c1daf9a9278ebfe6fe1e26808/.github/workflows/matrix.yml)
+
 ![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/2ee5d759907973c46c4c76b729c0e4a34fa5c016/2026/day-41/day41-matrix.jpg)
 ---
 
@@ -58,6 +67,9 @@ Then extend the matrix to also include 2 operating systems — how many total jo
 1. In your matrix, **exclude** one specific combination (e.g., Python 3.10 on Windows)
 2. Set `fail-fast: false` — trigger a failure in one job and observe what happens to the rest
 3. Write in your notes: What does `fail-fast: true` (the default) do vs `false`?
+
+[Click here to view workflow file](https://github.com/jeenicj97/github-actions-day41/blob/dab7de359d7cf39c1daf9a9278ebfe6fe1e26808/.github/workflows/exclude_failfast.yml)
+
 
 ![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/2ee5d759907973c46c4c76b729c0e4a34fa5c016/2026/day-41/day41-exclude.jpg)
 ![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/2ee5d759907973c46c4c76b729c0e4a34fa5c016/2026/day-41/day41-failFastT.jpg)
