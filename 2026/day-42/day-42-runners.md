@@ -1,15 +1,5 @@
 # Day 42 – Runners: GitHub-Hosted & Self-Hosted
 
-## Task
-Every job needs a machine to run on. Today you understand **runners** — GitHub's hosted ones and how to set up your own self-hosted runner on a real server.
-
----
-
-## Expected Output
-- A self-hosted runner registered to your GitHub repo
-- A workflow that runs a job on your self-hosted runner
-- A markdown file: `day-42-runners.md`
-
 ---
 
 ## Challenge Tasks
@@ -27,6 +17,22 @@ Every job needs a machine to run on. Today you understand **runners** — GitHub
 
 Write in your notes: What is a GitHub-hosted runner? Who manages it?
 
+> What is a GitHub-hosted runner?
+
+  * A GitHub-hosted runner is a temporary virtual machine provided by GitHub to execute GitHub Actions workflows.
+
+> Who manages it?
+   * GitHub manages:
+   * Infrastructure
+   * Updates
+   * Security patches
+   * Installed software
+   * Cleanup after every job
+You only define the workflow.
+
+[Click here to view the workflow file](https://github.com/jeenicj97/github-actions-day41/blob/6a17581cfdc89748581d032994fc116754500ccd/.github/workflows/github-hosted.yml)
+
+![Image Alt]()
 ---
 
 ### Task 2: Explore What's Pre-installed
