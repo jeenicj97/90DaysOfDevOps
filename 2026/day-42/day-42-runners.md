@@ -41,9 +41,17 @@ You only define the workflow.
    - Python version
    - Node version
    - Git version
-2. Look up the GitHub docs for the full list of pre-installed software on `ubuntu-latest`
 
 Write in your notes: Why does it matter that runners come with tools pre-installed?
+
+ Because:
+   * Faster workflow execution
+   * No need to install common software every run
+   * Saves CI minutes
+   * Standard environment across builds
+   * Reduces YAML complexity
+
+![Image Alt]()
 
 ---
 
