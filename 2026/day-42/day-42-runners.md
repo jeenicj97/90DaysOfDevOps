@@ -51,7 +51,11 @@ Write in your notes: Why does it matter that runners come with tools pre-install
    * Standard environment across builds
    * Reduces YAML complexity
 
+[Click here to view the workflow file]()
+
 ![Image Alt]()
+
+
 
 ---
 
@@ -64,6 +68,11 @@ Write in your notes: Why does it matter that runners come with tools pre-install
 4. Start the runner — verify it shows as **Idle** in GitHub
 
 **Verify:** Your runner appears in the Runners list with a green dot.
+
+[Click here to view the workflow file]()
+
+![Image Alt]()
+![Image Alt]()
 
 ---
 
@@ -78,6 +87,11 @@ Write in your notes: Why does it matter that runners come with tools pre-install
 
 **Verify:** Check your machine — is the file there?
 
+[Click here to view the workflow file]()
+
+![Image Alt]()
+![Image Alt]()
+
 ---
 
 ### Task 5: Labels
@@ -86,6 +100,8 @@ Write in your notes: Why does it matter that runners come with tools pre-install
 3. Trigger it — does it still pick up the job?
 
 Write in your notes: Why are labels useful when you have multiple self-hosted runners?
+
+[Click here to view the workflow file]()
 
 ---
 
