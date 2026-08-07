@@ -108,13 +108,15 @@ Write in your notes: Why are labels useful when you have multiple self-hosted ru
 ### Task 6: GitHub-Hosted vs Self-Hosted
 Fill this in your notes:
 
-| | GitHub-Hosted | Self-Hosted |
-|---|---|---|
-| Who manages it? | ? | ? |
-| Cost | ? | ? |
-| Pre-installed tools | ? | ? |
-| Good for | ? | ? |
-| Security concern | ? | ? |
+
+| Category            | GitHub-Hosted | Self-Hosted |
+|---------------------|---------------|-------------|
+| **Who manages it?** | GitHub manages the infrastructure and updates | You manage the server, OS, dependencies, and runner updates |
+| **Cost**            | Free with GitHub Actions minutes (limits apply); extra minutes billed | Your hardware/VM costs, maintenance, electricity, scaling overhead |
+| **Pre-installed tools** | Comes with many pre-installed tools (Node.js, Python, Docker, etc.) | Only what you install; full control but requires setup |
+| **Good for**        | Quick setup, CI/CD pipelines, small to medium projects, teams who don’t want infra overhead | Large projects, custom environments, restricted networks, compliance-heavy workloads |
+| **Security concern** | Shared environment — risk of dependency on GitHub’s sandbox; limited customization | Full responsibility for patching, securing, and isolating runners; misconfigurations can expose sensitive data |
+
 
 ---
 
