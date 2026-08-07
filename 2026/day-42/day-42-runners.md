@@ -32,7 +32,7 @@ You only define the workflow.
 
 [Click here to view the workflow file](https://github.com/jeenicj97/github-actions-day41/blob/6a17581cfdc89748581d032994fc116754500ccd/.github/workflows/github-hosted.yml)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/fd4d8fddd0c58ebadd9fdab0eade730bc355a523/2026/day-42/day42-task1.jpg)
 ---
 
 ### Task 2: Explore What's Pre-installed
@@ -51,9 +51,9 @@ Write in your notes: Why does it matter that runners come with tools pre-install
    * Standard environment across builds
    * Reduces YAML complexity
 
-[Click here to view the workflow file]()
+[Click here to view the workflow file](.github/workflows/pre-install.yml)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/fd4d8fddd0c58ebadd9fdab0eade730bc355a523/2026/day-42/day42-task2.jpg)
 
 
 
@@ -69,10 +69,10 @@ Write in your notes: Why does it matter that runners come with tools pre-install
 
 **Verify:** Your runner appears in the Runners list with a green dot.
 
-[Click here to view the workflow file]()
+[Click here to view the workflow file](https://github.com/jeenicj97/github-actions-day41/blob/a58cb9c6149ac63fe82300a2e189f7326eccb371/.github/workflows/self-hosted.yml)
 
-![Image Alt]()
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/fd4d8fddd0c58ebadd9fdab0eade730bc355a523/2026/day-42/day41-task4.1.jpg)
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/fd4d8fddd0c58ebadd9fdab0eade730bc355a523/2026/day-42/day42-task3.2.jpg)
 
 ---
 
@@ -87,10 +87,11 @@ Write in your notes: Why does it matter that runners come with tools pre-install
 
 **Verify:** Check your machine — is the file there?
 
-[Click here to view the workflow file]()
+[Click here to view the workflow file](https://github.com/jeenicj97/github-actions-day41/blob/a58cb9c6149ac63fe82300a2e189f7326eccb371/.github/workflows/self-hosted.yml)
 
-![Image Alt]()
-![Image Alt]()
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/fd4d8fddd0c58ebadd9fdab0eade730bc355a523/2026/day-42/day42-task3.1.jpg)
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/fd4d8fddd0c58ebadd9fdab0eade730bc355a523/2026/day-42/day41-task4.2.jpg)
 
 ---
 
@@ -100,8 +101,7 @@ Write in your notes: Why does it matter that runners come with tools pre-install
 3. Trigger it — does it still pick up the job?
 
 Write in your notes: Why are labels useful when you have multiple self-hosted runners?
-
-[Click here to view the workflow file]()
+> Yes, it picks up
 
 ---
 
