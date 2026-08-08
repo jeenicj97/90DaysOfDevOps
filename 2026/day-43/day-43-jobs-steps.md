@@ -13,8 +13,9 @@ Create `.github/workflows/multi-job.yml` with 3 jobs:
 Make `test` run only **after** `build` succeeds.
 Make `deploy` run only **after** `test` succeeds.
 
-![Image Alt]()
-Click here to view workflow file(https://github.com/jeenicj97/github-actions-day43/blob/d22ed971a22041d6103a3e5bf374aa4e4badebe0/.github/workflows/multi-job.yml)
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-43/day43-task1.jpg)
+
+[Click here to view workflow file](https://github.com/jeenicj97/github-actions-day43/blob/d22ed971a22041d6103a3e5bf374aa4e4badebe0/.github/workflows/multi-job.yml)
 
 ---
 
@@ -24,8 +25,9 @@ In a new workflow, use environment variables at 3 levels:
 2. **Job level** — `ENVIRONMENT: staging`
 3. **Step level** — `VERSION: 1.0.0`
 
-![Image Alt]()
-Click here to view workflow file(https://github.com/jeenicj97/github-actions-day43/blob/34c1986cbd13fa344ce847fb3a7b931ca7412d5a/.github/workflows/env-vars.yml)
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-43/day43-task2.jpg)
+
+[Click here to view workflow file](https://github.com/jeenicj97/github-actions-day43/blob/34c1986cbd13fa344ce847fb3a7b931ca7412d5a/.github/workflows/env-vars.yml)
 
 ---
 
@@ -52,8 +54,9 @@ Click here to view workflow file(https://github.com/jeenicj97/github-actions-day
   Makes workflows dynamic, because jobs can adapt based on values generated earlier.
 
 
-![Image Alt]()
-Click here to view workflow file(https://github.com/jeenicj97/github-actions-day43/blob/211785aa1a6e0b2047fcc37b0440ecc8f786f2d1/.github/workflows/job-outputs.yml)
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-43/day43-task3.jpg)
+
+[Click here to view workflow file](https://github.com/jeenicj97/github-actions-day43/blob/211785aa1a6e0b2047fcc37b0440ecc8f786f2d1/.github/workflows/job-outputs.yml)
 
 ---
 
@@ -64,8 +67,9 @@ In a workflow, add:
 3. A job that only runs on **push** events, not on pull requests
 4. A step with `continue-on-error: true` — what does this do?
 
-![Image Alt]()
-Click here to view workflow file(https://github.com/jeenicj97/github-actions-day43/blob/4f2f65d23f3cf96f70d8422d9d21288510acfdc8/.github/workflows/conditionals.yml)
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-43/day43-task4.jpg)
+
+[Click here to view workflow file](https://github.com/jeenicj97/github-actions-day43/blob/4f2f65d23f3cf96f70d8422d9d21288510acfdc8/.github/workflows/conditionals.yml)
 
 ---
 
@@ -75,20 +79,9 @@ Create `.github/workflows/smart-pipeline.yml` that:
 2. Has a `lint` job and a `test` job running in parallel
 3. Has a `summary` job that runs after both, prints whether it's a `main` branch push or a feature branch push, and prints the commit message
 
----
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-43/day43-task5.jpg)
 
-## Hints
-- Job dependency: `needs: [job-name]`
-- Set output: `echo "date=$(date)" >> $GITHUB_OUTPUT`
-- Read output: `${{ needs.job-name.outputs.date }}`
-- Conditionals: `if: github.ref == 'refs/heads/main'`
-- Commit message: `${{ github.event.commits[0].message }}`
+[Click here to view workflow file](https://github.com/jeenicj97/github-actions-day43/blob/898d3d59cf3f56d322c62452d5643cdffe4e3039/.github/workflows/smart-pipeline.yml)
 
 ---
 
-## Documentation
-Create `day-43-jobs-steps.md` with:
-- Key workflow snippets
-- What `needs:` and `outputs:` do in your own words
-
----
