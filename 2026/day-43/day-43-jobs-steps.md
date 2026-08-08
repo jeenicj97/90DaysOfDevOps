@@ -34,7 +34,8 @@ Click here to view workflow file(https://github.com/jeenicj97/github-actions-day
 2. Create a second job that **reads that output** and prints it
 3. Pass the value using `outputs:` and `needs.<job>.outputs.<name>`
 
-Write in your notes: Why would you pass outputs between jobs?
+![Image Alt]()
+Click here to view workflow file(https://github.com/jeenicj97/github-actions-day43/blob/211785aa1a6e0b2047fcc37b0440ecc8f786f2d1/.github/workflows/job-outputs.yml)
 
 ---
 
