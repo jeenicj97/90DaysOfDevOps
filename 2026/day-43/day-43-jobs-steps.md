@@ -13,7 +13,8 @@ Create `.github/workflows/multi-job.yml` with 3 jobs:
 Make `test` run only **after** `build` succeeds.
 Make `deploy` run only **after** `test` succeeds.
 
-**Verify:** Check the workflow graph in the Actions tab — does it show the dependency chain?
+![Image Alt]()
+Click here to view workflow file(https://github.com/jeenicj97/github-actions-day43/blob/d22ed971a22041d6103a3e5bf374aa4e4badebe0/.github/workflows/multi-job.yml)
 
 ---
 
