@@ -34,6 +34,24 @@ Click here to view workflow file(https://github.com/jeenicj97/github-actions-day
 2. Create a second job that **reads that output** and prints it
 3. Pass the value using `outputs:` and `needs.<job>.outputs.<name>`
 
+#### Notes: Why Pass Outputs Between Jobs?
+
+- **[Share data](ca://s?q=Share_data_between_jobs)**  
+  Outputs let one job produce information (like a date, build number, or artifact path) that another job can reuse.
+
+- **[Avoid repetition](ca://s?q=Avoid_repetition_in_jobs)**  
+  Instead of recalculating the same value in multiple jobs, you compute it once and pass it along.
+
+- **[Coordinate jobs](ca://s?q=Coordinate_jobs_with_outputs)**  
+  Outputs act like “messages” between jobs, ensuring later jobs know what earlier jobs produced.
+
+- **[Real-world use](ca://s?q=Real_world_use_of_job_outputs)**  
+  Commonly used for version tags, Docker image names, deployment URLs, or test results.
+
+- **[Flexibility](ca://s?q=Flexibility_with_job_outputs)**  
+  Makes workflows dynamic, because jobs can adapt based on values generated earlier.
+
+
 ![Image Alt]()
 Click here to view workflow file(https://github.com/jeenicj97/github-actions-day43/blob/211785aa1a6e0b2047fcc37b0440ecc8f786f2d1/.github/workflows/job-outputs.yml)
 
