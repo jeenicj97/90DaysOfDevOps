@@ -24,10 +24,8 @@ In a new workflow, use environment variables at 3 levels:
 2. **Job level** — `ENVIRONMENT: staging`
 3. **Step level** — `VERSION: 1.0.0`
 
-Print all three in a single step and verify each is accessible.
-
-Then use a **GitHub context variable** — print the commit SHA and the actor (who triggered the run).
-
+![Image Alt]()
+Click here to view workflow file(https://github.com/jeenicj97/github-actions-day43/blob/34c1986cbd13fa344ce847fb3a7b931ca7412d5a/.github/workflows/env-vars.yml)
 ---
 
 ### Task 3: Job Outputs
