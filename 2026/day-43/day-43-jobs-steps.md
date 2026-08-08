@@ -64,6 +64,9 @@ In a workflow, add:
 3. A job that only runs on **push** events, not on pull requests
 4. A step with `continue-on-error: true` — what does this do?
 
+![Image Alt]()
+Click here to view workflow file(https://github.com/jeenicj97/github-actions-day43/blob/4f2f65d23f3cf96f70d8422d9d21288510acfdc8/.github/workflows/conditionals.yml)
+
 ---
 
 ### Task 5: Putting It Together
