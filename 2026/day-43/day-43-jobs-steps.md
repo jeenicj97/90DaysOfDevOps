@@ -26,6 +26,7 @@ In a new workflow, use environment variables at 3 levels:
 
 ![Image Alt]()
 Click here to view workflow file(https://github.com/jeenicj97/github-actions-day43/blob/34c1986cbd13fa344ce847fb3a7b931ca7412d5a/.github/workflows/env-vars.yml)
+
 ---
 
 ### Task 3: Job Outputs
