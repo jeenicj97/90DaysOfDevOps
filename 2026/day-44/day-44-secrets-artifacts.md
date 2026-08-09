@@ -21,7 +21,7 @@
 
 [Click here to view the workflow](https://github.com/jeenicj97/github-actions-day44/blob/main/.github/workflows/secrets.yml)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-44/day44-task1%262.jpg)
 
 ---
 
@@ -32,7 +32,7 @@
 
 [Click here to view the workflow](https://github.com/jeenicj97/github-actions-day44/blob/main/.github/workflows/artifacts.yml)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-44/day44-task3.jpg)
 
 ---
 
@@ -45,7 +45,7 @@ When are artifacts useful in real pipelines?
 
 [Click here to view the workflow](https://github.com/jeenicj97/github-actions-day44/blob/main/.github/workflows/artifact-between-jobs.yml)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-44/day44-task4.jpg)
 
 ---
 
@@ -62,7 +62,7 @@ Take any script from your earlier days (Python or Shell) and run it in CI:
 
 [Click here to view the workflow](https://github.com/jeenicj97/github-actions-day44/blob/main/.github/workflows/ci-test.yml)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-44/day44-task5.jpg)
 
 ---
 
@@ -73,7 +73,7 @@ Take any script from your earlier days (Python or Shell) and run it in CI:
 
 [Click here to view the workflow](https://github.com/jeenicj97/github-actions-day44/blob/main/.github/workflows/cache.yml)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-44/day44-task6.jpg)
 
 ---
 
