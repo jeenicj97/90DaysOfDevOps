@@ -1,15 +1,5 @@
 # Day 44 – Secrets, Artifacts & Running Real Tests in CI
 
-## Task
-Today your pipeline starts doing **real work** — storing sensitive values securely, saving build outputs, and running actual tests from your previous days.
-
----
-
-## Expected Output
-- New workflow files in your `github-actions-practice` repo
-- A markdown file: `day-44-secrets-artifacts.md`
-- A passing test run in CI
-
 ---
 
 ## Challenge Tasks
@@ -85,16 +75,3 @@ Create `day-44-secrets-artifacts.md` with:
 
 ---
 
-## Submission
-1. Add `day-44-secrets-artifacts.md` to `2026/day-44/`
-2. Commit and push to your fork
-
----
-
-## Learn in Public
-Share your first real test run passing in CI on LinkedIn.
-
-`#90DaysOfDevOps` `#DevOpsKaJosh` `#TrainWithShubham`
-
-Happy Learning!
-**TrainWithShubham**
