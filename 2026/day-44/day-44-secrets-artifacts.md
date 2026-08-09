@@ -71,5 +71,9 @@ Take any script from your earlier days (Python or Shell) and run it in CI:
 2. Run it twice — observe the time difference
 3. Write in your notes: What is being cached and where is it stored?
 
+[Click here to view the workflow](https://github.com/jeenicj97/github-actions-day44/blob/main/.github/workflows/cache.yml)
+
+![Image Alt]()
+
 ---
 
