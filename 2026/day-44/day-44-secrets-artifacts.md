@@ -40,7 +40,12 @@
 1. Job 1: generate a file and upload it as an artifact
 2. Job 2: download the artifact from Job 1 and use it (print its contents)
 
-Write in your notes: When would you use artifacts in a real pipeline?
+When are artifacts useful in real pipelines?
+> Artifacts are useful when one job produces files that need to be preserved or consumed later. For example, a build job can create a Docker build context, test reports, application packages, or compiled binaries and upload them as artifacts. Another job can download and deploy or analyze those files.
+
+[Click here to view the workflow](https://github.com/jeenicj97/github-actions-day44/blob/main/.github/workflows/artifact-between-jobs.yml)
+
+![Image Alt]()
 
 ---
 
