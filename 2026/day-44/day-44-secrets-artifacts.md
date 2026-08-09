@@ -10,12 +10,9 @@
 3. Create a workflow that reads it and prints: `The secret is set: true` (never print the actual value)
 4. Try to print `${{ secrets.MY_SECRET_MESSAGE }}` directly — what does GitHub show?
 
-# Why You Should Never Print Secrets in CI Logs
+#### Why You Should Never Print Secrets in CI Logs
  
-- **Logs persist** — stored/retained beyond the job run, often visible to anyone with repo/workflow read access
-- **Logs can leak further** — may get archived or exported to external logging systems
-- **Fork PR workflows** can trigger runs with broader, unintended log exposure
-- **Masking isn't foolproof** — GitHub only masks the *exact* secret string; anything derived or transformed from it can slip through unmasked
+> Secrets should never be printed in CI logs because CI logs may be accessible to people who should not have access to the secret. Logs can also be retained, downloaded, copied, or exposed through debugging. GitHub masks many secret values automatically, but masking is a safety mechanism, not a replacement for keeping secrets out of logs.
 
 ### Task 2: Use Secrets as Environment Variables
 1. Pass a secret to a step as an environment variable
