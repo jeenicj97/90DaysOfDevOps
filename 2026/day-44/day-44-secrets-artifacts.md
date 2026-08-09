@@ -30,7 +30,9 @@
 2. Use `actions/upload-artifact` to save it
 3. After the workflow runs, download the artifact from the Actions tab
 
-**Verify:** Can you see and download it from GitHub?
+[Click here to view the workflow](https://github.com/jeenicj97/github-actions-day44/blob/main/.github/workflows/artifacts.yml)
+
+![Image Alt]()
 
 ---
 
