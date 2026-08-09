@@ -60,29 +60,16 @@ Take any script from your earlier days (Python or Shell) and run it in CI:
 3. Intentionally break the script — verify the pipeline goes red
 4. Fix it — verify it goes green again
 
+[Click here to view the workflow](https://github.com/jeenicj97/github-actions-day44/blob/main/.github/workflows/ci-test.yml)
+
+![Image Alt]()
+
 ---
 
 ### Task 6: Caching
 1. Add `actions/cache` to a workflow that installs dependencies
 2. Run it twice — observe the time difference
 3. Write in your notes: What is being cached and where is it stored?
-
----
-
-## Hints
-- Secrets: `${{ secrets.SECRET_NAME }}`
-- Upload artifact: `uses: actions/upload-artifact@v4`
-- Download artifact: `uses: actions/download-artifact@v4`
-- Cache: `uses: actions/cache@v4`
-- GitHub masks secret values in logs automatically
-
----
-
-## Documentation
-Create `day-44-secrets-artifacts.md` with:
-- Screenshots of artifact download
-- Screenshot of your passing test run
-- What you learned about secrets management
 
 ---
 
