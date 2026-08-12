@@ -82,7 +82,7 @@ WARNING: This is a development server. Do not use it in a production deployment.
 
 [Click here to view workflow](https://github.com/jeenicj97/github-actions-day44/blob/main/.github/workflows/docker-publish.yml)
 
-![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-45/day45-1.jpghttps://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-45/day45-1.jpg)
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-45/day45-1.jpg)
 
 ![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-45/day45-task.jpg)
 
