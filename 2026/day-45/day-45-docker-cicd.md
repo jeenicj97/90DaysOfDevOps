@@ -17,8 +17,6 @@ Create `.github/workflows/docker-publish.yml` that:
 2. Checks out the code
 3. Builds the Docker image and tags it
 
-**Verify:** Check the build step logs — does the image build successfully?
-
 ---
 
 ### Task 3: Push to Docker Hub
@@ -27,14 +25,10 @@ Add steps to:
 2. Tag the image as `username/repo:latest` and also `username/repo:sha-<short-commit-hash>`
 3. Push both tags
 
-**Verify:** Go to Docker Hub — is your image there with both tags?
-
 ---
 
 ### Task 4: Only Push on Main
 Add a condition so the push step only runs on the `main` branch — not on feature branches or PRs.
-
-Test it: push to a feature branch and verify the image is built but NOT pushed.
 
 ---
 
@@ -42,6 +36,8 @@ Test it: push to a feature branch and verify the image is built but NOT pushed.
 1. Get the badge URL for your `docker-publish` workflow from the Actions tab
 2. Add it to your `README.md`
 3. Push — the badge should show green
+
+[![Docker Publish](https://github.com/jeenicj97/github-actions-day44/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/jeenicj97/github-actions-day44/actions/workflows/docker-publish.yml)
 
 ---
 
@@ -52,21 +48,43 @@ Test it: push to a feature branch and verify the image is built but NOT pushed.
 
 Write in your notes: What is the full journey from `git push` to a running container?
 
----
 
-## Hints
-- Docker login: `uses: docker/login-action@v3`
-- Build and push: `uses: docker/build-push-action@v5`
-- Short SHA: `${{ github.sha }}` (use `cut` or `slice` to get first 7 chars)
-- Badge URL format: `https://github.com/<user>/<repo>/actions/workflows/<file>.yml/badge.svg`
 
----
+```
+jeenicj@DESKTOP-BG3MAVI:~/day45/github-actions-day44/.github/workflows$ docker pull jeenicj97/repo:latest
+latest: Pulling from jeenicj97/repo
+26c307b5e35a: Already exists
+dffb4b798a6d: Already exists
+e757cd4ee070: Already exists
+a8bc142d2ea1: Already exists
+e61f92af617d: Pull complete
+4dd2747d6335: Pull complete
+4aa12e09b2a6: Pull complete
+f88f03dac5a4: Pull complete
+Digest: sha256:2d9682a7412fc9817902821ec3a05cd8e558a93fcdee2890cb6d4b5089bfb8a6
+Status: Downloaded newer image for jeenicj97/repo:latest
+docker.io/jeenicj97/repo:latest
 
-## Documentation
-Create `day-45-docker-cicd.md` with:
-- Your complete workflow YAML
-- Docker Hub link to your image
-- Screenshot of the pipeline run
-- The full journey described in Task 6
+jeenicj@DESKTOP-BG3MAVI:~/day45/github-actions-day44/.github/workflows$ docker ps
+CONTAINER ID   IMAGE                  COMMAND                  CREATED       STATUS                       PORTS                                                 NAMES
+a532681d81ec   kindest/node:v1.35.0   "/usr/local/bin/entr…"   5 days ago    Up About an hour             0.0.0.0:30080->30080/tcp, 127.0.0.1:34603->6443/tcp   devops-cluster-control-plane
+8db398b361ca   postgres:17-alpine     "docker-entrypoint.s…"   4 weeks ago   Up About an hour (healthy)   5432/tcp                                              postgres-ab
+2aba402d40da   kindest/node:v1.35.0   "/usr/local/bin/entr…"   5 weeks ago   Up About an hour                                                                   tws-cluster-worker
+jeenicj@DESKTOP-BG3MAVI:~/day45/github-actions-day44/.github/workflows$ docker run -p 5000:5000 jeenicj97/repo:latest
+ * Serving Flask app 'app'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.17.0.2:5000
+
+```
+
+[Link](https://github.com/jeenicj97/github-actions-day44/blob/main/.github/workflows/docker-publish.yml)
+
+![Image Alt]()
+
+![Image Alt]()
+
 
 ---
