@@ -7,9 +7,46 @@
 ### Task 1: Understand `workflow_call`
 Before writing any code, research and answer in your notes:
 1. What is a **reusable workflow**?
-2. What is the `workflow_call` trigger?
-3. How is calling a reusable workflow different from using a regular action (`uses:`)?
+   
+A **reusable workflow** is a GitHub Actions workflow that can be called by another workflow. Instead of writing the same jobs repeatedly across repositories, you create one workflow and reuse it wherever needed.
+   
+Benefits:
+- [Reduces duplicate code](ca://s?q=Explain_how_reusable_workflows_reduce_duplicate_code)  
+- [Easier maintenance](ca://s?q=Explain_easier_maintenance_with_reusable_workflows)  
+- [Standardizes CI/CD](ca://s?q=Explain_standardization_in_CI_CD_with_reusable_workflows) across repositories  
+- [Can accept inputs, secrets, and outputs](ca://s?q=Explain_inputs_secrets_outputs_in_reusable_workflows)
+  
+2. What is the `workflow_call` trigger?  
+
+`workflow_call` is a special trigger that allows a workflow to be invoked by another workflow
+
+Example
+```yaml
+on:
+  workflow_call:
+```
+
+3. How is calling a reusable workflow different from using a regular action (`uses:`)?  
+
+Reusable Workflow vs Regular Action
+| **[Reusable Workflow](ca://s?q=Explain_reusable_workflow_in_GitHub_Actions)** | **[Regular Action](ca://s?q=Explain_regular_action_in_GitHub_Actions)** |
+|---------------------------------------------|-----------------------------------------|
+| [Can contain multiple jobs](ca://s?q=Reusable_workflow_multiple_jobs) | [Usually contains steps only](ca://s?q=Regular_action_contains_steps_only) |
+| [Has its own runners](ca://s?q=Reusable_workflow_own_runners) | [Runs inside the caller job](ca://s?q=Regular_action_runs_inside_caller_job) |
+| [Uses workflow_call](ca://s?q=workflow_call_in_reusable_workflow) | [Uses action.yml](ca://s?q=action_yml_in_regular_action) |
+| [Can define inputs, secrets, outputs](ca://s?q=Reusable_workflow_inputs_secrets_outputs) | [Can define inputs and outputs](ca://s?q=Regular_action_inputs_outputs) |
+| [Best for complete CI/CD pipelines](ca://s?q=Reusable_workflow_for_CI_CD_pipelines) | [Best for reusable step logic](ca://s?q=Regular_action_for_step_logic) |
+
 4. Where must a reusable workflow file live?
+
+Reusable workflows must be stored inside the **[.github/workflows](ca://s?q=Explain_.github_workflows_directory_in_GitHub_Actions)** directory.
+
+Example:
+
+```plaintext
+.github/workflows/reusable-build.yml
+```
+
 
 ---
 
