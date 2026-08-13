@@ -47,7 +47,6 @@ Example:
 .github/workflows/reusable-build.yml
 ```
 
-
 ---
 
 ### Task 2: Create Your First Reusable Workflow
@@ -85,6 +84,10 @@ Create `.github/workflows/call-build.yml`:
 
 **Verify:** In the Actions tab, do you see the caller triggering the reusable workflow? Click into the job — can you see the inputs printed?
 
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-46/day46-task1-3.jpg)
+
+
 ---
 
 ### Task 4: Add Outputs to the Reusable Workflow
@@ -96,6 +99,15 @@ Extend `reusable-build.yml`:
    - Reads and prints the `build_version` output
 
 **Verify:** Does the second job print the version from the reusable workflow?
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-46/day46-task4.jpg)
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-46/day46-task4.1.jpg)
+
+
+[Click here to view reusable workflow](https://github.com/jeenicj97/github-actions-day46/blob/main/.github/workflows/reusable-build.yml)
+
+[Click here to view call workflow](https://github.com/jeenicj97/github-actions-day46/blob/main/.github/workflows/call-build.yml)
 
 ---
 
@@ -110,36 +122,25 @@ Create a **custom composite action** in your repo at `.github/actions/setup-and-
 
 **Verify:** Does your custom action run and print the greeting?
 
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-46/day46-task5.jpg)
+
+[Click here to view composite workflow](https://github.com/jeenicj97/github-actions-day46/blob/main/.github/workflows/composite-demo.yml)
+
+[Click here to view action.yml workflow](https://github.com/jeenicj97/github-actions-day46/blob/main/.github/actions/setup-and-greet/action.yml)
+
 ---
 
 ### Task 6: Reusable Workflow vs Composite Action
 Fill this in your notes:
 
-| | Reusable Workflow | Composite Action |
-|---|---|---|
-| Triggered by | `workflow_call` | `uses:` in a step |
-| Can contain jobs? | ? | ? |
-| Can contain multiple steps? | ? | ? |
-| Lives where? | ? | ? |
-| Can accept secrets directly? | ? | ? |
-| Best for | ? | ? |
+| **Feature** | **[Reusable Workflow](ca://s?q=Explain_reusable_workflow_in_GitHub_Actions)** | **[Composite Action](ca://s?q=Explain_composite_action_in_GitHub_Actions)** |
+|-------------|---------------------------------------------|---------------------------------------------|
+| [Triggered by](ca://s?q=Reusable_workflow_triggered_by) | `workflow_call` | `uses:` in a workflow step |
+| [Can contain jobs?](ca://s?q=Reusable_workflow_can_contain_jobs) | ✅ Yes | ❌ No |
+| [Can contain multiple steps?](ca://s?q=Reusable_workflow_multiple_steps) | ✅ Yes | ✅ Yes |
+| [Lives where?](ca://s?q=Reusable_workflow_location) | `.github/workflows/` | Any folder containing `action.yml` (commonly `.github/actions/`) |
+| [Can accept secrets directly?](ca://s?q=Reusable_workflow_accept_secrets) | ✅ Yes | ❌ No (passed as inputs or env vars by the caller) |
+| [Best for](ca://s?q=Reusable_workflow_best_for) | Entire CI/CD pipelines and multi-job workflows | Reusable groups of steps within a job |
 
----
-
-## Hints
-- Reusable workflows must be in `.github/workflows/` directory
-- Caller syntax: `uses: ./.github/workflows/file.yml` (same repo) or `uses: org/repo/.github/workflows/file.yml@main` (cross-repo)
-- Composite action: `action.yml` with `runs: using: "composite"`
-- Reusable workflow outputs: `on: workflow_call: outputs: name: value: ${{ jobs.job-id.outputs.name }}`
-- A reusable workflow can be called by at most 20 unique caller workflows in a single run
-
----
-
-## Documentation
-Create `day-46-reusable-workflows.md` with:
-- Your reusable workflow and caller workflow YAML
-- Your composite action YAML
-- The comparison table from Task 6
-- Screenshot of the caller workflow triggering the reusable one
 
 ---
