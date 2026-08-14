@@ -14,7 +14,7 @@ Create `.github/workflows/pr-lifecycle.yml` that triggers on `pull_request` with
    - Print the source branch and target branch
 3. Add a conditional step that only runs when the PR is **merged** (closed + merged = true)
 
-[Click here to view the wprkflow](https://github.com/jeenicj97/github-actions-day47/blob/7ef690f2a8f26a38eabfe5206b228e43582bdbea/.github/workflows/pr-lifecycle.yml)
+[Click here to view the workflow](https://github.com/jeenicj97/github-actions-day47/blob/7ef690f2a8f26a38eabfe5206b228e43582bdbea/.github/workflows/pr-lifecycle.yml)
 
 ![Image Alt]()
 
@@ -36,7 +36,12 @@ Create `.github/workflows/pr-checks.yml` — a real-world PR gate:
    - Reads the PR body: `${{ github.event.pull_request.body }}`
    - Warns (but doesn't fail) if the PR description is empty
 
-**Verify:** Open a PR from a badly named branch — does the check fail?
+[Click here to view the workflow](https://github.com/jeenicj97/github-actions-day47/blob/1580809cd943e2eb1a3ca95c58dcf0c9c8e6ac6a/.github/workflows/pr-checks.yml)
+
+![Image Alt]()
+
+![Image Alt]()
+
 
 ---
 
