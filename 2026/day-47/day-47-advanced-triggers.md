@@ -14,7 +14,12 @@ Create `.github/workflows/pr-lifecycle.yml` that triggers on `pull_request` with
    - Print the source branch and target branch
 3. Add a conditional step that only runs when the PR is **merged** (closed + merged = true)
 
-Test it: create a PR, push an update to it, then merge it. Watch the workflow fire each time with a different event type.
+[Click here to view the wprkflow](https://github.com/jeenicj97/github-actions-day47/blob/7ef690f2a8f26a38eabfe5206b228e43582bdbea/.github/workflows/pr-lifecycle.yml)
+
+![Image Alt]()
+
+![Image Alt]()
+
 
 ---
 
