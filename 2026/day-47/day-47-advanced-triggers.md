@@ -54,10 +54,24 @@ Create `.github/workflows/scheduled-tasks.yml`:
 
 Write in your notes:
 - The cron expression for: every weekday at 9 AM IST
-- The cron expression for: first day of every month at midnight
-- Why GitHub says scheduled workflows may be delayed or skipped on inactive repos
+  GitHub uses UTC
+  9:00 AM IST = 3:30 AM UTC  
+  `30 3 * * 1-5`
+  
+- The cron expression for: first day of every month at midnight  
+  `0 0 1 * *`
+  
+- Why GitHub says scheduled workflows may be delayed or skipped on inactive repos  
+   * GitHub Actions shares runners among repositories.
+   * Scheduled jobs are best effort, not guaranteed exactly on time.
+   * Inactive repositories may have scheduled workflows disabled or delayed.
+   * High platform load can also delay execution.
 
-**Important:** Also add `workflow_dispatch` so you can test it manually without waiting for the schedule.
+
+
+[Click here to view the workflow](https://github.com/jeenicj97/github-actions-day47/blob/main/.github/workflows/scheduled-tasks.yml)
+
+![Image Alt]()
 
 ---
 
