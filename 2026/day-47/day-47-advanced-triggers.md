@@ -134,29 +134,19 @@ Create two workflows:
      -f client_payload='{"environment":"production"}'
    ```
 
-Write in your notes: When would an external system (like a Slack bot or monitoring tool) trigger a pipeline?
+Write in your notes: When would an external system (like a Slack bot or monitoring tool) trigger a pipeline?  
+
+An external system uses repository_dispatch when the trigger condition isn't something GitHub can see on its own — no commit, PR, or schedule involved. A few real examples:  
+
+   * ChatOps — someone types /deploy production in Slack, and a bot calls the dispatch API to kick off the deploy workflow.
+   * Monitoring tools — Datadog/PagerDuty detects an error spike and auto-triggers a rollback workflow.
+   * Cross-repo pipelines — a shared library repo publishes a new version and dispatches a rebuild trigger to a dependent app repo.
+   * CMS webhooks — someone publishes content in a headless CMS, triggering a site rebuild with no code change involved.  
+
+The common thread: the event happened outside your repo, so GitHub needs to be told about it via API instead of observing it directly.
+
+
+[Click here to view the workflow](https://github.com/jeenicj97/github-actions-day47/blob/main/.github/workflows/external-trigger.yml)
 
 ---
 
-## Hints
-- PR merge check: `if: github.event.pull_request.merged == true`
-- Cron syntax: `minute hour day-of-month month day-of-week`
-- Scheduled workflows only run on the **default branch**
-- `workflow_run` gives you access to the triggering workflow's conclusion and artifacts
-- `repository_dispatch` requires a personal access token with `repo` scope
-- Path filters use glob patterns — `**` matches nested directories
-
----
-
-## Documentation
-Create `day-47-advanced-triggers.md` with:
-- Your workflow YAML files
-- The cron expressions from Task 3
-- Screenshot of the PR checks running on a pull request
-- Explanation of `workflow_run` vs `workflow_call` in your own words
-
----
-
-
-Happy Learning!
-**TrainWithShubham**
