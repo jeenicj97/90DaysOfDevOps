@@ -112,7 +112,14 @@ Create two workflows:
    - Only proceed if the triggering workflow **succeeded** (`${{ github.event.workflow_run.conclusion == 'success' }}`)
    - Print a warning and exit if it failed
 
-**Verify:** Push a commit — does the test workflow run first, then trigger the deploy workflow?
+
+[Click here to view test workflow](https://github.com/jeenicj97/github-actions-day47/blob/main/.github/workflows/tests.yml)
+
+[Click here to view deploy-after-test workflow](https://github.com/jeenicj97/github-actions-day47/blob/main/.github/workflows/deploy-after-tests.yml)
+
+![Image Alt]()
+
+![Image Alt]()
 
 ---
 
