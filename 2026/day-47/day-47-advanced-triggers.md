@@ -16,9 +16,11 @@ Create `.github/workflows/pr-lifecycle.yml` that triggers on `pull_request` with
 
 [Click here to view the workflow](https://github.com/jeenicj97/github-actions-day47/blob/7ef690f2a8f26a38eabfe5206b228e43582bdbea/.github/workflows/pr-lifecycle.yml)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-47/day47-task1.jpg)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-47/day47-task1pr-merged.jpg)
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-47/day47-task1pr-not.jpg)
 
 
 ---
