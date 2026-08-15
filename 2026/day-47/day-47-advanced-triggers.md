@@ -40,9 +40,9 @@ Create `.github/workflows/pr-checks.yml` — a real-world PR gate:
 
 [Click here to view the workflow](https://github.com/jeenicj97/github-actions-day47/blob/1580809cd943e2eb1a3ca95c58dcf0c9c8e6ac6a/.github/workflows/pr-checks.yml)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-47/day47-task2.jpg)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-47/day47-task2.2.jpg)
 
 
 ---
@@ -73,7 +73,7 @@ Write in your notes:
 
 [Click here to view the workflow](https://github.com/jeenicj97/github-actions-day47/blob/main/.github/workflows/scheduled-tasks.yml)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-47/day47-task3.jpg)
 
 ---
 
@@ -98,6 +98,11 @@ Create `.github/workflows/smart-triggers.yml`:
 
 Write in your notes: When would you use `paths` vs `paths-ignore`?
 
+[Click here to view the workflow](https://github.com/jeenicj97/github-actions-day47/blob/main/.github/workflows/smart-triggers.yml)
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-47/day47-task4.1.jpg)
+
+
 ---
 
 ### Task 5: `workflow_run` — Chain Workflows Together
@@ -119,9 +124,9 @@ Create two workflows:
 
 [Click here to view deploy-after-test workflow](https://github.com/jeenicj97/github-actions-day47/blob/main/.github/workflows/deploy-after-tests.yml)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-47/day47-task5.jpg)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-47/day47-task5.1.jpg)
 
 ---
 
