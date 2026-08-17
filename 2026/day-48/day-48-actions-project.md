@@ -28,6 +28,8 @@ Create `.github/workflows/reusable-build-test.yml`:
 
 This workflow does NOT deploy — it only builds and tests.
 
+[Click here to view the reusable-build-test workflow](https://github.com/jeenicj97/github-actions-capstone/blob/main/.github/workflows/reusable-build-test.yml)
+
 ---
 
 ### Task 3: Reusable Workflow — Docker Build & Push
@@ -40,6 +42,8 @@ Create `.github/workflows/reusable-docker.yml`:
    - Log in to Docker Hub
    - Build and push the image with the given tag
    - Set output: `image_url` with the full image path
+
+[Click here to view the reusable-docker workflow](https://github.com/jeenicj97/github-actions-capstone/blob/main/.github/workflows/reusable-docker.yml)
 
 ---
 
@@ -55,6 +59,13 @@ Create `.github/workflows/pr-pipeline.yml`:
 
 **Verify:** Open a PR — does it run tests only (no Docker push)?
 
+[Click here to view the pr-pipeline workflow](https://github.com/jeenicj97/github-actions-capstone/blob/main/.github/workflows/pr-pipeline.yml)
+
+![Image Alt]()
+
+![Image Alt]()
+
+
 ---
 
 ### Task 5: Main Branch Pipeline
@@ -69,6 +80,13 @@ Create `.github/workflows/main-pipeline.yml`:
    - Requires manual approval if you've set up environment protection rules
 
 **Verify:** Merge a PR to `main` — does it run tests → build Docker → deploy in sequence?
+
+
+[Click here to view the main-pipeline workflow](https://github.com/jeenicj97/github-actions-capstone/blob/main/.github/workflows/main-pipeline.yml)
+
+![Image Alt]()
+
+![Image Alt]()
 
 ---
 
