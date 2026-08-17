@@ -107,6 +107,10 @@ Create `.github/workflows/health-check.yml`:
    echo "- Time: $(date)" >> $GITHUB_STEP_SUMMARY
    ```
 
+[Click here to view the main-pipeline workflow](https://github.com/jeenicj97/github-actions-capstone/blob/main/.github/workflows/health-check.yml)
+
+![Image Alt]()
+
 ---
 
 ### Task 7: Add Badges & Documentation
@@ -134,14 +138,56 @@ Want to go above and beyond? Add a **DevSecOps** step to your main pipeline:
 
 ---
 
-## Documentation
-Create `day-48-actions-project.md` with:
-- Your pipeline architecture (the flow diagram from Task 7)
-- All workflow YAML files
-- Screenshot of a PR running the test-only pipeline
-- Screenshot of a main branch push running the full pipeline
-- Docker Hub link to your pushed image
-- What you'd improve next
+## Pipeline Architecture  
+
+```
+                Pull Request
+                      │
+                      ▼
+          Reusable Build & Test
+                      │
+                      ▼
+             PR Checks Passed
+
+────────────────────────────────────
+
+             Merge into main
+                      │
+                      ▼
+          Reusable Build & Test
+                      │
+                      ▼
+         Docker Build & Push
+                      │
+                      ▼
+          Trivy Security Scan
+                      │
+                      ▼
+        Production Deployment
+
+────────────────────────────────────
+
+        Every 12 Hours (Cron)
+                      │
+                      ▼
+        Pull Docker Image
+                      │
+                      ▼
+         Run Health Check
+                      │
+                      ▼
+         Publish Run Summary
+```
+
+## Docker Hub Link  
+
+https://hub.docker.com/repository/docker/jeenicj97/gha-capstone
+
+
+## To view full project repository  
+
+[Click here to view github-actions-capstone](https://github.com/jeenicj97/github-actions-capstone)
+
 
 ---
 
