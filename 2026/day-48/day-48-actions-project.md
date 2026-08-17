@@ -127,16 +127,10 @@ Want to go above and beyond? Add a **DevSecOps** step to your main pipeline:
 2. Fail the pipeline if any **CRITICAL** severity CVE is found
 3. Upload the scan report as an artifact
 
-This is a preview of what you'll do in depth on **Day 49**. If you get this working today, you're already thinking like a DevSecOps engineer.
+[Click here to view the main-pipeline(with trivy scan) workflow](https://github.com/jeenicj97/github-actions-capstone/blob/main/.github/workflows/main-pipeline.yml)
 
----
+![Image Alt]()
 
-## Hints
-- Environment protection: Repo Settings → Environments → Add `production` → enable "Required reviewers"
-- `$GITHUB_STEP_SUMMARY` renders markdown in the Actions run summary page
-- Short SHA for tags: `$(echo ${{ github.sha }} | cut -c1-7)`
-- Reusable workflow outputs: accessed via `${{ needs.<job>.outputs.<name> }}`
-- Use `actions/github-script` if you want to post PR comments programmatically
 
 ---
 
