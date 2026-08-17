@@ -61,9 +61,9 @@ Create `.github/workflows/pr-pipeline.yml`:
 
 [Click here to view the pr-pipeline workflow](https://github.com/jeenicj97/github-actions-capstone/blob/main/.github/workflows/pr-pipeline.yml)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-48/day48-task1-4a.jpg)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-48/day48-task1-4.jpg)
 
 
 ---
@@ -84,9 +84,9 @@ Create `.github/workflows/main-pipeline.yml`:
 
 [Click here to view the main-pipeline workflow](https://github.com/jeenicj97/github-actions-capstone/blob/main/.github/workflows/main-pipeline.yml)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-48/day48-task5-a.jpg%20.jpg)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-48/day48-task5.jpg)
 
 ---
 
@@ -109,7 +109,7 @@ Create `.github/workflows/health-check.yml`:
 
 [Click here to view the main-pipeline workflow](https://github.com/jeenicj97/github-actions-capstone/blob/main/.github/workflows/health-check.yml)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-48/day48-task6.jpg)
 
 ---
 
@@ -121,8 +121,17 @@ Create `.github/workflows/health-check.yml`:
    Merge to main → build & test → Docker build & push → deploy
    Every 12 hours → health check
    ```
-3. Fill in your notes: What would you add next? (Slack notifications? Multi-environment? Rollback?)
+3. Fill in your notes: What would you add next? (Slack notifications? Multi-environment? Rollback?)  
 
+#### Future Improvements
+- Slack or Microsoft Teams notifications
+- Multi-environment deployments (dev, staging, production)
+- Automatic rollback on deployment failure
+- Code coverage reporting
+- Integration tests
+- Kubernetes deployment
+- Dependency and secret scanning
+- 
 ---
 
 ## Brownie Points: Add Security to Your Pipeline
@@ -133,7 +142,7 @@ Want to go above and beyond? Add a **DevSecOps** step to your main pipeline:
 
 [Click here to view the main-pipeline(with trivy scan) workflow](https://github.com/jeenicj97/github-actions-capstone/blob/main/.github/workflows/main-pipeline.yml)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-48/day48-brownie.jpg)
 
 
 ---
