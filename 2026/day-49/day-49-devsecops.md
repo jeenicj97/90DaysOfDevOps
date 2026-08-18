@@ -45,7 +45,6 @@ Add this step to your main branch pipeline (after Docker build, before deploy):
     exit-code: '1'
     severity: 'CRITICAL,HIGH'
 ```
-
 What this does:
 - `trivy` scans your Docker image for known CVEs (Common Vulnerabilities and Exposures)
 - `format: 'table'` prints a readable table in the logs
@@ -56,7 +55,40 @@ Push and check the Actions tab. Read the scan output.
 
 **Verify:** Can you see the vulnerability table in the logs? Did it pass or fail?
 
-Write in your notes: What CVEs (if any) were found? What base image are you using?
+Write in your notes: What CVEs (if any) were found? What base image are you using?  
+
+Found below CVE's. To correct this - I replaced slim to alpine image size.
+```
+jeenicj97/gha-capstone:latest (debian 13.6)
+  ===========================================
+  Total: 4 (CRITICAL: 4)
+  
+  ┌───────────┬────────────────┬──────────┬──────────────┬───────────────────┬───────────────┬──────────────────────────────────────────────────────────────┐
+  │  Library  │ Vulnerability  │ Severity │    Status    │ Installed Version │ Fixed Version │                            Title                             │
+  ├───────────┼────────────────┼──────────┼──────────────┼───────────────────┼───────────────┼──────────────────────────────────────────────────────────────┤
+  │ perl-base │ CVE-2026-13221 │ CRITICAL │ affected     │ 5.40.1-6          │               │ Perl versions through 5.43.9 produce silently incorrect      │
+  │           │                │          │              │                   │               │ regular expres ...                                           │
+  │           │                │          │              │                   │               │ https://avd.aquasec.com/nvd/cve-2026-13221                   │
+  │           ├────────────────┤          ├──────────────┤                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+  │           │ CVE-2026-42496 │          │ fix_deferred │                   │               │ perl-archive-tar: perl-archive-tar: Path traversal via       │
+  │           │                │          │              │                   │               │ crafted symlinks allows arbitrary file access                │
+  │           │                │          │              │                   │               │ https://avd.aquasec.com/nvd/cve-2026-42496                   │
+  │           ├────────────────┤          ├──────────────┤                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+  │           │ CVE-2026-57433 │          │ affected     │                   │               │ Storable versions before 3.41 for Perl have a signed integer │
+  │           │                │          │              │                   │               │ overflow ...                                                 │
+  │           │                │          │              │                   │               │ https://avd.aquasec.com/nvd/cve-2026-57433                   │
+  │           ├────────────────┤          │              │                   ├───────────────┼──────────────────────────────────────────────────────────────┤
+  │           │ CVE-2026-8376  │          │              │                   │               │ perl: Perl: Heap buffer overflow when compiling regular      │
+  │           │                │          │              │                   │               │ expressions on 32-bit builds...                              │
+  │           │                │          │              │                   │               │ https://avd.aquasec.com/nvd/cve-2026-8376                    │
+  └───────────┴────────────────┴──────────┴──────────────┴───────────────────┴───────────────┴──────────────────────────────────────────────────────────────┘
+  Error: Process completed with exit code 1.
+```
+
+
+![Image Alt]()
+
+
 
 ---
 
