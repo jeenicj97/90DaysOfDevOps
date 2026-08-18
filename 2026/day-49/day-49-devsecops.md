@@ -87,7 +87,7 @@ Write in your notes: What CVEs (if any) were found? What base image are you usin
     ```
 
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-49/day48-brownie.jpg)
 
 
 ---
@@ -101,9 +101,9 @@ GitHub can automatically detect if someone pushes a secret (API key, token, pass
 
 That's it — no workflow changes needed. GitHub does this automatically.
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-49/day49-task2.jpg)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-49/day49-task2a.jpg)
 
 
 Write in your notes:
@@ -143,7 +143,7 @@ Test it:
 
 **Verify:** Does the dependency review show up as a check on your PR?
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-49/day49-task3.jpg)
 
 ---
 
@@ -276,7 +276,7 @@ Add SARIF output to Trivy and upload it — your scan results will appear in the
     sarif_file: 'trivy-results.sarif'
 ```
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-49/day49-brownie.jpg)
 
 
 ### Learn About OIDC (Keyless Authentication)  
