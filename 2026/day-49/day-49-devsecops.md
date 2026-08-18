@@ -122,8 +122,6 @@ Write in your notes:
     - **Secret Scanning**: Raises a security alert if secrets are already committed.  
     - **Best Practice**: Immediately **revoke and rotate** the AWS key.
 
-
-
 ---
 
 ### Task 3: Scan Dependencies for Known Vulnerabilities
@@ -144,6 +142,8 @@ Test it:
 2. Check the Actions tab — did the dependency review run?
 
 **Verify:** Does the dependency review show up as a check on your PR?
+
+![Image Alt]()
 
 ---
 
@@ -166,6 +166,22 @@ permissions:
 Update at least 2 of your existing workflow files with a `permissions` block.
 
 Write in your notes: Why is it a good practice to limit workflow permissions? What could go wrong if a compromised action has write access to your repo?
+
+  #### Why is it good practice to limit workflow permissions?
+  - **Principle of Least Privilege**: Workflows should only have the access they truly need.
+  - **Reduced Attack Surface**: Minimizes the risk if an action or dependency is compromised.
+  - **Repository Integrity**: Prevents unauthorized or accidental modifications to code, issues, or pull requests.
+  - **Security Compliance**: Aligns with best practices for secure CI/CD pipelines.
+  
+  #### What could go wrong with broad permissions?
+  - **Push malicious code** into your repository.
+  - **Modify or delete files**, breaking builds or pipelines.
+  - **Tamper with pull requests** (e.g., approving or merging without review).
+  - **Exfiltrate sensitive data** such as secrets or tokens.
+  
+  **Bottom line**: Restricting permissions ensures workflows remain safe, predictable, and trustworthy.
+
+
 
 ---
 
@@ -191,6 +207,46 @@ Always active
 ```
 
 Draw this diagram in your notes. You just built a **DevSecOps pipeline** — security is now part of your automation, not an afterthought.
+
+```
+                Pull Request
+                      │
+                      ▼
+              Build & Test
+                      │
+                      ▼
+          Dependency Review Scan
+                      │
+                      ▼
+            PR Checks Pass/Fail
+
+──────────────────────────────────────
+
+               Merge to Main
+                      │
+                      ▼
+              Build & Test
+                      │
+                      ▼
+             Docker Build
+                      │
+                      ▼
+         Trivy Image Vulnerability Scan
+                      │
+          (Fail on HIGH/CRITICAL)
+                      │
+                      ▼
+             Docker Push
+                      │
+                      ▼
+          Deploy to Production
+
+──────────────────────────────────────
+
+        GitHub Secret Scanning
+        Push Protection
+        (Always Active)
+```
 
 ---
 
@@ -220,8 +276,12 @@ Add SARIF output to Trivy and upload it — your scan results will appear in the
     sarif_file: 'trivy-results.sarif'
 ```
 
-### Learn About OIDC (Keyless Authentication)
-Instead of storing cloud credentials as long-lived secrets, GitHub Actions can use OIDC to get short-lived tokens automatically. Research: "GitHub Actions OIDC" — it's how production pipelines authenticate to AWS, GCP, and Azure without storing any keys.
+![Image Alt]()
+
+
+### Learn About OIDC (Keyless Authentication)  
+
+  Instead of storing long-lived cloud credentials in GitHub Secrets, GitHub Actions can use OpenID Connect (OIDC) to obtain temporary, short-lived access tokens directly from cloud providers such as AWS, Azure, or GCP.      This improves security by eliminating the need to store permanent credentials in the repository.
 
 ---
 
@@ -235,10 +295,30 @@ Instead of storing cloud credentials as long-lived secrets, GitHub Actions can u
 ---
 
 ## Documentation
-Create `day-49-devsecops.md` with:
 - What DevSecOps means in your own words (2-3 sentences)
-- Screenshot of Trivy scan output in your pipeline
-- Your updated pipeline diagram with security steps
+  
+    DevSecOps integrates security into the CI/CD pipeline so vulnerabilities are detected automatically during development instead of after deployment. By automating security checks, teams can identify and fix issues earlier, reducing the risk of deploying vulnerable applications.
+
 - What you learned about secret scanning and dependency review
 
+  #### Secret Scanning  
+  
+  Secret Scanning detects secrets that have already been committed to the repository.  
+  Push Protection blocks commits containing supported secrets before they are pushed to GitHub.  
+  If GitHub detects a leaked AWS access key, it generates a security alert (or blocks the push if Push Protection is enabled). The exposed credential should be revoked and replaced immediately.
+  
+  #### Dependency Review  
+  
+  The Dependency Review Action checks newly introduced dependencies in pull requests against GitHub's vulnerability database. If a dependency contains a critical vulnerability, the PR check fails, preventing the insecure dependency from being merged.
+
+---
+
+#### What I Learned
+
+- Security can be integrated directly into CI/CD pipelines.
+- Trivy scans Docker images for known vulnerabilities (CVEs).
+- Dependency Review helps detect vulnerable packages before merging.
+- Secret Scanning and Push Protection help prevent credential leaks.
+- Limiting workflow permissions follows the principle of least privilege and reduces security risks.
+  
 ---
