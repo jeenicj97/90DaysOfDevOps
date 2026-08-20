@@ -311,26 +311,25 @@ kubectl get pods
 
 Notice that when you delete a standalone Pod, it is gone forever. There is no controller to recreate it. This is why in production you use Deployments (coming on Day 52) instead of bare Pods.
 
+
+```
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl delete pod nginx-pod.yml
+Error from server (NotFound): pods "nginx-pod.yml" not found
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl delete pod nginx-pod.yaml
+Error from server (NotFound): pods "nginx-pod.yaml" not found
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl delete pod nginx-pod
+pod "nginx-pod" deleted from default namespace
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl delete pod redis-pod
+pod "redis-pod" deleted from default namespace
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl delete pod busybox-pod
+pod "busybox-pod" deleted from default namespace
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl get pods
+No resources found in default namespace.
+jeenicj@DESKTOP-BG3MAVI:~/day51$
+```
+
 ---
 
-## Hints
-- `kubectl apply -f` creates or updates a resource from a file
-- `kubectl get pods -o wide` shows the node and IP address
-- `kubectl describe pod <name>` shows events — very useful for debugging
-- `kubectl logs <name>` shows container stdout/stderr
-- `kubectl exec -it <name> -- /bin/sh` gives you a shell (use `/bin/sh` if `/bin/bash` is not available)
-- Labels are just key-value pairs — they have no meaning to Kubernetes itself, only to selectors
-- `--dry-run=client -o yaml` is your best friend for generating manifest templates
-
----
-
-## Documentation
-Create `day-51-pods.md` with:
-- The four required fields of a Kubernetes manifest and what each does
-- Your nginx, busybox, and third pod manifests
-- Difference between imperative (`kubectl run`) and declarative (`kubectl apply -f`)
-- Screenshot of your pods running
-- What happens when you delete a standalone Pod?
 
 ---
 
