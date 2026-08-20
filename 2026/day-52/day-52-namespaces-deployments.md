@@ -26,6 +26,29 @@ These are the control plane components keeping your cluster alive. Do not touch 
 
 **Verify:** How many pods are running in `kube-system`?
 
+```
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl get namespaces
+NAME                 STATUS   AGE
+default              Active   104m
+kube-node-lease      Active   104m
+kube-public          Active   104m
+kube-system          Active   104m
+local-path-storage   Active   104m
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl get pods -n kube-system
+NAME                                                   READY   STATUS    RESTARTS      AGE
+coredns-589f44dc88-k9jdj                               1/1     Running   0             104m
+coredns-589f44dc88-xcxrb                               1/1     Running   0             104m
+etcd-devops-cluster-control-plane                      1/1     Running   0             104m
+kindnet-bcqp9                                          1/1     Running   0             104m
+kube-apiserver-devops-cluster-control-plane            1/1     Running   0             104m
+kube-controller-manager-devops-cluster-control-plane   1/1     Running   2 (39m ago)   104m
+kube-proxy-htsqp                                       1/1     Running   0             104m
+kube-scheduler-devops-cluster-control-plane            1/1     Running   2 (39m ago)   104m
+jeenicj@DESKTOP-BG3MAVI:~/day51$
+
+```
+
 ---
 
 ### Task 2: Create and Use Custom Namespaces
