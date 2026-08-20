@@ -92,6 +92,54 @@ Notice that `kubectl get pods` without `-n` only shows the `default` namespace. 
 
 **Verify:** Does `kubectl get pods` show these pods? What about `kubectl get pods -A`?
 
+
+```
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl create namespace dev
+namespace/dev created
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl create namespace staging
+namespace/staging created
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl get namespaces
+NAME                 STATUS   AGE
+default              Active   108m
+dev                  Active   73s
+kube-node-lease      Active   108m
+kube-public          Active   108m
+kube-system          Active   108m
+local-path-storage   Active   108m
+staging              Active   8s
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ vim namespace.yaml
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl apply -f namespace.yaml
+namespace/production created
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl run nginx-dev --image=nginx:latest -n dev
+pod/nginx-dev created
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl run nginx-staging --image=nginx:latest -n staging
+pod/nginx-staging created
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl get pods -A
+NAMESPACE            NAME                                                   READY   STATUS    RESTARTS      AGE
+dev                  nginx-dev                                              1/1     Running   0             59s
+kube-system          coredns-589f44dc88-k9jdj                               1/1     Running   0             111m
+kube-system          coredns-589f44dc88-xcxrb                               1/1     Running   0             111m
+kube-system          etcd-devops-cluster-control-plane                      1/1     Running   0             111m
+kube-system          kindnet-bcqp9                                          1/1     Running   0             111m
+kube-system          kube-apiserver-devops-cluster-control-plane            1/1     Running   0             111m
+kube-system          kube-controller-manager-devops-cluster-control-plane   1/1     Running   2 (45m ago)   111m
+kube-system          kube-proxy-htsqp                                       1/1     Running   0             111m
+kube-system          kube-scheduler-devops-cluster-control-plane            1/1     Running   2 (45m ago)   111m
+local-path-storage   local-path-provisioner-855c7b7774-nblh8                1/1     Running   0             111m
+staging              nginx-staging                                          1/1     Running   0             8s
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl get pods
+No resources found in default namespace.
+
+```
+
+
 ---
 
 ### Task 3: Create Your First Deployment
