@@ -276,9 +276,32 @@ kubectl get pods -n dev
 
 Watch how Kubernetes creates or terminates pods to match the desired count.
 
+```
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl scale deployment nginx-deployment --replicas=5 -n dev
+deployment.apps/nginx-deployment scaled
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl get pods -n dev
+NAME                                READY   STATUS    RESTARTS   AGE
+nginx-deployment-68cd4c497b-c28s8   1/1     Running   0          3m27s
+nginx-deployment-68cd4c497b-d4r5q   1/1     Running   0          9s
+nginx-deployment-68cd4c497b-fqmt7   1/1     Running   0          9s
+nginx-deployment-68cd4c497b-t4z5g   1/1     Running   0          21m
+nginx-deployment-68cd4c497b-zj8k5   1/1     Running   0          21m
+nginx-dev                           1/1     Running   0          49m
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl scale deployment nginx-deployment --replicas=2 -n dev
+deployment.apps/nginx-deployment scaled
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl get pods -n dev
+NAME                                READY   STATUS    RESTARTS   AGE
+nginx-deployment-68cd4c497b-t4z5g   1/1     Running   0          21m
+nginx-deployment-68cd4c497b-zj8k5   1/1     Running   0          21m
+nginx-dev                           1/1     Running   0          50m
+jeenicj@DESKTOP-BG3MAVI:~/day51$
+
+```
+
 You can also scale by editing the manifest — change `replicas: 4` in your YAML file and run `kubectl apply -f nginx-deployment.yaml` again.
 
 **Verify:** When you scaled down from 5 to 2, what happened to the extra pods?
+  * Kubernetes deletes the extra pods.
 
 ---
 
