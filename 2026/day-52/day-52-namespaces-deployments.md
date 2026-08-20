@@ -337,6 +337,29 @@ kubectl describe deployment nginx-deployment -n dev | grep Image
 
 **Verify:** What image version is running after the rollback?
 
+
+```
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl set image deployment/nginx-deployment nginx=nginx:1.25 -n dev
+deployment.apps/nginx-deployment image updated
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl rollout history deployment/nginx-deployment -n dev
+deployment.apps/nginx-deployment
+REVISION  CHANGE-CAUSE
+1         <none>
+2         <none>
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl rollout undo deployment/nginx-deployment -n dev
+Warning: resource deployments/nginx-deployment was previously managed with 'kubectl apply'. Rolling back will not update the kubectl.kubernetes.io/last-applied-configuration annotation, which may cause unexpected behavior on future 'kubectl apply' operations. Consider using 'kubectl apply' with your previous configuration file instead.
+deployment.apps/nginx-deployment rolled back
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl rollout status deployment/nginx-deployment -n dev
+deployment "nginx-deployment" successfully rolled out
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl describe deployment nginx-deployment -n dev | grep Image
+    Image:         nginx:1.24
+
+```
+
 ---
 
 ### Task 7: Clean Up
