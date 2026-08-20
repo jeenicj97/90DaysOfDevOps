@@ -235,7 +235,29 @@ kubectl get pods -n dev
 
 The Deployment controller detects that only 2 of 3 desired replicas exist and immediately creates a new one. The deleted pod is replaced within seconds.
 
-**Verify:** Is the replacement pod's name the same as the one you deleted, or different?
+**Verify:** Is the replacement pod's name the same as the one you deleted, or different?  
+  * It is different. nginx-deployment-68cd4c497b-d4lz8 -> nginx-deployment-68cd4c497b-c28s8
+
+```
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl get pods -n dev
+NAME                                READY   STATUS    RESTARTS   AGE
+nginx-deployment-68cd4c497b-d4lz8   1/1     Running   0          16m
+nginx-deployment-68cd4c497b-t4z5g   1/1     Running   0          16m
+nginx-deployment-68cd4c497b-zj8k5   1/1     Running   0          16m
+nginx-dev                           1/1     Running   0          45m
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl delete pod nginx-deployment-68cd4c497b-d4lz8 -n dev
+pod "nginx-deployment-68cd4c497b-d4lz8" deleted from dev namespace
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl get pod -n dev
+NAME                                READY   STATUS    RESTARTS   AGE
+nginx-deployment-68cd4c497b-c28s8   1/1     Running   0          11s
+nginx-deployment-68cd4c497b-t4z5g   1/1     Running   0          18m
+nginx-deployment-68cd4c497b-zj8k5   1/1     Running   0          18m
+nginx-dev                           1/1     Running   0          46m
+
+```
+
 
 ---
 
