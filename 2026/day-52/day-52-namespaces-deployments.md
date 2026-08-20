@@ -401,4 +401,15 @@ kube-system          kube-scheduler-devops-cluster-control-plane            1/1 
 local-path-storage   local-path-provisioner-855c7b7774-nblh8                1/1     Running   0             3h3m
 ```
 
+#### Key Concepts:
+
+Namespace → organizes/isolate resources  
+Deployment → maintains desired number of Pods  
+ReplicaSet → actually maintains the Pod replicas  
+Pod → runs the container  
+Scaling → changes desired replica count  
+Rolling update → gradually replaces old Pods with new ones  
+Rollback → returns to a previous Deployment revision  
+Self-healing → Deployment recreates deleted/failed Pods  
+
 ---
