@@ -210,6 +210,17 @@ Now intentionally break your YAML (remove the `image` field or add an invalid fi
 
 **Verify:** What error does Kubernetes give when the image field is missing?
 
+
+```
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl apply -f nginx-pod.yml --dry-
+run=client
+pod/nginx-pod configured (dry run)
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl apply -f nginx-pod.yml --dry-run=server
+The Pod "nginx-pod" is invalid: spec.containers[0].image: Required value
+
+```
+
 ---
 
 ### Task 5: Pod Labels and Filtering
