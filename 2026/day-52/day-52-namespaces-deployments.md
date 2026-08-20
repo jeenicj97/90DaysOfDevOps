@@ -192,7 +192,30 @@ kubectl get pods -n dev
 
 You should see 3 pods with names like `nginx-deployment-xxxxx-yyyyy`.
 
-**Verify:** What do the READY, UP-TO-DATE, and AVAILABLE columns mean in the deployment output?
+```
+jeenicj@DESKTOP-BG3MAVI:~/day51$ vim nginx-deployment.yaml
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl apply -f nginx-deployment.yaml
+deployment.apps/nginx-deployment created
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl get deployments -n dev
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment   0/3     3            0           14s
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl get pods -n dev
+NAME                                READY   STATUS    RESTARTS   AGE
+nginx-deployment-68cd4c497b-d4lz8   1/1     Running   0          36s
+nginx-deployment-68cd4c497b-t4z5g   1/1     Running   0          36s
+nginx-deployment-68cd4c497b-zj8k5   1/1     Running   0          36s
+nginx-dev                           1/1     Running   0          29m
+
+```
+
+
+**Verify:** What do the READY, UP-TO-DATE, and AVAILABLE columns mean in the deployment output?  
+READY: The number of pods that are healthy and passing their readiness probes, shown as current / desired.  
+UP-TO-DATE: The number of pods that have been updated to the latest configuration (spec) defined in your YAML.  
+AVAILABLE: The number of pods currently running and ready to serve traffic.  
 
 ---
 
