@@ -244,6 +244,36 @@ kubectl get pods --show-labels
 kubectl label pod nginx-pod environment-
 ```
 
+```
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl get pods --show-labels
+NAME          READY   STATUS    RESTARTS   AGE   LABELS
+busybox-pod   1/1     Running   0          33m   app=busybox,environment=dev
+nginx-pod     1/1     Running   0          69m   app=nginx
+redis-pod     1/1     Running   0          16m   run=redis-pod
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl get pods -l app=nginx
+NAME        READY   STATUS    RESTARTS   AGE
+nginx-pod   1/1     Running   0          69m
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl get pods -l environment=dev
+NAME          READY   STATUS    RESTARTS   AGE
+busybox-pod   1/1     Running   0          33m
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl label pod nginx-pod environment=production
+pod/nginx-pod labeled
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl get pods --show-labels
+NAME          READY   STATUS    RESTARTS   AGE   LABELS
+busybox-pod   1/1     Running   0          34m   app=busybox,environment=dev
+nginx-pod     1/1     Running   0          71m   app=nginx,environment=production
+redis-pod     1/1     Running   0          18m   run=redis-pod
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl label pod nginx-pod environment-
+pod/nginx-pod unlabeled
+
+```
+
+
 Write a manifest for a third pod with at least 3 labels (app, environment, team). Apply it and practice filtering.
 
 ---
