@@ -276,6 +276,21 @@ pod/nginx-pod unlabeled
 
 Write a manifest for a third pod with at least 3 labels (app, environment, team). Apply it and practice filtering.
 
+```
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl label pod redis-pod app=redis
+pod/redis-pod labeled
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl label pod redis-pod environment=test
+pod/redis-pod labeled
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl label pod redis-pod team=testing
+pod/redis-pod labeled
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl get pods --show-labels
+NAME          READY   STATUS    RESTARTS   AGE   LABELS
+busybox-pod   1/1     Running   0          40m   app=busybox,environment=dev
+nginx-pod     1/1     Running   0          77m   app=nginx
+redis-pod     1/1     Running   0          24m   app=redis,environment=test,run=redis-pod,team=testing
+jeenicj@DESKTOP-BG3MAVI:~/day51$
+```
+
 ---
 
 ### Task 6: Clean Up
