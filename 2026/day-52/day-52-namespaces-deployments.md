@@ -378,6 +378,27 @@ kubectl get pods -A
 ```
 
 **Verify:** Are all your resources gone?
+   * Yes
 
+```
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl get namespace
+NAME                 STATUS   AGE
+default              Active   3h3m
+kube-node-lease      Active   3h3m
+kube-public          Active   3h3m
+kube-system          Active   3h3m
+local-path-storage   Active   3h3m
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl get pods -A
+NAMESPACE            NAME                                                   READY   STATUS    RESTARTS      AGE
+kube-system          coredns-589f44dc88-k9jdj                               1/1     Running   0             3h3m
+kube-system          coredns-589f44dc88-xcxrb                               1/1     Running   0             3h3m
+kube-system          etcd-devops-cluster-control-plane                      1/1     Running   0             3h3m
+kube-system          kindnet-bcqp9                                          1/1     Running   0             3h3m
+kube-system          kube-apiserver-devops-cluster-control-plane            1/1     Running   0             3h3m
+kube-system          kube-controller-manager-devops-cluster-control-plane   1/1     Running   3 (67m ago)   3h3m
+kube-system          kube-proxy-htsqp                                       1/1     Running   0             3h3m
+kube-system          kube-scheduler-devops-cluster-control-plane            1/1     Running   3 (67m ago)   3h3m
+local-path-storage   local-path-provisioner-855c7b7774-nblh8                1/1     Running   0             3h3m
+```
 
 ---
