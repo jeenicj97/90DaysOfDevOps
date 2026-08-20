@@ -177,6 +177,22 @@ This is a powerful trick — use it to quickly scaffold a manifest, then customi
 
 **Verify:** Save the dry-run output to a file and compare its structure with your nginx-pod.yaml. What fields are the same? What is different?
 
+
+| **Field** | **Handwritten YAML** | **Dry-run YAML** |
+| --- | --- | --- |
+| **[apiVersion](ca://s?q=Explain_apiVersion_in_Kubernetes)** | v1 | v1 |
+| **[kind](ca://s?q=Explain_kind_in_Kubernetes)** | Pod | Pod |
+| **[metadata.name](ca://s?q=Explain_metadata_name_in_Kubernetes)** | nginx-pod | test-pod |
+| **[metadata.labels](ca://s?q=Explain_metadata_labels_in_Kubernetes)** | Maybe absent | run: test-pod |
+| **[spec.containers](ca://s?q=Explain_spec_containers_in_Kubernetes)** | Present | Present |
+| **[Container name](ca://s?q=Explain_container_name_in_Kubernetes)** | nginx | test-pod |
+| **[Container image](ca://s?q=Explain_container_image_in_Kubernetes)** | nginx:latest | nginx |
+| **[restartPolicy](ca://s?q=Explain_restartPolicy_in_Kubernetes)** | Maybe absent | Always |
+| **[dnsPolicy](ca://s?q=Explain_dnsPolicy_in_Kubernetes)** | Maybe absent | ClusterFirst |
+| **[resources](ca://s?q=Explain_resources_in_Kubernetes)** | Maybe absent | {} |
+| **[status](ca://s?q=Explain_status_in_Kubernetes)** | Usually absent | {} |
+
+
 ---
 
 ### Task 4: Validate Before Applying
