@@ -75,7 +75,34 @@ curl localhost:80
 exit
 ```
 
-**Verify:** Can you see the Nginx welcome page when you curl from inside the pod?
+```
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl apply -f nginx-pod.yml
+pod/nginx-pod created
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl get pods -o wide
+NAME        READY   STATUS    RESTARTS   AGE   IP           NODE                           NOMINATED NODE   READINESS GATES
+nginx-pod   1/1     Running   0          29s   10.244.0.5   devops-cluster-control-plane   <none>           <none>
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl get pods
+NAME        READY   STATUS    RESTARTS   AGE
+nginx-pod   1/1     Running   0          60s
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl exec -it nginx-pod -- bash
+root@nginx-pod:/# curl localhost:80
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+
+```
 
 ---
 
@@ -106,7 +133,20 @@ kubectl logs busybox-pod
 
 Notice the `command` field — BusyBox does not run a long-lived server like Nginx. Without a command that keeps it running, the container would exit immediately and the pod would go into `CrashLoopBackOff`.
 
-**Verify:** Can you see "Hello from BusyBox" in the logs?
+
+```
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl apply -f busybox-pod.yaml
+pod/busybox-pod created
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl get pods
+NAME          READY   STATUS    RESTARTS   AGE
+busybox-pod   1/1     Running   0          11s
+nginx-pod     1/1     Running   0          36m
+
+jeenicj@DESKTOP-BG3MAVI:~/day51$ kubectl logs busybox-pod
+Hello from BusyBox
+
+```
 
 ---
 
@@ -201,6 +241,17 @@ Notice that when you delete a standalone Pod, it is gone forever. There is no co
 
 ---
 
+## Hints
+- `kubectl apply -f` creates or updates a resource from a file
+- `kubectl get pods -o wide` shows the node and IP address
+- `kubectl describe pod <name>` shows events — very useful for debugging
+- `kubectl logs <name>` shows container stdout/stderr
+- `kubectl exec -it <name> -- /bin/sh` gives you a shell (use `/bin/sh` if `/bin/bash` is not available)
+- Labels are just key-value pairs — they have no meaning to Kubernetes itself, only to selectors
+- `--dry-run=client -o yaml` is your best friend for generating manifest templates
+
+---
+
 ## Documentation
 Create `day-51-pods.md` with:
 - The four required fields of a Kubernetes manifest and what each does
@@ -210,3 +261,4 @@ Create `day-51-pods.md` with:
 - What happens when you delete a standalone Pod?
 
 ---
+
