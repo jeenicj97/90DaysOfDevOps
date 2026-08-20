@@ -1,17 +1,5 @@
 # Day 52 – Kubernetes Namespaces and Deployments
 
-## Task
-Yesterday you created standalone Pods. The problem? Delete a Pod and it is gone forever — no one recreates it. Today you fix that with Deployments, the real way to run applications in Kubernetes. You will also learn Namespaces, which let you organize and isolate resources inside a cluster.
-
----
-
-## Expected Output
-- At least 2 namespaces created and used
-- A Deployment running with multiple replicas
-- A scaled Deployment and a rolling update performed
-- A markdown file: `day-52-namespaces-deployments.md`
-- Screenshot of `kubectl get deployments` and `kubectl get pods` across namespaces
-
 ---
 
 ## Challenge Tasks
@@ -229,27 +217,5 @@ kubectl get pods -A
 
 **Verify:** Are all your resources gone?
 
----
-
-## Hints
-- `kubectl get <resource> -n <namespace>` — target a specific namespace
-- `kubectl get <resource> -A` — list resources across all namespaces
-- `selector.matchLabels` in a Deployment must match `template.metadata.labels` — if they do not match, the Deployment will not manage the Pods
-- `kubectl scale deployment <name> --replicas=N` — quick way to scale
-- `kubectl set image` updates a container image without editing the YAML
-- `kubectl rollout undo` rolls back to the previous revision
-- `kubectl rollout history` shows past revisions of a Deployment
-- Deployments create ReplicaSets behind the scenes — you can see them with `kubectl get replicasets -n <namespace>`
-
----
-
-## Documentation
-Create `day-52-namespaces-deployments.md` with:
-- What namespaces are and why you would use them
-- Your Deployment manifest and an explanation of each section
-- What happens when you delete a Pod managed by a Deployment vs a standalone Pod
-- How scaling works (both imperative and declarative)
-- How rolling updates and rollbacks work
-- Screenshot of your Deployment and Pods running
 
 ---
