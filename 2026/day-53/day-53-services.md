@@ -116,6 +116,23 @@ You should see the Nginx welcome page. The Service load-balanced your request to
 
 **Verify:** Does the Service respond? Try running the wget command multiple times — the Service distributes traffic across all healthy Pods.
 
+```
+/ # wget -qO- http://web-app-clusterip
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+```
+
+
 ---
 
 ### Task 3: Discover Services with DNS
