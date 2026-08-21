@@ -58,6 +58,17 @@ Note the individual Pod IPs. These will change if pods restart — that is the p
 
 **Verify:** Are all 3 pods running? Note down their IP addresses.
 
+```
+jeenicj@DESKTOP-BG3MAVI:~/day53$ kubectl apply -f app-deployment.yaml
+deployment.apps/web-app created
+
+jeenicj@DESKTOP-BG3MAVI:~/day53$ kubectl get pods -o wide
+NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE                           NOMINATED NODE   READINESS GATES
+web-app-5c44989c65-d5kl2   1/1     Running   0          13s   10.244.0.6   devops-cluster-control-plane   <none>           <none>
+web-app-5c44989c65-m6km4   1/1     Running   0          13s   10.244.0.7   devops-cluster-control-plane   <none>           <none>
+web-app-5c44989c65-xjlmf   1/1     Running   0          13s   10.244.0.5   devops-cluster-control-plane   <none>           <none>
+```
+
 ---
 
 ### Task 2: ClusterIP Service (Internal Access)
