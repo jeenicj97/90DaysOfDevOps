@@ -38,7 +38,9 @@ kubectl get pods -o wide
 
 Note the individual Pod IPs. These will change if pods restart — that is the problem Services fix.
 
-**Verify:** Are all 3 pods running? Note down their IP addresses.
+**Verify:** Are all 3 pods running? Note down their IP addresses.  
+
+Result:  
 
 ```
 jeenicj@DESKTOP-BG3MAVI:~/day53$ kubectl apply -f app-deployment.yaml
@@ -96,12 +98,11 @@ exit
 
 You should see the Nginx welcome page. The Service load-balanced your request to one of the 3 Pods.
 
-**Verify:** Does the Service respond? Try running the wget command multiple times — the Service distributes traffic across all healthy Pods.
+**Verify:** Does the Service respond? Try running the wget command multiple times — the Service distributes traffic across all healthy Pods.  
+
+Result:  
 
 ```
-Result:
-
-
 / # wget -qO- http://web-app-clusterip
 <!DOCTYPE html>
 <html>
@@ -145,11 +146,13 @@ exit
 
 Both the short name and the full DNS name resolve to the same ClusterIP. In practice, you use the short name when communicating within the same namespace and the full name when reaching across namespaces.
 
-**Verify:** What IP does `nslookup` return? Does it match the CLUSTER-IP from `kubectl get services`?
+**Verify:** What IP does `nslookup` return? Does it match the CLUSTER-IP from `kubectl get services`?  
 
-![Image Alt]()
+* Yes, it matches 
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-53/day53-task3.jpg)
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-53/day53-task3a.jpg)
 
 ---
 
@@ -216,7 +219,9 @@ working. Further configuration is required.</p>
 ```
 
 
-**Verify:** Can you see the Nginx welcome page from your browser or terminal using the NodePort?
+**Verify:** Can you see the Nginx welcome page from your browser or terminal using the NodePort?  
+
+* Yes visible(as above)
 
 ---
 
@@ -300,7 +305,7 @@ You should see all three: a ClusterIP, a NodePort, and the LoadBalancer configur
 
 **Verify:** Does the LoadBalancer service also have a ClusterIP and NodePort assigned?
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-53/day53-task6.jpg)
 
 ---
 
@@ -327,28 +332,6 @@ NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   2d21h
 jeenicj@DESKTOP-BG3MAVI:~/day53$
 ```
-
----
-
-## Hints
-- `selector` in a Service must match `labels` on the Pods — if they do not match, the Service routes traffic to nothing
-- `kubectl get endpoints <service-name>` shows which Pod IPs a Service is currently routing to
-- `port` is what the Service listens on; `targetPort` is what the Pod listens on — they do not have to be the same number
-- NodePort range is 30000-32767; if you do not specify `nodePort`, Kubernetes picks one automatically
-- Use `kubectl describe service <name>` to see the full configuration including Endpoints
-- `kubectl get services -o wide` shows the selector each service uses
-- To test ClusterIP services, you must test from inside the cluster (use a temporary pod)
-
----
-
-## Documentation
-Create `day-53-services.md` with:
-- What problem Services solve and how they relate to Pods and Deployments
-- Your three Service manifests with an explanation of each type
-- The difference between ClusterIP, NodePort, and LoadBalancer
-- How Kubernetes DNS works for service discovery
-- What Endpoints are and how to inspect them
-- Screenshot of your services and the test output
 
 ---
 
