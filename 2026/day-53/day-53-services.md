@@ -208,6 +208,28 @@ kubectl get nodes -o wide
 curl http://localhost:30080
 ```
 
+```
+jeenicj@DESKTOP-BG3MAVI:~/day53$ curl http://172.18.0.2:30080
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+```
+
+
 **Verify:** Can you see the Nginx welcome page from your browser or terminal using the NodePort?
 
 ---
