@@ -117,6 +117,9 @@ You should see the Nginx welcome page. The Service load-balanced your request to
 **Verify:** Does the Service respond? Try running the wget command multiple times — the Service distributes traffic across all healthy Pods.
 
 ```
+Result:
+
+
 / # wget -qO- http://web-app-clusterip
 <!DOCTYPE html>
 <html>
