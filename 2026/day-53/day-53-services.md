@@ -272,6 +272,18 @@ In a real cloud cluster, the EXTERNAL-IP would be a public IP address or hostnam
 
 **Verify:** What does the EXTERNAL-IP column show? Why is it `<pending>` on a local cluster?
 
+```
+jeenicj@DESKTOP-BG3MAVI:~/day53$ kubectl apply -f loadbalancer-service.yml
+service/web-app-loadbalancer created
+jeenicj@DESKTOP-BG3MAVI:~/day53$ kubectl get services
+NAME                   TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
+kubernetes             ClusterIP      10.96.0.1      <none>        443/TCP        2d20h
+web-app-clusterip      ClusterIP      10.96.117.58   <none>        80/TCP         2d5h
+web-app-loadbalancer   LoadBalancer   10.96.65.102   <pending>     80:32396/TCP   9s
+web-app-nodeport       NodePort       10.96.226.59   <none>        80:30080/TCP   26m
+jeenicj@DESKTOP-BG3MAVI:~/day53$
+```
+
 ---
 
 ### Task 6: Understand the Service Types Side by Side
