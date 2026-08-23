@@ -1,23 +1,5 @@
 # Day 53 – Kubernetes Services
  
- ---
-
-## Why Services?
-
-Every Pod gets its own IP address. But there are two problems:
-1. Pod IPs are **not stable** — when a Pod restarts or gets replaced, it gets a new IP
-2. A Deployment runs **multiple Pods** — which IP do you connect to?
-
-A Service solves both problems. It provides:
-- A **stable IP and DNS name** that never changes
-- **Load balancing** across all Pods that match its selector
-
-```
-[Client] --> [Service (stable IP)] --> [Pod 1]
-                                   --> [Pod 2]
-                                   --> [Pod 3]
-```
-
 ---
 
 ## Challenge Tasks
@@ -165,6 +147,10 @@ Both the short name and the full DNS name resolve to the same ClusterIP. In prac
 
 **Verify:** What IP does `nslookup` return? Does it match the CLUSTER-IP from `kubectl get services`?
 
+![Image Alt]()
+
+![Image Alt]()
+
 ---
 
 ### Task 4: NodePort Service (External Access via Node)
@@ -305,14 +291,6 @@ Each type builds on the previous one:
 - LoadBalancer creates a NodePort, which creates a ClusterIP
 - So a LoadBalancer service also has a ClusterIP and a NodePort
 
-```jeenicj@DESKTOP-BG3MAVI:~/day53$ kubectl get services -o wide
-NAME                   TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE     SELECTOR
-kubernetes             ClusterIP      10.96.0.1      <none>        443/TCP        2d20h   <none>
-web-app-clusterip      ClusterIP      10.96.117.58   <none>        80/TCP         2d6h    app=web-app
-web-app-loadbalancer   LoadBalancer   10.96.65.102   <pending>     80:32396/TCP   15m     app=web-app
-web-app-nodeport       NodePort       10.96.226.59   <none>        80:30080/TCP   41m     app=web-app
-```
-
 Verify this:
 ```bash
 kubectl describe service web-app-loadbalancer
@@ -322,28 +300,7 @@ You should see all three: a ClusterIP, a NodePort, and the LoadBalancer configur
 
 **Verify:** Does the LoadBalancer service also have a ClusterIP and NodePort assigned?
 
-```
-jeenicj@DESKTOP-BG3MAVI:~/day53$ kubectl describe service web-app-loadbalancer
-Name:                     web-app-loadbalancer
-Namespace:                default
-Labels:                   <none>
-Annotations:              <none>
-Selector:                 app=web-app
-Type:                     LoadBalancer
-IP Family Policy:         SingleStack
-IP Families:              IPv4
-IP:                       10.96.65.102
-IPs:                      10.96.65.102
-Port:                     <unset>  80/TCP
-TargetPort:               80/TCP
-NodePort:                 <unset>  32396/TCP
-Endpoints:                10.244.0.3:80,10.244.0.2:80,10.244.0.6:80
-Session Affinity:         None
-External Traffic Policy:  Cluster
-Internal Traffic Policy:  Cluster
-Events:                   <none>
-```
-
+![Image Alt]()
 
 ---
 
