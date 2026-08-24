@@ -9,7 +9,10 @@
 2. Apply it, verify the data exists with `kubectl exec`
 3. Delete the Pod, recreate it, check the file again — the old message is gone
 
-**Verify:** Is the timestamp the same or different after recreation?
+**Verify:** Is the timestamp the same or different after recreation?  
+  * Different. The emptyDir volume exists only for the lifetime of the Pod. When the Pod is deleted, all data is lost.
+
+![Image Alt]()
 
 ---
 
