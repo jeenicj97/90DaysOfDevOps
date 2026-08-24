@@ -27,6 +27,11 @@
 2. Write a second Pod manifest that mounts `nginx-config` as a volume at `/etc/nginx/conf.d`. Use the nginx image.
 3. Test that the mounted config works: `kubectl exec <pod> -- curl -s http://localhost/health`
 
+```
+jeenicj@DESKTOP-BG3MAVI:~/day54$ kubectl exec nginx-config-pod -- curl -s http://localhost/health
+healthyjeenicj@DESKTOP-BG3MAVI:~/day54$
+```
+
 Use environment variables for simple key-value settings. Use volume mounts for full config files.
 
 **Verify:** Does the `/health` endpoint respond?
