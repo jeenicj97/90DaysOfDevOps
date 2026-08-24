@@ -63,6 +63,7 @@ Use environment variables for simple key-value settings. Use volume mounts for f
 2. In the same Pod, mount the entire `db-credentials` Secret as a volume at `/etc/db-credentials` with `readOnly: true`
 3. Verify: each Secret key becomes a file, and the content is the decoded plaintext value
 
+   
 **Verify:** Are the mounted file values plaintext or base64?  
   * The mounted files contain plaintext values, not Base64 encoded data.
 
@@ -75,12 +76,30 @@ Use environment variables for simple key-value settings. Use volume mounts for f
 4. Wait 30-60 seconds — the volume-mounted value updates automatically
 5. Environment variables from earlier tasks do NOT update — they are set at pod startup only
 
-**Verify:** Did the volume-mounted value change without a pod restart?
+**Verify:** Did the volume-mounted value change without a pod restart?  
+ * Yes. The volume-mounted ConfigMap updated automatically without restarting the Pod. Environment variables would not update automatically.
+
+```
+jeenicj@DESKTOP-BG3MAVI:~/day54$ kubectl patch configmap live-config --type merge -p '{"data":{"message":"world"}}'
+configmap/live-config patched
+```
+
 
 ---
 
 ### Task 7: Clean Up
 Delete all pods, ConfigMaps, and Secrets you created.
+
+```
+jeenicj@DESKTOP-BG3MAVI:~/day54$ kubectl get pods
+No resources found in default namespace.
+jeenicj@DESKTOP-BG3MAVI:~/day54$ kubectl get configmaps
+NAME               DATA   AGE
+kube-root-ca.crt   1      71s
+jeenicj@DESKTOP-BG3MAVI:~/day54$ kubectl get secrets
+No resources found in default namespace.
+jeenicj@DESKTOP-BG3MAVI:~/day54$
+```
 
 ---
 
