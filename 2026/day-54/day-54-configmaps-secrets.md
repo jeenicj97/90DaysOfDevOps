@@ -32,6 +32,15 @@ jeenicj@DESKTOP-BG3MAVI:~/day54$ kubectl exec nginx-config-pod -- curl -s http:/
 healthyjeenicj@DESKTOP-BG3MAVI:~/day54$
 ```
 
+```
+jeenicj@DESKTOP-BG3MAVI:~/day54$ kubectl port-forward nginx-config-pod 8080:80
+Forwarding from 127.0.0.1:8080 -> 80
+Forwarding from [::1]:8080 -> 80
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+```
+
 Use environment variables for simple key-value settings. Use volume mounts for full config files.
 
 **Verify:** Does the `/health` endpoint respond?
