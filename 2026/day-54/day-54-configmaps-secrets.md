@@ -9,7 +9,10 @@
 2. Inspect it with `kubectl describe configmap app-config` and `kubectl get configmap app-config -o yaml`
 3. Notice the data is stored as plain text — no encoding, no encrption
 
-**Verify:** Can you see all three key-value pairs?
+**Verify:** Can you see all three key-value pairs?  
+   * Yes. The ConfigMap contains all three key-value pairs. These values are stored as plain text in the ConfigMap.
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-54/day54-task1.jpg)
 
 ---
 
@@ -18,7 +21,10 @@
 2. Create a ConfigMap from this file using `kubectl create configmap nginx-config --from-file=default.conf=<your-file>`
 3. The key name (`default.conf`) becomes the filename when mounted into a Pod
 
-**Verify:** Does `kubectl get configmap nginx-config -o yaml` show the file contents?
+**Verify:** Does `kubectl get configmap nginx-config -o yaml` show the file contents?  
+  * Yes. The ConfigMap contains the complete contents of default.conf.
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-54/day54-task2.jpg)
 
 ---
 
@@ -43,7 +49,12 @@ Handling connection for 8080
 
 Use environment variables for simple key-value settings. Use volume mounts for full config files.
 
-**Verify:** Does the `/health` endpoint respond?
+**Verify:** Does the `/health` endpoint respond?  
+   * Yes, responds healthy
+
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-54/day54-task3.jpg)
+
 
 ---
 
@@ -54,7 +65,12 @@ Use environment variables for simple key-value settings. Use volume mounts for f
 
 **base64 is encoding, not encryption.** Anyone with cluster access can decode Secrets. The real advantages are RBAC separation, tmpfs storage on nodes, and optional encryption at rest.
 
-**Verify:** Can you decode the password back to plaintext?
+**Verify:** Can you decode the password back to plaintext?  
+   * Yes. The password can be decoded back to: s3cureP@ssw0rd
+
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-54/day54-task4.jpg)
+
 
 ---
 
@@ -66,6 +82,9 @@ Use environment variables for simple key-value settings. Use volume mounts for f
    
 **Verify:** Are the mounted file values plaintext or base64?  
   * The mounted files contain plaintext values, not Base64 encoded data.
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-54/day54-task5.jpg)
+
 
 ---
 
@@ -83,6 +102,8 @@ Use environment variables for simple key-value settings. Use volume mounts for f
 jeenicj@DESKTOP-BG3MAVI:~/day54$ kubectl patch configmap live-config --type merge -p '{"data":{"message":"world"}}'
 configmap/live-config patched
 ```
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-54/day54-task6.jpg)
 
 
 ---
