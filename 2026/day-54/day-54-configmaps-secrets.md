@@ -63,7 +63,8 @@ Use environment variables for simple key-value settings. Use volume mounts for f
 2. In the same Pod, mount the entire `db-credentials` Secret as a volume at `/etc/db-credentials` with `readOnly: true`
 3. Verify: each Secret key becomes a file, and the content is the decoded plaintext value
 
-**Verify:** Are the mounted file values plaintext or base64?
+**Verify:** Are the mounted file values plaintext or base64?  
+  * The mounted files contain plaintext values, not Base64 encoded data.
 
 ---
 
