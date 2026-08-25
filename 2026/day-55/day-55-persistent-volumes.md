@@ -10,9 +10,9 @@
 3. Delete the Pod, recreate it, check the file again — the old message is gone
 
 **Verify:** Is the timestamp the same or different after recreation?  
-  * Different. The emptyDir volume exists only for the lifetime of the Pod. When the Pod is deleted, all data is lost.
+ > Different. The emptyDir volume exists only for the lifetime of the Pod. When the Pod is deleted, all data is lost.
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-55/day55-task1.jpg)
 
 ---
 
@@ -28,6 +28,9 @@ Access modes to know:
 `hostPath` is fine for learning, not for production.
 
 **Verify:** What is the STATUS of the PV?
+ > Available
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-55/day55-task2.jpg)
 
 ---
 
@@ -36,7 +39,12 @@ Access modes to know:
 2. Apply it and check both `kubectl get pvc` and `kubectl get pv`
 3. Both should show `Bound` — Kubernetes matched them by capacity and access mode
 
-**Verify:** What does the VOLUME column in `kubectl get pvc` show?
+**Verify:** What does the VOLUME column in `kubectl get pvc` show?  
+ > It shows manual-pv, indicating that the PVC has successfully bound to the PersistentVolume.
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-55/day55-task3.1.jpg)
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-55/day55-task3.2.jpg)
 
 ---
 
@@ -45,7 +53,11 @@ Access modes to know:
 2. Write data to `/data/message.txt`, then delete and recreate the Pod
 3. Check the file — it should contain data from both Pods
 
-**Verify:** Does the file contain data from both the first and second Pod?
+**Verify:** Does the file contain data from both the first and second Pod?  
+ > Yes. The data persists because it is stored on the PersistentVolume instead of inside the Pod.
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-55/day55-task4.jpg)
+
 
 ---
 
@@ -54,7 +66,10 @@ Access modes to know:
 2. Note the provisioner, reclaim policy, and volume binding mode
 3. With dynamic provisioning, developers only create PVCs — the StorageClass handles PV creation automatically
 
-**Verify:** What is the default StorageClass in your cluster?
+**Verify:** What is the default StorageClass in your cluster?  
+ > Standard
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-55/day55-task6.jpg)
 
 ---
 
@@ -63,7 +78,10 @@ Access modes to know:
 2. Apply it — a PV should appear automatically in `kubectl get pv`
 3. Use this PVC in a Pod, write data, verify it works
 
-**Verify:** How many PVs exist now? Which was manual, which was dynamic?
+**Verify:** How many PVs exist now? Which was manual, which was dynamic?  
+ > pv-manual is the manual one & pvc-47c2... is the dynamic one
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-55/day55-task6.jpg)
 
 ---
 
@@ -73,6 +91,10 @@ Access modes to know:
 3. The dynamic PV is gone (Delete reclaim policy). The manual PV shows `Released` (Retain policy).
 4. Delete the remaining PV manually
 
-**Verify:** Which PV was auto-deleted and which was retained? Why?
+**Verify:** Which PV was auto-deleted and which was retained? Why?  
+ > Dynamic PV was automatically deleted because its StorageClass uses the Delete reclaim policy.  
+ > Manual PV remained in the Released state because it uses the Retain reclaim policy, preserving the stored data until it is manually deleted.
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-55/day55-task7.jpg)
 
 ---
