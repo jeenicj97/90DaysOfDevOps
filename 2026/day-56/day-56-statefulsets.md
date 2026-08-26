@@ -20,7 +20,12 @@ This is fine for web servers but not for databases where you need stable identit
 
 Delete the Deployment before moving on.
 
-**Verify:** Why would random pod names be a problem for a database cluster?
+**Verify:** Why would random pod names be a problem for a database cluster?  
+  > Database clusters require each node to have a permanent identity for replication, leader election, and communication. Random pod names change after recreation, making it difficult for cluster members to reliably identify and reconnect to each other.
+
+
+![Image Alt]()
+
 
 ---
 
