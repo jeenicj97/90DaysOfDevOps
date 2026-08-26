@@ -24,7 +24,7 @@ Delete the Deployment before moving on.
   > Database clusters require each node to have a permanent identity for replication, leader election, and communication. Random pod names change after recreation, making it difficult for cluster members to reliably identify and reconnect to each other.
 
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-56/day56-task1.jpg)
 
 
 ---
@@ -39,7 +39,7 @@ A Headless Service creates individual DNS entries for each pod instead of load-b
 **Verify:** What does the CLUSTER-IP column show?  
   > Shows as **None**. This confirms it is a Headless Service.
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-56/day56-task2.jpg)
 
 ---
 
@@ -54,7 +54,7 @@ Observe ordered creation — `web-0` first, then `web-1` after `web-0` is Ready,
 Check the PVCs: `kubectl get pvc` — you should see `web-data-web-0`, `web-data-web-1`, `web-data-web-2` (names follow the pattern `<template-name>-<pod-name>`).
 
 **Verify:** What are the exact pod names and PVC names?   
-> ![Image Alt]()
+> ![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-56/day56-task3.jpg)
 
 
 ---
@@ -69,7 +69,7 @@ Each StatefulSet pod gets a DNS name: `<pod-name>.<service-name>.<namespace>.svc
 **Verify:** Does the nslookup IP match the pod IP?  
   > Yes. The DNS name of each StatefulSet pod resolves to its own pod IP, providing stable network identity.
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-56/day56-task4.jpg)
 
 ---
 
@@ -83,7 +83,7 @@ The new pod reconnected to the same PVC.
 **Verify:** Is the data identical after pod recreation?  
   > Yes. The recreated pod reattaches to the same PersistentVolumeClaim, so the stored data remains unchanged.
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-56/day56-task5.jpg)
 
 ---
 
@@ -92,7 +92,12 @@ The new pod reconnected to the same PVC.
 2. Scale down to 3 — pods terminate in reverse order (web-4, then web-3)
 3. Check `kubectl get pvc` — all five PVCs still exist. Kubernetes keeps them on scale-down so data is preserved if you scale back up.
 
-**Verify:** After scaling down, how many PVCs exist?
+**Verify:** After scaling down, how many PVCs exist?  
+  > Five PVCs still exist. StatefulSets preserve PVCs after scaling down so data is retained if replicas are added again.
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-56/day56-task6.1.jpg)
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-56/day56-task6.2.jpg)
 
 ---
 
@@ -101,26 +106,10 @@ The new pod reconnected to the same PVC.
 2. Check `kubectl get pvc` — PVCs are still there (safety feature)
 3. Delete PVCs manually
 
-**Verify:** Were PVCs auto-deleted with the StatefulSet?
+**Verify:** Were PVCs auto-deleted with the StatefulSet?   
+  > No. Kubernetes does not automatically delete PersistentVolumeClaims when a StatefulSet is deleted. They must be deleted manually to prevent accidental data loss.
 
----
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-56/day56-task7.jpg)
 
-## Hints
-- `kubectl get sts` is the short name for StatefulSets
-- `serviceName` must match an existing Headless Service
-- Pod DNS: `<pod-name>.<service-name>.<namespace>.svc.cluster.local`
-- PVC naming: `<template-name>-<statefulset-name>-<ordinal>`
-- Pods create in order (0, 1, 2) and terminate in reverse (2, 1, 0)
-- Scaling down does not delete PVCs — data is preserved
-- Deleting a StatefulSet does not delete PVCs — clean up separately
-
----
-
-## Documentation
-Create `day-56-statefulsets.md` with:
-- What StatefulSets are and when to use them vs Deployments
-- The comparison table
-- How Headless Services, stable DNS, and volumeClaimTemplates work
-- Screenshots of pods, PVCs, and DNS resolution
 
 ---
