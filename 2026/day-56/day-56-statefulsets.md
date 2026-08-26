@@ -66,7 +66,10 @@ Each StatefulSet pod gets a DNS name: `<pod-name>.<service-name>.<namespace>.svc
 2. Do the same for `web-1` and `web-2`
 3. Confirm the IPs match `kubectl get pods -o wide`
 
-**Verify:** Does the nslookup IP match the pod IP?
+**Verify:** Does the nslookup IP match the pod IP?  
+  > Yes. The DNS name of each StatefulSet pod resolves to its own pod IP, providing stable network identity.
+
+![Image Alt]()
 
 ---
 
