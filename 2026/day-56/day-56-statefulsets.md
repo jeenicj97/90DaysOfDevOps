@@ -80,7 +80,10 @@ Each StatefulSet pod gets a DNS name: `<pod-name>.<service-name>.<namespace>.svc
 
 The new pod reconnected to the same PVC.
 
-**Verify:** Is the data identical after pod recreation?
+**Verify:** Is the data identical after pod recreation?  
+  > Yes. The recreated pod reattaches to the same PersistentVolumeClaim, so the stored data remains unchanged.
+
+![Image Alt]()
 
 ---
 
