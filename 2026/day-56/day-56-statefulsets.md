@@ -36,7 +36,10 @@ Delete the Deployment before moving on.
 
 A Headless Service creates individual DNS entries for each pod instead of load-balancing to one IP. StatefulSets require this.
 
-**Verify:** What does the CLUSTER-IP column show?
+**Verify:** What does the CLUSTER-IP column show?  
+  > Shows as **None**. This confirms it is a Headless Service.
+
+![Image Alt]()
 
 ---
 
@@ -50,7 +53,8 @@ Observe ordered creation — `web-0` first, then `web-1` after `web-0` is Ready,
 
 Check the PVCs: `kubectl get pvc` — you should see `web-data-web-0`, `web-data-web-1`, `web-data-web-2` (names follow the pattern `<template-name>-<pod-name>`).
 
-**Verify:** What are the exact pod names and PVC names?
+**Verify:** What are the exact pod names and PVC names?  
+
 
 ---
 
