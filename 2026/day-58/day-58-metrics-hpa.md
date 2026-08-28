@@ -16,7 +16,7 @@
    > CPU Usage: 319m (3%)
    > Memory Usage: 774Mi (20%)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-58/day58-task1.jpg)
 
 ---
 
@@ -28,7 +28,7 @@
 **Verify:** Which pod is using the most CPU right now?  
    >  kube-apiserver-devops-cluster-control-plane pod is using the maximum CPU (239Mi)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-58/day58-task2.jpg)
 
 ---
 
@@ -42,7 +42,7 @@ Without CPU requests, HPA cannot work — this is the most common HPA setup mist
 **Verify:** What is the current CPU usage of the Pod?  
    > Current CPU usage is 1m.
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-58/day58-task3.jpg)
 
 ---
 
@@ -59,7 +59,7 @@ This scales up when average CPU exceeds 50% of requests, and down when it drops 
    > Current CPU = 0%  
    > Target = 50%  
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-58/day58-task4.jpg)
 
 
 ---
@@ -74,7 +74,7 @@ This scales up when average CPU exceeds 50% of requests, and down when it drops 
 **Verify:** How many replicas did HPA scale to under load?  
    > The HPA scaled the Deployment from 1 Pod to 1-12 Pods under load.
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-58/day58-task5.jpg)
 
 ---
 
@@ -86,30 +86,26 @@ This scales up when average CPU exceeds 50% of requests, and down when it drops 
 
 `autoscaling/v2` supports multiple metrics and fine-grained scaling behavior that the imperative command cannot configure.
 
-**Verify:** What does the `behavior` section control?
+**Verify:** What does the `behavior` section control?  
+
+```
+The behavior section controls how aggressively the HPA scales Pods.
+
+scaleUp:
+- Controls how quickly new Pods are added.
+
+scaleDown:
+- Controls how slowly Pods are removed.
+- A 300-second stabilization window prevents rapid scale-down.
+```
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-58/day58-task6.jpg)
 
 ---
 
 ### Task 7: Clean Up
 Delete the HPA, Service, Deployment, and load-generator pod. Leave the Metrics Server installed.
 
----
-
-## Hints
-- HPA requires `resources.requests` — without them TARGETS shows `<unknown>`
-- `kubectl top` = actual usage. `kubectl describe pod` = configured requests/limits
-- HPA checks every 15 seconds. Scale-up is fast, scale-down has a 5-minute stabilization window
-- `autoscaling/v1` = CPU only. `autoscaling/v2` = CPU + memory + custom metrics
-- Formula: `desiredReplicas = ceil(currentReplicas * (currentUsage / targetUsage))`
-- HPA works with Deployments, StatefulSets, and ReplicaSets
-
----
-
-## Documentation
-Create `day-58-metrics-hpa.md` with:
-- What the Metrics Server is and why HPA needs it
-- How HPA calculates desired replicas
-- The difference between `autoscaling/v1` and `v2`
-- Screenshots of `kubectl top`, HPA events, and pod scaling
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-58/day58-task7.jpg)
 
 ---
