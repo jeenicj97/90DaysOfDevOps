@@ -12,7 +12,9 @@
 3. On local clusters, you may need the `--kubelet-insecure-tls` flag (never in production)
 4. Wait 60 seconds, then verify: `kubectl top nodes` and `kubectl top pods -A`
 
-**Verify:** What is the current CPU and memory usage of your node?
+**Verify:** What is the current CPU and memory usage of your node?  
+   > CPU Usage: 319m (3%)
+   > Memory Usage: 774Mi (20%)
 
 ![Image Alt]()
 
