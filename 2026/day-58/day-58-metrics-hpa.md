@@ -14,6 +14,8 @@
 
 **Verify:** What is the current CPU and memory usage of your node?
 
+![Image Alt]()
+
 ---
 
 ### Task 2: Explore kubectl top
