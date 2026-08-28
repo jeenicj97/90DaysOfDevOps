@@ -13,7 +13,12 @@ CPU is in millicores: `100m` = 0.1 CPU. Memory is in mebibytes: `128Mi`.
 
 **Requests** = guaranteed minimum (scheduler uses this for placement). **Limits** = maximum allowed (kubelet enforces at runtime).
 
-**Verify:** What QoS class does your Pod have?
+**Verify:** What QoS class does your Pod have?  
+  > Burstable - Because requests and limits are different.
+
+
+![Image Alt]()
+
 
 ---
 
@@ -26,7 +31,10 @@ CPU is throttled when over limit. Memory is killed — no mercy.
 
 Check `kubectl describe pod` for `Reason: OOMKilled` and `Exit Code: 137` (128 + SIGKILL).
 
-**Verify:** What exit code does an OOMKilled container have?
+**Verify:** What exit code does an OOMKilled container have?  
+  > 137 (128 + SIGKILL)
+
+![Image Alt]()
 
 ---
 
