@@ -43,7 +43,11 @@ Check `kubectl describe pod` for `Reason: OOMKilled` and `Exit Code: 137` (128 +
 2. Apply and check — STATUS stays `Pending` forever
 3. Run `kubectl describe pod` and read the Events — the scheduler says exactly why: insufficient resources
 
-**Verify:** What event message does the scheduler produce?
+**Verify:** What event message does the scheduler produce?  
+  > 0/1 nodes are available: 1 Insufficient cpu, 1 Insufficient memory.
+  > The scheduler cannot place the Pod because no node satisfies the requested resources.
+
+![Image Alt]()
 
 ---
 
