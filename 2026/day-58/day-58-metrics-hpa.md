@@ -25,7 +25,10 @@
 2. `kubectl top` shows real-time usage, not requests or limits — these are different things
 3. Data comes from the Metrics Server, which polls kubelets every 15 seconds
 
-**Verify:** Which pod is using the most CPU right now?
+**Verify:** Which pod is using the most CPU right now?  
+   >  kube-apiserver-devops-cluster-control-plane pod is using the maximum CPU (239Mi)
+
+![Image Alt]()
 
 ---
 
