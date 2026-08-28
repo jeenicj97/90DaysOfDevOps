@@ -17,7 +17,7 @@ CPU is in millicores: `100m` = 0.1 CPU. Memory is in mebibytes: `128Mi`.
   > Burstable - Because requests and limits are different.
 
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-57/day57-task1.jpg)
 
 
 ---
@@ -34,7 +34,7 @@ Check `kubectl describe pod` for `Reason: OOMKilled` and `Exit Code: 137` (128 +
 **Verify:** What exit code does an OOMKilled container have?  
   > 137 (128 + SIGKILL)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-57/day57-task2.jpg)
 
 ---
 
@@ -47,7 +47,7 @@ Check `kubectl describe pod` for `Reason: OOMKilled` and `Exit Code: 137` (128 +
   > 0/1 nodes are available: 1 Insufficient cpu, 1 Insufficient memory.
   > The scheduler cannot place the Pod because no node satisfies the requested resources.
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-57/day57-task3.jpg)
 
 ---
 
@@ -61,7 +61,10 @@ A liveness probe detects stuck containers. If it fails, Kubernetes restarts the 
 **Verify:** How many times has the container restarted?  
   > The container restarted at least once after the liveness probe failed three consecutive times.
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-57/day57-task4.1.jpg)
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-57/day57-task4.2.jpg)
+
 
 ---
 
@@ -77,7 +80,7 @@ A readiness probe controls traffic. Failure removes the Pod from Service endpoin
 **Verify:** When readiness failed, was the container restarted?  
   > No. A readiness probe only removes the Pod from Service endpoints. It does not restart the container.
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-57/day57-task5.jpg)
 
 ---
 
@@ -91,14 +94,17 @@ A startup probe gives slow-starting containers extra time. While it runs, livene
 **Verify:** What would happen if `failureThreshold` were 2 instead of 12?  
   > The startup probe would allow only 10 seconds (2 × 5 seconds) before failing. Since the application needs 20 seconds to start, Kubernetes would restart the container before it finishes starting, causing a restart loop.
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-57/day57-task6.1.jpg)
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-57/day57-task6.2.jpg)
+
 
 ---
 
 ### Task 7: Clean Up
 Delete all pods and services you created.
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-57/day57-task7.jpg)
 
 ---
 
