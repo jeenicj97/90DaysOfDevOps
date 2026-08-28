@@ -53,8 +53,11 @@ Without CPU requests, HPA cannot work — this is the most common HPA setup mist
 
 This scales up when average CPU exceeds 50% of requests, and down when it drops below.
 
-**Verify:** What does the TARGETS column show?  
-   > cpu: 0%/50% 
+**Verify:** What does the TARGETS column show? 
+   > TARGETS shows the current CPU utilization compared to the target CPU utilization.
+   > cpu: 0%/50%
+   > Current CPU = 0%
+   > Target = 50%
 
 ![Image Alt]()
 
