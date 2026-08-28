@@ -39,7 +39,10 @@
 
 Without CPU requests, HPA cannot work — this is the most common HPA setup mistake.
 
-**Verify:** What is the current CPU usage of the Pod?
+**Verify:** What is the current CPU usage of the Pod?  
+   > Current CPU usage is 1m.
+
+![Image Alt]()
 
 ---
 
