@@ -88,31 +88,17 @@ A startup probe gives slow-starting containers extra time. While it runs, livene
 2. Add a `startupProbe` checking for `/tmp/started` with `periodSeconds: 5` and `failureThreshold: 12` (60 second budget)
 3. Add a `livenessProbe` that checks the same file — it only kicks in after startup succeeds
 
-**Verify:** What would happen if `failureThreshold` were 2 instead of 12?
+**Verify:** What would happen if `failureThreshold` were 2 instead of 12?  
+  > The startup probe would allow only 10 seconds (2 × 5 seconds) before failing. Since the application needs 20 seconds to start, Kubernetes would restart the container before it finishes starting, causing a restart loop.
+
+![Image Alt]()
 
 ---
 
 ### Task 7: Clean Up
 Delete all pods and services you created.
 
----
-
-## Hints
-- CPU is compressible (throttled); memory is incompressible (OOMKilled)
-- CPU: `1` = 1 core = `1000m`. Memory: `Mi` (mebibytes), `Gi` (gibibytes)
-- QoS: Guaranteed (requests == limits), Burstable (requests < limits), BestEffort (none set)
-- Probe types: `httpGet`, `exec`, `tcpSocket`
-- Liveness failure = restart. Readiness failure = remove from endpoints. Startup failure = kill.
-- `initialDelaySeconds`, `periodSeconds`, `failureThreshold` control probe timing
-- Exit code 137 = OOMKilled (128 + SIGKILL)
+![Image Alt]()
 
 ---
 
-## Documentation
-Create `day-57-resources-probes.md` with:
-- Requests vs limits (scheduling vs enforcement)
-- What happens when CPU or memory limits are exceeded
-- Liveness vs readiness vs startup probes
-- Screenshots of OOMKilled, Pending, and probe events
-
----
