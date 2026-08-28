@@ -71,7 +71,10 @@ This scales up when average CPU exceeds 50% of requests, and down when it drops 
 4. Stop the load: `kubectl delete pod load-generator`
 5. Scale-down is slow (5-minute stabilization window) — you do not need to wait
 
-**Verify:** How many replicas did HPA scale to under load?
+**Verify:** How many replicas did HPA scale to under load?  
+   > The HPA scaled the Deployment from 1 Pod to 1-12 Pods under load.
+
+![Image Alt]()
 
 ---
 
