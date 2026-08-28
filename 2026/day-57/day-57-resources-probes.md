@@ -58,7 +58,10 @@ A liveness probe detects stuck containers. If it fails, Kubernetes restarts the 
 2. Add a liveness probe using `exec` that runs `cat /tmp/healthy`, with `periodSeconds: 5` and `failureThreshold: 3`
 3. After the file is deleted, 3 consecutive failures trigger a restart. Watch with `kubectl get pod -w`
 
-**Verify:** How many times has the container restarted?
+**Verify:** How many times has the container restarted?  
+  > The container restarted at least once after the liveness probe failed three consecutive times.
+
+![Image Alt]()
 
 ---
 
