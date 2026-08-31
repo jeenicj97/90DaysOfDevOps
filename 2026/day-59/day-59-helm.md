@@ -62,6 +62,11 @@ One command replaced writing a Deployment, Service, and ConfigMap by hand.
 
 **Verify:** Does the values file release have the correct replicas and service type?
 
+
+![Image Alt]()
+
+![Image Alt]()
+
 ---
 
 ### Task 5: Upgrade and Rollback
@@ -72,7 +77,21 @@ One command replaced writing a Deployment, Service, and ConfigMap by hand.
 
 Same concept as Deployment rollouts from Day 52, but at the full stack level.
 
-**Verify:** How many revisions after the rollback?
+**Verify:** How many revisions after the rollback?  
+  > 3 Revisions
+
+```
+1 → Initial install
+
+2 → Upgrade
+
+3 → Rollback
+```
+
+![Image Alt]()
+
+![Image Alt]()
+
 
 ---
 
@@ -86,7 +105,7 @@ Same concept as Deployment rollouts from Day 52, but at the full stack level.
 7. Install: `helm install my-release ./my-app`
 8. Upgrade: `helm upgrade my-release ./my-app --set replicaCount=5`
 
-**Verify:** After installing, 3 replicas? After upgrading, 5?
+**Verify:** After installing, 3 replicas? After upgrading, 5?  
 
 ---
 
