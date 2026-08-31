@@ -25,7 +25,10 @@ Three core concepts:
 2. Update: `helm repo update`
 3. Search: `helm search repo nginx` and `helm search repo bitnami`
 
-**Verify:** How many charts does Bitnami have?
+**Verify:** How many charts does Bitnami have?  
+  > There are over 200+ charts
+
+![Image Alt]()
 
 ---
 
