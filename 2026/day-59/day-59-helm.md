@@ -39,8 +39,18 @@ Three core concepts:
 
 One command replaced writing a Deployment, Service, and ConfigMap by hand.
 
-**Verify:** How many Pods are running? What Service type was created?
+**Verify:** How many Pods are running? What Service type was created?  
+  > Only 1 Pod created and LoadBalancer Service type is created.
 
+![Image Alt]()
+
+![Image Alt]()
+
+![Image Alt]()
+
+![Image Alt]()
+
+  
 ---
 
 ### Task 4: Customize with Values
