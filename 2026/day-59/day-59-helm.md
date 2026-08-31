@@ -13,7 +13,10 @@ Three core concepts:
 - **Release** — a specific installation of a chart in your cluster
 - **Repository** — a collection of charts (like a package repo)
 
-**Verify:** What version of Helm is installed?
+**Verify:** What version of Helm is installed?  
+  > Version:"v4.0.4"
+
+![Image Alt]()
 
 ---
 
