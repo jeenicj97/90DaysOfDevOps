@@ -67,7 +67,8 @@ One command replaced writing a Deployment, Service, and ConfigMap by hand.
 
 Same concept as Deployment rollouts from Day 52, but at the full stack level.
 
-**Verify:** How many revisions after the rollback?
+**Verify:** How many revisions after the rollback?  
+  > 
 
 ---
 
@@ -93,37 +94,3 @@ Same concept as Deployment rollouts from Day 52, but at the full stack level.
 **Verify:** Does `helm list` show zero releases?
 
 ---
-
-## Hints
-- `helm show values <chart>` — see what you can customize
-- `--set key=value` for single overrides, `-f values.yaml` for files
-- Nested values use dots: `--set service.type=NodePort`
-- `helm get values <release>` shows overrides, `--all` for everything
-- `helm template` renders without installing — great for debugging
-- `helm lint` validates chart structure before installing
-- Templates: `{{ .Values.key }}`, `{{ .Chart.Name }}`, `{{ .Release.Name }}`
-
----
-
-## Documentation
-Create `day-59-helm.md` with:
-- What Helm is and the three core concepts
-- How to install, customize, upgrade, and rollback
-- The structure of a Helm chart and how Go templating works
-- Your `custom-values.yaml` with explanations
-
----
-
-## Submission
-1. Add `day-59-helm.md` and `custom-values.yaml` to `2026/day-59/`
-2. Commit and push to your fork
-
----
-
-## Learn in Public
-Share on LinkedIn: "Learned Helm today — deployed charts, customized with values, performed rollbacks, and created my own chart from scratch. One command replaces dozens of YAML files."
-
-`#90DaysOfDevOps` `#DevOpsKaJosh` `#TrainWithShubham`
-
-Happy Learning!
-**TrainWithShubham**
