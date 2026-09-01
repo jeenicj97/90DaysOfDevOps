@@ -106,6 +106,18 @@ Same concept as Deployment rollouts from Day 52, but at the full stack level.
 8. Upgrade: `helm upgrade my-release ./my-app --set replicaCount=5`
 
 **Verify:** After installing, 3 replicas? After upgrading, 5?  
+  > Yes. Initially after installing 3, then 5 after upgrading
+
+
+![Image Alt]()
+
+![Image Alt]()
+
+
+![Image Alt]()
+
+
+![Image Alt]()
 
 ---
 
@@ -114,7 +126,10 @@ Same concept as Deployment rollouts from Day 52, but at the full stack level.
 2. Remove chart directory and values file
 3. Use `--keep-history` if you want to retain release history for auditing
 
-**Verify:** Does `helm list` show zero releases?
+**Verify:** Does `helm list` show zero releases?  Yes
+
+
+![Image Alt]()
 
 ---
 
@@ -129,11 +144,3 @@ Same concept as Deployment rollouts from Day 52, but at the full stack level.
 
 ---
 
-## Documentation
-Create `day-59-helm.md` with:
-- What Helm is and the three core concepts
-- How to install, customize, upgrade, and rollback
-- The structure of a Helm chart and how Go templating works
-- Your `custom-values.yaml` with explanations
-
----
