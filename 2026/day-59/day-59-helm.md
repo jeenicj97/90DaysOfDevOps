@@ -16,7 +16,7 @@ Three core concepts:
 **Verify:** What version of Helm is installed?  
   > Version:"v4.0.4"
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-59/day59-task1.jpg)
 
 ---
 
@@ -28,7 +28,7 @@ Three core concepts:
 **Verify:** How many charts does Bitnami have?  
   > There are over 200+ charts
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-59/day59-task2.jpg)
 
 ---
 
@@ -42,13 +42,13 @@ One command replaced writing a Deployment, Service, and ConfigMap by hand.
 **Verify:** How many Pods are running? What Service type was created?  
   > Only 1 Pod created and LoadBalancer Service type is created.
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-59/day59-task3.1.jpg)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-59/day59-task3.2.jpg)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-59/day59-task3.3.jpg)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-59/day59-task3.jpg)
 
   
 ---
@@ -63,9 +63,15 @@ One command replaced writing a Deployment, Service, and ConfigMap by hand.
 **Verify:** Does the values file release have the correct replicas and service type?
 
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-59/day59-task4.1.jpg)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-59/day59-task4.2.jpg)
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-59/day59-task4.3.0.jpg)
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-59/day59-task4.3.jpg)
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-59/day59-task4.4.jpg)
 
 ---
 
@@ -88,9 +94,9 @@ Same concept as Deployment rollouts from Day 52, but at the full stack level.
 3 → Rollback
 ```
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-59/day59-task5.1.jpg)
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-59/day59-task5.2.jpg)
 
 
 ---
@@ -109,15 +115,22 @@ Same concept as Deployment rollouts from Day 52, but at the full stack level.
   > Yes. Initially after installing 3, then 5 after upgrading
 
 
-![Image Alt]()
-
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-59/day59-task6.1.jpg)
 
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-59/day59-task6.2.jpg)
 
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-59/day59-task6.3.jpg)
+
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-59/day59-task6.4.jpg)
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-59/day59-task6.5.1.jpg)
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-59/day59-task6.5.jpg)
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-59/day59-task6.6.jpg)
 
 ---
 
@@ -128,8 +141,7 @@ Same concept as Deployment rollouts from Day 52, but at the full stack level.
 
 **Verify:** Does `helm list` show zero releases?  Yes
 
-
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-59/day59-task7.jpg)
 
 ---
 
