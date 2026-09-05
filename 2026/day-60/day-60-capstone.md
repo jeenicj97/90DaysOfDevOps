@@ -8,6 +8,8 @@
 1. Create a `capstone` namespace
 2. Set it as your default: `kubectl config set-context --current --namespace=capstone`
 
+![Image Alt]()
+
 ---
 
 ### Task 2: Deploy MySQL (Days 54-56)
