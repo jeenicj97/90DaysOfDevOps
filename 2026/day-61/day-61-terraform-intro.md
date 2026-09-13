@@ -88,7 +88,12 @@ terraform apply     # Create the bucket (type 'yes' to confirm)
 
 Go to the AWS S3 console and verify your bucket exists.
 
-**Document:** What did `terraform init` download? What does the `.terraform/` directory contain?
+![Image Alt]()
+
+
+**Document:** What did `terraform init` download? What does the `.terraform/` directory contain?  
+  >  `terraform init`: downloads the required Terraform provider plugins defined in the required_providers block.  
+  > `.terraform/` directory: It contains Terraform's local working information, including downloaded provider plugins and other initialization-related data.
 
 ---
 
