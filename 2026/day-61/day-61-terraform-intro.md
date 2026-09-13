@@ -63,7 +63,7 @@ aws sts get-caller-identity
 
 You should see your AWS account ID and ARN.
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-61/day61-task2.jpg)
 
 ---
 
@@ -88,7 +88,7 @@ terraform apply     # Create the bucket (type 'yes' to confirm)
 
 Go to the AWS S3 console and verify your bucket exists.
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-61/day61-task3.jpg)
 
 
 **Document:** What did `terraform init` download? What does the `.terraform/` directory contain?  
@@ -145,7 +145,7 @@ resource "aws_instance" "terraform_ec2" {
 
 Go to the AWS EC2 console and verify your instance is running with the correct name tag.
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-61/day61-task4.jpg)
 
 **Document:** How does Terraform know the S3 bucket already exists and only the EC2 instance needs to be created?
 
@@ -192,10 +192,10 @@ terraform state show aws_instance.<name>
 ```
 
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-61/day61-task5.1.jpg)
 
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-61/day61-task5.2.jpg)
 
 
 3. Answer these questions in your notes:
@@ -224,15 +224,18 @@ terraform state show aws_instance.<name>
 3. Apply the change
 4. Verify the tag changed in the AWS console
 
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-61/day61-task6.1.jpg)
+
+
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-61/day61-task6.2.jpg)
+
 
 5. Finally, destroy everything:
 ```bash
 terraform destroy
 ```
 
-
-![Image Alt]()
+![Image Alt](https://github.com/jeenicj97/90DaysOfDevOps/blob/master/2026/day-61/day61-task6.3.jpg)
 
 6. Verify in the AWS console -- both the S3 bucket and EC2 instance should be gone
    > yes, EC2 instance terminated and S3 bucket deleted from console
