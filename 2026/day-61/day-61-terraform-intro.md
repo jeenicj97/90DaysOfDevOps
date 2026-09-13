@@ -8,11 +8,24 @@
 Before touching the terminal, research and write short notes on:
 
 1. What is Infrastructure as Code (IaC)? Why does it matter in DevOps?
+   > Infrastructure as Code (IaC) means creating and managing infrastructure (like servers, databases, and networks) using configuration files instead of manually creating resources through a cloud console.  
 2. What problems does IaC solve compared to manually creating resources in the AWS console?
-3. How is Terraform different from AWS CloudFormation, Ansible, and Pulumi?
-4. What does it mean that Terraform is "declarative" and "cloud-agnostic"?
+   > When infrastructure is created manually through AWS Console, it is easy to make mistakes or forget which settings were used. IaC solves this by defining the infrastructure in code.
 
-Write this in your own words -- not copy-pasted definitions.
+| Without IaC (ClickOps) | With IaC |
+|---|---|
+| Manual steps, easy to make mistakes | Automated, consistent every time |
+| Hard to repeat the same setup | Run the same code anywhere |
+| No record of what changed | Git tracks every change |
+| Only one person knows how it was set up | Anyone can read the code |
+
+3. How is Terraform different from AWS CloudFormation, Ansible, and Pulumi?  
+   * vs. AWS CloudFormation: CloudFormation is Amazon’s native tool. It is great if you use only AWS, but it only works for AWS. Terraform is multi-cloud, allowing you to manage AWS, Azure, and others simultaneously.  
+   * vs. Ansible: Ansible is primarily a Configuration Management tool. It is great for installing software, updates, and configuring settings inside an already running server. Terraform is a Provisioning tool, it creates the actual servers and networks from scratch. (Teams often use Terraform to build the servers, and Ansible to configure them).
+   * vs. Pulumi: Terraform uses its own custom language called HCL (HashiCorp Configuration Language). Pulumi lets you write IaC using standard programming languages like Python, TypeScript, or Go.  
+4. What does it mean that Terraform is "declarative" and "cloud-agnostic"?
+   * Declarative: You tell Terraform what the final result should look like (ex. "I want 3 servers and 1 database") and Terraform automatically figures out the exact steps needed to build or update it.  
+   * Cloud-agnostic: You can use the exact same workflow and language to provision resources on AWS, Google Cloud, Microsoft Azure, or even GitHub.
 
 ---
 
