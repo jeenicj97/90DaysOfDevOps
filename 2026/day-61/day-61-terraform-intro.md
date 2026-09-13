@@ -214,13 +214,27 @@ terraform state show aws_instance.<name>
 1. Change the EC2 instance tag from `"TerraWeek-Day1"` to `"TerraWeek-Modified"` in your `main.tf`
 2. Run `terraform plan` and read the output carefully:
    - What do the `~`, `+`, and `-` symbols mean?
+     > `~` : Modify - means Terraform will modify an existing resource  
+     > `+` : Create - means Terraform will create a new resource  
+     > `-` : Destroy - means Terraform will destroy/remove a resource  
    - Is this an in-place update or a destroy-and-recreate?
+     > For this tag change: TerraWeek-Day1 -> TerraWeek-Day1, Terraform should perform an: *In-place update*
+     > The EC2 instance itself doesn't need to be destroyed and recreated just because its Name tag changed.
+
 3. Apply the change
 4. Verify the tag changed in the AWS console
+
+![Image Alt]()
+
 5. Finally, destroy everything:
 ```bash
 terraform destroy
 ```
+
+
+![Image Alt]()
+
 6. Verify in the AWS console -- both the S3 bucket and EC2 instance should be gone
+   > yes, EC2 instance terminated and S3 bucket deleted from console
 
 ---
