@@ -109,9 +109,73 @@ terraform plan      # You should see 1 resource to add (bucket already exists)
 terraform apply
 ```
 
+
+```
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 6.0"
+    }
+
+  }
+}
+
+provider "aws" {
+  region = "ap-south-1"
+}
+
+resource "aws_s3_bucket" "terraform_bucket" {
+
+  bucket = "terrform-jeeni-2026"
+}
+
+resource "aws_instance" "terraform_ec2" {
+
+  ami           = "ami-0f5ee92e2d63afc18"
+  instance_type = "t3.micro"
+
+  tags = {
+    Name = "Terraweek-Modified"
+
+  }
+}
+
+```
+
 Go to the AWS EC2 console and verify your instance is running with the correct name tag.
 
+![Image Alt]()
+
 **Document:** How does Terraform know the S3 bucket already exists and only the EC2 instance needs to be created?
+
+Terraform keeps track of resources it manages in the Terraform state file: `terraform.tfstate`  
+
+After creating the S3 bucket, Terraform records information about it in the state.  
+
+When we run:
+
+```bash
+terraform plan
+```
+
+Terraform compares:
+
+```text
+main.tf
+   ↓
+terraform.tfstate
+   ↓
+AWS infrastructure
+```
+
+It determines:
+
+> "The S3 bucket already exists and matches the configuration, so I only need to create the new EC2 instance."
+
+This is one of the most important concepts in Terraform.  
+
+
 
 ---
 
@@ -127,10 +191,22 @@ terraform state show aws_s3_bucket.<name>   # Detailed view of a specific resour
 terraform state show aws_instance.<name>
 ```
 
+
+![Image Alt]()
+
+
+![Image Alt]()
+
+
 3. Answer these questions in your notes:
-   - What information does the state file store about each resource?
+   - What information does the state file store about each resource?  
+     > The state file stores Terraform's information about the resources it manages. This can include: Resource IDs, Resource attributes, Provider information, Resource relationships, Configuration-related metadata, Values returned by the cloud provider
    - Why should you never manually edit the state file?
+     > The state file is managed by Terraform. Manually changing it can cause the state to become inconsistent with the real infrastructure.
    - Why should the state file not be committed to Git?
+     > here are two major reasons.  
+     > 1. It can contain sensitive information: Depending on the resources, Terraform state can contain sensitive values.  
+     > 2. It creates state-management problems: If multiple developers use the same repository and each person has their own local state file, the states can become inconsistent.
 
 ---
 
