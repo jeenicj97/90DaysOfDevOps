@@ -8,9 +8,9 @@
 Before touching the terminal, research and write short notes on:
 
 1. What is Infrastructure as Code (IaC)? Why does it matter in DevOps?
-   > Infrastructure as Code (IaC) means creating and managing infrastructure (like servers, databases, and networks) using configuration files instead of manually creating resources through a cloud console.  
+   * Infrastructure as Code (IaC) means creating and managing infrastructure (like servers, databases, and networks) using configuration files instead of manually creating resources through a cloud console.  
 2. What problems does IaC solve compared to manually creating resources in the AWS console?
-   > When infrastructure is created manually through AWS Console, it is easy to make mistakes or forget which settings were used. IaC solves this by defining the infrastructure in code.
+   * When infrastructure is created manually through AWS Console, it is easy to make mistakes or forget which settings were used. IaC solves this by defining the infrastructure in code.
 
 | Without IaC (ClickOps) | With IaC |
 |---|---|
